@@ -1,0 +1,43 @@
+import java.io.OutputStream;
+import java.util.Stack;
+
+public class DeclarationCompt{
+	
+	OutputStream FichierGen ;
+	
+	public DeclarationCompt(){
+		FichierGen=Ecriture.ouvrir("gen.java");
+	}
+	
+	public void declCompt(String methode){
+		declComptReq(methode);
+		declComptAut(methode);
+		declComptTerm(methode);
+		Ecriture.fermer(FichierGen);
+	}
+	
+	public void declComptReq(String methode){
+		Ecriture.ecrireString(FichierGen,"private");
+		Ecriture.ecrireString(FichierGen,"int");
+		Ecriture.ecrireString(FichierGen,methode+"_"+"req");
+		Ecriture.ecrireString(FichierGen,"= 0;");
+		Ecriture.ecrireString(FichierGen,"\n");
+	}
+	
+	public void declComptAut(String methode){
+		Ecriture.ecrireString(FichierGen,"private");
+		Ecriture.ecrireString(FichierGen,"int");
+		Ecriture.ecrireString(FichierGen,methode+"_"+"aut");
+		Ecriture.ecrireString(FichierGen,"= 0;");
+		Ecriture.ecrireString(FichierGen,"\n");
+	}
+	
+	public void declComptTerm(String methode){
+		Ecriture.ecrireString(FichierGen,"private");
+		Ecriture.ecrireString(FichierGen,"int");
+		Ecriture.ecrireString(FichierGen,methode+"_"+"term");
+		Ecriture.ecrireString(FichierGen,"= 0;");
+		Ecriture.ecrireString(FichierGen,"\n");
+	}
+	
+}
