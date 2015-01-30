@@ -1,0 +1,13 @@
+import java.util.HashMap;
+import java.util.Map.Entry;
+
+public class TabIdent {
+	
+	private HashMap<String,String> condition;
+	
+	public TabIdent(int taille) {
+		condition = new HashMap<String,String>(taille);
+
+	}
+
+}

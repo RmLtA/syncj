@@ -1,0 +1,8 @@
+import java.util.HashMap;
+import java.util.Map.Entry;
+
+public class TabIdent {
+	
+	private HashMap<String,String> condition;
+
+}

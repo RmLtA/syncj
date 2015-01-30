@@ -30,6 +30,7 @@ options {
 PARSER_BEGIN(JavaParser)
 
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * Grammar to parse Java version 1.5
@@ -42,6 +43,9 @@ public class JavaParser
 	public static boolean flag2 = false;
 	public static String exprBool = "";
 	public static String methode = "";
+	public static ArrayList<String> listMethode;
+	
+	public static String testMethode = "";
    /**
     * Class to hold modifiers.
     */
@@ -130,7 +134,9 @@ public class JavaParser
 
    public JavaParser(String fileName)
    {
+   	   
       this(System.in);
+      listMethode = new ArrayList<String>();
       try { ReInit(new FileInputStream(new File(fileName))); }
       catch(Exception e) { e.printStackTrace(); }
    }
@@ -292,7 +298,7 @@ TOKEN :
   	JavaParser.declCompt.recopier(identLu);
 	
 	if(JavaParser.flag2)
-	JavaParser.exprBool+=identLu;
+	JavaParser.exprBool+=identLu+ " ";
   }
 |
   < #DECIMAL_LITERAL: ["1"-"9"] (["0"-"9"])* > 
@@ -349,7 +355,7 @@ TOKEN :
   	JavaParser.declCompt.recopier(identLu);
 	
 	if(JavaParser.flag2)
-	JavaParser.exprBool+=identLu;
+	JavaParser.exprBool+=identLu+ " ";
   }
 |
   < #LETTER:
@@ -423,7 +429,7 @@ TOKEN :
   	JavaParser.declCompt.recopier(identLu);
 	
 	if(JavaParser.flag2)
-	JavaParser.exprBool+=identLu;
+	JavaParser.exprBool+=identLu+" ";
   }
 | < LE: "<=" > {identLu = image.toString();if(!JavaParser.flag){ JavaParser.declCompt.recopier(identLu);}}
 | < GE: ">=" > {identLu = image.toString();if(!JavaParser.flag){ JavaParser.declCompt.recopier(identLu);}}
@@ -435,7 +441,7 @@ TOKEN :
   	JavaParser.declCompt.recopier(identLu);
 	
 	if(JavaParser.flag2)
-	JavaParser.exprBool+=identLu;
+	JavaParser.exprBool+=identLu+" ";
   }
 | < INCR: "++" > {identLu = image.toString();if(!JavaParser.flag){ JavaParser.declCompt.recopier(identLu);}}
 | < DECR: "--" > {identLu = image.toString();if(!JavaParser.flag){ JavaParser.declCompt.recopier(identLu);}}
@@ -741,7 +747,11 @@ void MethodDeclaration(int modifiers):
 void MethodDeclarator():
 {}
 {
-  <IDENTIFIER> FormalParameters() ( "[" "]" )*
+  <IDENTIFIER> 
+  {
+  	JavaParser.testMethode = JavaParserTokenManager.identLu;
+  } 
+  FormalParameters() ( "[" "]" )*
 }
 
 void FormalParameters():
@@ -912,9 +922,22 @@ void AssignmentOperator():
 
 void condition():{}
 {
-	{flag = true;}<CONDITION> <IDENTIFIER> {methode = identLu; declCompt.declCompt(JavaParserTokenManager.identLu);}
+	{flag = true;}
+	<CONDITION> <IDENTIFIER> 
+	{
+		methode = JavaParserTokenManager.identLu; 
+		JavaParser.listMethode.add(JavaParserTokenManager.identLu);
+		declCompt.declCompt(methode);
+		
+	}
 	 "=" {flag2 = true;} 
-	 "(" ConditionalExpression() ")" {flag2 = false;} ";" {flag = false; declCompt.declMethodeBool(methode, exprBool);} 
+	 "(" ConditionalExpression() ")" {flag2 = false;} 
+	 ";" 
+	 {
+	 	flag = false; 
+	 	declCompt.declMethodeBool(methode, exprBool); 
+	 	exprBool="";
+	 } 
 
 }
 
@@ -1232,7 +1255,22 @@ void LabeledStatement():
 void Block():
 {}
 {
-  "{" ( BlockStatement() )* "}"
+  "{" 
+  	{
+	  	if(JavaParser.listMethode.contains(JavaParser.testMethode)){
+	  		declCompt.declSynchronizedAvant(JavaParser.testMethode);
+	  	}
+  	}
+  	( BlockStatement() )* 
+  	
+  	{
+  		if(JavaParser.listMethode.contains(JavaParser.testMethode)){
+  			declCompt.declSynchronizedApres(JavaParser.testMethode);
+  		}
+  	}
+  	
+  	
+  	"}"
 }
 
 void BlockStatement():

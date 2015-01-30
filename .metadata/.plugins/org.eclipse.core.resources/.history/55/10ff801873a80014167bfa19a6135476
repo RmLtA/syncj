@@ -1,0 +1,24 @@
+import java.util.HashMap;
+import java.util.Map.Entry;
+
+public class TabIdent {
+	
+	private HashMap<String,Ident> condition;
+	
+	public TabIdent(int taille) {
+		condition = new HashMap<String,Ident>(taille);
+
+	}
+	
+	public Ident chercheIdent(String cle, int ligne) {
+		Ident ident = new Ident(cle);
+		ident = condition.get(cle);
+		if(ident!=null){
+			return ident;
+		}else{
+			System.out.println("\n erreur ligne : "+ligne+" chercheIdent() n'arrive pas à trouver l'identificateur de nom : "+cle+" car elle n'existe pas dans la table\n");
+			return null;
+		}	
+	}
+
+}

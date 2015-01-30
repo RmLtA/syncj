@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="257" key="DIALOG_WIDTH"/>
-		<item value="241" key="DIALOG_Y_ORIGIN"/>
-		<item value="517" key="DIALOG_X_ORIGIN"/>
+		<item value="112" key="DIALOG_Y_ORIGIN"/>
 		<item value="381" key="DIALOG_HEIGHT"/>
+		<item value="990" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="exprBool" key="selection"/>
+		<item value="condition" key="selection"/>
 		<list key="findhistory">
-			<item value="exprbool"/>
 			<item value="condition"/>
-			<item value="IDENTIFIER"/>
-			<item value="Expression()"/>
-			<item value="Expression"/>
-			<item value="condition()"/>
-			<item value="flag = true"/>
-			<item value="CONDITION"/>
+			<item value="MethodDEC"/>
+			<item value="find"/>
+			<item value="finc"/>
+			<item value="contains"/>
+			<item value="List&lt;"/>
+			<item value="List"/>
+			<item value="MethodDe"/>
 		</list>
 		<list key="replacehistory">
 		</list>

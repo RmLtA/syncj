@@ -1,9 +1,11 @@
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class DeclarationCompt{
 	
 	OutputStream FichierGen ;
+	
 	
 	public DeclarationCompt(){
 		FichierGen=Ecriture.ouvrir("gen.java");
@@ -15,6 +17,7 @@ public class DeclarationCompt{
 		declComptAut(methode);
 		Ecriture.ecrireString(FichierGen,"\t");
 		declComptTerm(methode);
+		Ecriture.ecrireString(FichierGen,"\t");
 		
 	}
 	
@@ -53,9 +56,42 @@ public class DeclarationCompt{
 	public void declMethodeBool(String methode, String exprBool){
 		Ecriture.ecrireString(FichierGen,"public ");
 		Ecriture.ecrireString(FichierGen,"boolean ");
-		Ecriture.ecrireString(FichierGen,"cond_"+methode+"(){\n\t");
-		Ecriture.ecrireString(FichierGen,"return "+exprBool);
-		Ecriture.ecrireString(FichierGen,";\n}\n");
+		Ecriture.ecrireString(FichierGen,"cond_"+methode+"(){\n\t\t");
+		Ecriture.ecrireString(FichierGen,"return "+"("+exprBool+")");
+		Ecriture.ecrireString(FichierGen,";\n\t}\n");
+		
+	}
+	
+	public void declSynchronizedAvant(String methode){
+		Ecriture.ecrireString(FichierGen,"synchronized(this){ \n\t");
+		Ecriture.ecrireString(FichierGen,methode+"_"+"req++ ;\n");
+		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n");
+		
+		Ecriture.ecrireString(FichierGen,methode+"_"+"att++ ;\n");
+		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n");
+		
+		Ecriture.ecrireString(FichierGen,"while(!");
+		Ecriture.ecrireString(FichierGen,"cond_"+methode+"()){\n\t");
+		Ecriture.ecrireString(FichierGen,"this.wait();\n\t}");
+		
+		Ecriture.ecrireString(FichierGen,methode+"_"+"aut++ ;\n");
+		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n");
+		
+		Ecriture.ecrireString(FichierGen,methode+"_"+"att-- ;\n");
+		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n");
+		
+		Ecriture.ecrireString(FichierGen,methode+"_"+"act++ ;\n");
+		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t}");
+	}
+	
+	public void declSynchronizedApres(String methode){
+		Ecriture.ecrireString(FichierGen,"synchronized(this){ \n\t");
+		Ecriture.ecrireString(FichierGen,methode+"_"+"term++ ;\n");
+		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n");
+		
+		
+		Ecriture.ecrireString(FichierGen,methode+"_"+"act-- ;\n");
+		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t}");
 	}
 	
 	
