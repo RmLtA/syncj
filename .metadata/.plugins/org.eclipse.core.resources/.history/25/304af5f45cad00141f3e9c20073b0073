@@ -957,16 +957,6 @@ void condition():{}
 	 ";" 
 }
 
-void compteur():{}
-{
-	<IDENTIFIER>"_"compteurExistant()
-}
-
-void compteurExistant():{}
-{
-	"act" | "att" | "req" | "aut" | "term"
-}
-
 
 
 void ConditionalExpression():
@@ -1299,28 +1289,6 @@ void Block():
   	
   	"}"
 }
-
-void Block():
-{}
-{
-  "{" 
-  	{
-	  	//Vérification le bloc de code lu est bien le bloc d'une méthode dont la condition a été défini
-	  	//Generation des blocs synchronized et mise à jour des compteurs avant l'exécution 
-	  	//des insructions si la condition est vérifiée
-	  	Generation.genBlocSynchronizedAvant(); 
-  	}
-  	( BlockStatement() )* 
-  	
-  	{
-	  	//Vérification 
-	  	//Generation des blocs synchronized et mise à jour des compteurs après l'exécution des instructions
-	  	Generation.genBlocSynchronizedAprès(); 
-  	}
-  	
-  	"}"
-}
-
 
 void BlockStatement():
 {}
