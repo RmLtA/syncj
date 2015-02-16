@@ -13,16 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="&quot;condition" key="selection"/>
+		<item value="" key="selection"/>
 		<list key="findhistory">
-			<item value="&quot;condition0"/>
-			<item value="&quot;condition"/>
-			<item value="&quot;con"/>
-			<item value="condition("/>
-			<item value="condition"/>
-			<item value="declSyn"/>
-			<item value="MethodDEC"/>
-			<item value="find"/>
+			<item value="flag"/>
+			<item value="flag2"/>
+			<item value="decl"/>
+			<item value="ConditionalExp"/>
+			<item value="Conditional"/>
+			<item value="Block"/>
+			<item value="ConditionalExpression"/>
+			<item value="condition()"/>
 		</list>
 		<list key="replacehistory">
 		</list>
