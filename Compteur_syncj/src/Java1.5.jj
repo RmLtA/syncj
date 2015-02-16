@@ -40,6 +40,7 @@ public class JavaParser
 {
 	public static Generation declCompt = new Generation();
 	
+	public static TabIdent tabIdent = new TabIdent(100);
 	
 	/* verifie si n'appartient pas a une condition*/
 	public static boolean notCondition = false;
@@ -49,7 +50,7 @@ public class JavaParser
 	
 	public static String exprBool = "";
 	public static String methode = "";
-	public static ArrayList<String> listMethode;
+	public static ArrayList<String> listMethode = new ArrayList<String>();
 	
 	public static String testMethode = "";
    /**
@@ -142,7 +143,7 @@ public class JavaParser
    {
    	   
       this(System.in);
-      listMethode = new ArrayList<String>();
+      
       try { ReInit(new FileInputStream(new File(fileName))); }
       catch(Exception e) { e.printStackTrace(); }
    }
@@ -286,7 +287,8 @@ TOKEN :
 | < VOID: "void" > {identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);}
 | < VOLATILE: "volatile" > {identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);}
 | < WHILE: "while" > {identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);}
-|	<CONDITION: "condition"> 
+| < CONDITION: "condition"> 
+
 
 }
 
@@ -823,16 +825,19 @@ void MethodDeclaration(int modifiers):
 void MethodDeclarator():
 {}
 {
-  <IDENTIFIER> 
+  <IDENTIFIER>
   {
   	JavaParser.testMethode = JavaParserTokenManager.identLu;
-  } 
+  	System.out.println("testMethode = "+JavaParser.testMethode+ " ligne : "+Token.beginLine);
+  }  
+  
   FormalParameters() ( "[" "]" )*
 }
 
 void FormalParameters():
 {}
 {
+  
   "(" [ FormalParameter() ( "," FormalParameter() )* ] ")"
 }
 
@@ -879,6 +884,7 @@ void Type():
 {
    LOOKAHEAD(2) ReferenceType()
  |
+  
    PrimitiveType()
 }
 
@@ -938,6 +944,7 @@ void PrimitiveType():
   "float"
 |
   "double"
+
 }
 
 void ResultType():
@@ -1002,7 +1009,8 @@ void condition():{}
 	<CONDITION> <IDENTIFIER> 
 	{
 		methode = JavaParserTokenManager.identLu; 
-		JavaParser.listMethode.add(JavaParserTokenManager.identLu);
+		
+		//JavaParser.listMethode.add(JavaParserTokenManager.identLu);
 		declCompt.declInitCompt(methode);
 		
 	}
@@ -1011,8 +1019,16 @@ void condition():{}
 	 ";" 
 	 {
 	 	notCondition = false; 
+	 	/*generation des methode condition*/
 	 	declCompt.declMethodeBool(methode, exprBool); 
+	 	
+	 	/*Ajout de l'ident dans le tableau d'identificateur*/
+	 	tabIdent.createIdent(methode,  exprBool, Token.beginLine);
+	 	tabIdent.affiche(exprBool);
+	 	
 	 	exprBool="";
+	 	
+	 	
 	 } 
 
 }
@@ -1346,19 +1362,19 @@ void Block():
 {
   "{" 
   	{
-	  	if(JavaParser.listMethode.contains(JavaParser.testMethode)){
+  		
+	  	if(tabIdent.existeIdent(JavaParser.testMethode, Token.beginLine)){
 	  		declCompt.declSynchronizedAvant(JavaParser.testMethode);
 	  	}
   	}
   	( BlockStatement() )* 
   	
   	{
-  		if(JavaParser.listMethode.contains(JavaParser.testMethode)){
+  		if(tabIdent.existeIdent(JavaParser.testMethode, Token.beginLine)){
   			declCompt.declSynchronizedApres(JavaParser.testMethode);
   		}
   	}
-  	
-  	
+
   	"}"
 }
 

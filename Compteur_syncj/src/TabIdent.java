@@ -25,14 +25,30 @@ public class TabIdent {
 		if(condition.containsKey(cle))
 				return true;
 		else
-			System.out.println(" ERREUR existeIdent() : l'ident de nom: "+cle+" n'est dans aucune des tables de locaux ou globaux, ligne "+ligne+"\n");
+			
 			return false;		
 	}
 	
-	public void rangeIdent(String cle, Ident valeur) {
-
-		condition.put(cle, valeur);
+	public void createIdent(String n, String exprb, int ligne){
+		Ident id = new Ident(n);
+		rangeIdent(n, id, ligne);
 		
+	}
+	
+	public void rangeIdent(String cle, Ident valeur, int ligne) {
+		if(!existeIdent(cle, ligne) && cle!=null){
+			condition.put(cle, valeur);
+		}
+	
+	}
+	
+	public void affiche(String expr) {
+		System.out.println("\n\nVoici la table des identificateurs : ");
+		for(Entry<String, Ident> e : condition.entrySet()) {
+			System.out.println(e.getKey() + " = " + expr);
+		}
+
+		System.out.println("}\n");
 	}
 		
 	

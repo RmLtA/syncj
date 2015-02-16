@@ -3,23 +3,37 @@ import java.util.ArrayList;
 
 public class Ident {
 	public String nom;
-	public ArrayList<Integer> param;
+	public String expressionBooleen;
+	public ArrayList<String> compteur;
 	
 	public Ident(String n){
 		this.nom=n;
-		param=new ArrayList<Integer>();
+		expressionBooleen="";
+		compteur = new ArrayList<String>();
 	}
 	
 	public String getNom(){
 		return nom;
 	}
 	
-	public int getParam(int i){
-		return param.get(i);
+	public String getExprBool(){
+		return expressionBooleen;
 	}
 	
+	public void setExprBool(String e){
+		expressionBooleen = e;
+	}
+	
+	public void addCompteur(String s){
+		compteur.add(s);
+	}
+	
+	public String getCompteur(int i){
+		return compteur.get(i);
+	}
+
 	public int getTailleTabParam(){
-		return param.size();
+		return compteur.size();
 	}
 
 }

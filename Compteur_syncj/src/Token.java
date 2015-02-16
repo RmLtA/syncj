@@ -17,7 +17,7 @@ public class Token {
    * of this token; endLine and endColumn describe the position of the
    * last character of this token.
    */
-  public int beginLine, beginColumn, endLine, endColumn;
+  public static int beginLine, beginColumn, endLine, endColumn;
 
   /**
    * The string image of the token.

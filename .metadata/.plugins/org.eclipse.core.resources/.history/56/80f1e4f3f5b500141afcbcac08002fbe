@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+
+
+public class Ident {
+	public String nom;
+	public ArrayList<String>expressionBooleen;
+	public ArrayList<String> compteur;
+	
+	public Ident(String n){
+		this.nom=n;
+		expressionBooleen=new ArrayList<String>();
+	}
+	
+	public String getNom(){
+		return nom;
+	}
+	
+	public int getParam(int i){
+		return param.get(i);
+	}
+	
+	public int getTailleTabParam(){
+		return param.size();
+	}
+
+}
