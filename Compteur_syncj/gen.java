@@ -22,12 +22,34 @@ public class LecteurRedacteur{
 	}
 
 	
-	public boolean lire(){
-		boolean b = false;
+	public void lire(){
+		 synchronized(this){ 
+			lire_req++ ;
+			this.notifyAll();
+			lire_att++ ;
+			this.notifyAll();
+			while(!cond_lire()){
+				this.wait();
+				}
+			lire_aut++ ;
+			this.notifyAll();
+			lire_att-- ;
+			this.notifyAll();
+			lire_act++ ;
+			this.notifyAll();
+			}
+		
+		
 		String s = tab[tab_lec];
 		tab_lec=(tab_lec+1)%TAILLE;
-		return b;
-	}
+		return s;
+	synchronized(this){ 
+			lire_term++ ;
+			this.notifyAll();
+			lire_act-- ;
+			this.notifyAll();
+			}
+		}
 
 	public void ecrire(String s){
 		 synchronized(this){ 
@@ -48,13 +70,13 @@ public class LecteurRedacteur{
 		
 		tab[tab_red]=s;
 		tab_red=(tab_red+1)%TAILLE;
-	}synchronized(this){ 
+	synchronized(this){ 
 			ecrire_term++ ;
 			this.notifyAll();
 			ecrire_act-- ;
 			this.notifyAll();
 			}
-		
+		}
 	
 
 }

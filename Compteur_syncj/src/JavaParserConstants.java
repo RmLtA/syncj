@@ -378,12 +378,7 @@ public interface JavaParserConstants {
     "\">>>\"",
     "\">>\"",
     "\">\"",
-    "\"_\"",
-    "\"act\"",
-    "\"att\"",
-    "\"req\"",
-    "\"aut\"",
-    "\"term\"",
+    "\"String\"",
   };
 
 }

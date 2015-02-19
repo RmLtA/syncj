@@ -5,12 +5,12 @@ import java.util.ArrayList;
 /** Token Manager. */
 public class JavaParserTokenManager implements JavaParserConstants
 {
-public static String identLu;
+	public static String identLu;
   /** Debug output. */
   public  java.io.PrintStream debugStream = System.out;
   /** Set debug output. */
   public  void setDebugStream(java.io.PrintStream ds) { debugStream = ds; }
-private final int jjStopStringLiteralDfa_0(int pos, long active0, long active1, long active2)
+private final int jjStopStringLiteralDfa_0(int pos, long active0, long active1)
 {
    switch (pos)
    {
@@ -19,14 +19,14 @@ private final int jjStopStringLiteralDfa_0(int pos, long active0, long active1, 
             return 2;
          if ((active1 & 0x400000000400000L) != 0L)
             return 8;
-         if ((active0 & 0xffffffffffffe000L) != 0L || (active1 & 0xc000000000000007L) != 0L || (active2 & 0xfL) != 0L)
+         if ((active0 & 0xffffffffffffe000L) != 0L || (active1 & 0x4000000000000007L) != 0L)
          {
             jjmatchedKind = 75;
             return 32;
          }
          return -1;
       case 1:
-         if ((active0 & 0xffffffeff9ffe000L) != 0L || (active1 & 0x8000000000000007L) != 0L || (active2 & 0xfL) != 0L)
+         if ((active0 & 0xffffffeff9ffe000L) != 0L || (active1 & 0x4000000000000007L) != 0L)
          {
             if (jjmatchedPos != 1)
             {
@@ -41,7 +41,7 @@ private final int jjStopStringLiteralDfa_0(int pos, long active0, long active1, 
             return 32;
          return -1;
       case 2:
-         if ((active0 & 0xbfffecebfdffe000L) != 0L || (active1 & 0x8000000000000007L) != 0L || (active2 & 0xfL) != 0L)
+         if ((active0 & 0xbfffecebfdffe000L) != 0L || (active1 & 0x4000000000000007L) != 0L)
          {
             if (jjmatchedPos != 2)
             {
@@ -54,7 +54,7 @@ private final int jjStopStringLiteralDfa_0(int pos, long active0, long active1, 
             return 32;
          return -1;
       case 3:
-         if ((active0 & 0x1dffcae3e5e9e000L) != 0L || (active1 & 0x7L) != 0L || (active2 & 0x8L) != 0L)
+         if ((active0 & 0x1dffcae3e5e9e000L) != 0L || (active1 & 0x4000000000000007L) != 0L)
          {
             jjmatchedKind = 75;
             jjmatchedPos = 3;
@@ -64,7 +64,7 @@ private final int jjStopStringLiteralDfa_0(int pos, long active0, long active1, 
             return 32;
          return -1;
       case 4:
-         if ((active0 & 0x11b7cae02580e000L) != 0L || (active1 & 0x5L) != 0L)
+         if ((active0 & 0x11b7cae02580e000L) != 0L || (active1 & 0x4000000000000005L) != 0L)
          {
             if (jjmatchedPos != 4)
             {
@@ -77,7 +77,7 @@ private final int jjStopStringLiteralDfa_0(int pos, long active0, long active1, 
             return 32;
          return -1;
       case 5:
-         if ((active0 & 0x1121c2a12180a000L) != 0L || (active1 & 0x5L) != 0L)
+         if ((active0 & 0x1121c2a12180a000L) != 0L || (active1 & 0x4000000000000005L) != 0L)
          {
             jjmatchedKind = 75;
             jjmatchedPos = 5;
@@ -138,9 +138,9 @@ private final int jjStopStringLiteralDfa_0(int pos, long active0, long active1, 
          return -1;
    }
 }
-private final int jjStartNfa_0(int pos, long active0, long active1, long active2)
+private final int jjStartNfa_0(int pos, long active0, long active1)
 {
-   return jjMoveNfa_0(jjStopStringLiteralDfa_0(pos, active0, active1, active2), pos + 1);
+   return jjMoveNfa_0(jjStopStringLiteralDfa_0(pos, active0, active1), pos + 1);
 }
 private int jjStopAtPos(int pos, int kind)
 {
@@ -164,97 +164,97 @@ private int jjMoveStringLiteralDfa0_0()
          return jjStopAtPos(0, 1);
       case 33:
          jjmatchedKind = 90;
-         return jjMoveStringLiteralDfa1_0(0x0L, 0x200000000L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x0L, 0x200000000L);
       case 37:
          jjmatchedKind = 109;
-         return jjMoveStringLiteralDfa1_0(0x0L, 0x40000000000000L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x0L, 0x40000000000000L);
       case 38:
          jjmatchedKind = 106;
-         return jjMoveStringLiteralDfa1_0(0x0L, 0x8000800000000L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x0L, 0x8000800000000L);
       case 40:
          return jjStopAtPos(0, 78);
       case 41:
          return jjStopAtPos(0, 79);
       case 42:
          jjmatchedKind = 104;
-         return jjMoveStringLiteralDfa1_0(0x0L, 0x2000000000000L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x0L, 0x2000000000000L);
       case 43:
          jjmatchedKind = 102;
-         return jjMoveStringLiteralDfa1_0(0x0L, 0x801000000000L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x0L, 0x801000000000L);
       case 44:
          return jjStopAtPos(0, 85);
       case 45:
          jjmatchedKind = 103;
-         return jjMoveStringLiteralDfa1_0(0x0L, 0x1002000000000L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x0L, 0x1002000000000L);
       case 46:
          jjmatchedKind = 86;
-         return jjMoveStringLiteralDfa1_0(0x0L, 0x400000000000000L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x0L, 0x400000000000000L);
       case 47:
          jjmatchedKind = 105;
-         return jjMoveStringLiteralDfa1_0(0x140L, 0x4000000000000L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x140L, 0x4000000000000L);
       case 58:
          return jjStopAtPos(0, 93);
       case 59:
          return jjStopAtPos(0, 84);
       case 60:
          jjmatchedKind = 89;
-         return jjMoveStringLiteralDfa1_0(0x0L, 0x80400080000000L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x0L, 0x80400080000000L);
       case 61:
          jjmatchedKind = 88;
-         return jjMoveStringLiteralDfa1_0(0x0L, 0x40000000L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x0L, 0x40000000L);
       case 62:
          jjmatchedKind = 125;
-         return jjMoveStringLiteralDfa1_0(0x0L, 0x1b00000100000000L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x0L, 0x1b00000100000000L);
       case 63:
          return jjStopAtPos(0, 92);
       case 64:
          return jjStopAtPos(0, 87);
+      case 83:
+         return jjMoveStringLiteralDfa1_0(0x0L, 0x4000000000000000L);
       case 91:
          return jjStopAtPos(0, 82);
       case 93:
          return jjStopAtPos(0, 83);
       case 94:
          jjmatchedKind = 108;
-         return jjMoveStringLiteralDfa1_0(0x0L, 0x20000000000000L, 0x0L);
-      case 95:
-         return jjStartNfaWithStates_0(0, 75, 32);
+         return jjMoveStringLiteralDfa1_0(0x0L, 0x20000000000000L);
       case 97:
-         return jjMoveStringLiteralDfa1_0(0x6000L, 0x8000000000000000L, 0x5L);
+         return jjMoveStringLiteralDfa1_0(0x6000L, 0x0L);
       case 98:
-         return jjMoveStringLiteralDfa1_0(0x38000L, 0x0L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x38000L, 0x0L);
       case 99:
-         return jjMoveStringLiteralDfa1_0(0xfc0000L, 0x4L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0xfc0000L, 0x4L);
       case 100:
-         return jjMoveStringLiteralDfa1_0(0x7000000L, 0x0L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x7000000L, 0x0L);
       case 101:
-         return jjMoveStringLiteralDfa1_0(0x38000000L, 0x0L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x38000000L, 0x0L);
       case 102:
-         return jjMoveStringLiteralDfa1_0(0x7c0000000L, 0x0L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x7c0000000L, 0x0L);
       case 103:
-         return jjMoveStringLiteralDfa1_0(0x800000000L, 0x0L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x800000000L, 0x0L);
       case 105:
-         return jjMoveStringLiteralDfa1_0(0x3f000000000L, 0x0L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x3f000000000L, 0x0L);
       case 108:
-         return jjMoveStringLiteralDfa1_0(0x40000000000L, 0x0L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x40000000000L, 0x0L);
       case 110:
-         return jjMoveStringLiteralDfa1_0(0x380000000000L, 0x0L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x380000000000L, 0x0L);
       case 112:
-         return jjMoveStringLiteralDfa1_0(0x3c00000000000L, 0x0L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x3c00000000000L, 0x0L);
       case 114:
-         return jjMoveStringLiteralDfa1_0(0x4000000000000L, 0x0L, 0x2L);
+         return jjMoveStringLiteralDfa1_0(0x4000000000000L, 0x0L);
       case 115:
-         return jjMoveStringLiteralDfa1_0(0x1f8000000000000L, 0x0L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x1f8000000000000L, 0x0L);
       case 116:
-         return jjMoveStringLiteralDfa1_0(0x7e00000000000000L, 0x0L, 0x8L);
+         return jjMoveStringLiteralDfa1_0(0x7e00000000000000L, 0x0L);
       case 118:
-         return jjMoveStringLiteralDfa1_0(0x8000000000000000L, 0x1L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x8000000000000000L, 0x1L);
       case 119:
-         return jjMoveStringLiteralDfa1_0(0x0L, 0x2L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x0L, 0x2L);
       case 123:
          return jjStopAtPos(0, 80);
       case 124:
          jjmatchedKind = 107;
-         return jjMoveStringLiteralDfa1_0(0x0L, 0x10000400000000L, 0x0L);
+         return jjMoveStringLiteralDfa1_0(0x0L, 0x10000400000000L);
       case 125:
          return jjStopAtPos(0, 81);
       case 126:
@@ -263,11 +263,11 @@ private int jjMoveStringLiteralDfa0_0()
          return jjMoveNfa_0(3, 0);
    }
 }
-private int jjMoveStringLiteralDfa1_0(long active0, long active1, long active2)
+private int jjMoveStringLiteralDfa1_0(long active0, long active1)
 {
    try { curChar = input_stream.readChar(); }
    catch(java.io.IOException e) {
-      jjStopStringLiteralDfa_0(0, active0, active1, active2);
+      jjStopStringLiteralDfa_0(0, active0, active1);
       return 1;
    }
    switch(curChar)
@@ -289,7 +289,7 @@ private int jjMoveStringLiteralDfa1_0(long active0, long active1, long active2)
             return jjStopAtPos(1, 101);
          break;
       case 46:
-         return jjMoveStringLiteralDfa2_0(active0, 0L, active1, 0x400000000000000L, active2, 0L);
+         return jjMoveStringLiteralDfa2_0(active0, 0L, active1, 0x400000000000000L);
       case 47:
          if ((active0 & 0x40L) != 0L)
             return jjStopAtPos(1, 6);
@@ -300,7 +300,7 @@ private int jjMoveStringLiteralDfa1_0(long active0, long active1, long active2)
             jjmatchedKind = 110;
             jjmatchedPos = 1;
          }
-         return jjMoveStringLiteralDfa2_0(active0, 0L, active1, 0x80000000000000L, active2, 0L);
+         return jjMoveStringLiteralDfa2_0(active0, 0L, active1, 0x80000000000000L);
       case 61:
          if ((active1 & 0x40000000L) != 0L)
             return jjStopAtPos(1, 94);
@@ -333,50 +333,48 @@ private int jjMoveStringLiteralDfa1_0(long active0, long active1, long active2)
             jjmatchedKind = 124;
             jjmatchedPos = 1;
          }
-         return jjMoveStringLiteralDfa2_0(active0, 0L, active1, 0xb00000000000000L, active2, 0L);
+         return jjMoveStringLiteralDfa2_0(active0, 0L, active1, 0xb00000000000000L);
       case 97:
-         return jjMoveStringLiteralDfa2_0(active0, 0x4800400c0000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa2_0(active0, 0x4800400c0000L, active1, 0L);
       case 98:
-         return jjMoveStringLiteralDfa2_0(active0, 0x2000L, active1, 0L, active2, 0L);
-      case 99:
-         return jjMoveStringLiteralDfa2_0(active0, 0L, active1, 0x8000000000000000L, active2, 0L);
+         return jjMoveStringLiteralDfa2_0(active0, 0x2000L, active1, 0L);
       case 101:
-         return jjMoveStringLiteralDfa2_0(active0, 0x4100001000000L, active1, 0L, active2, 0xaL);
+         return jjMoveStringLiteralDfa2_0(active0, 0x4100001000000L, active1, 0L);
       case 102:
          if ((active0 & 0x1000000000L) != 0L)
             return jjStartNfaWithStates_0(1, 36, 32);
          break;
       case 104:
-         return jjMoveStringLiteralDfa2_0(active0, 0xe08000000100000L, active1, 0x2L, active2, 0L);
+         return jjMoveStringLiteralDfa2_0(active0, 0xe08000000100000L, active1, 0x2L);
       case 105:
-         return jjMoveStringLiteralDfa2_0(active0, 0x180000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa2_0(active0, 0x180000000L, active1, 0L);
       case 108:
-         return jjMoveStringLiteralDfa2_0(active0, 0x208200000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa2_0(active0, 0x208200000L, active1, 0L);
       case 109:
-         return jjMoveStringLiteralDfa2_0(active0, 0x6000000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa2_0(active0, 0x6000000000L, active1, 0L);
       case 110:
-         return jjMoveStringLiteralDfa2_0(active0, 0x38010000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa2_0(active0, 0x38010000000L, active1, 0L);
       case 111:
          if ((active0 & 0x2000000L) != 0L)
          {
             jjmatchedKind = 25;
             jjmatchedPos = 1;
          }
-         return jjMoveStringLiteralDfa2_0(active0, 0x8000040c04c08000L, active1, 0x5L, active2, 0L);
+         return jjMoveStringLiteralDfa2_0(active0, 0x8000040c04c08000L, active1, 0x5L);
       case 114:
-         return jjMoveStringLiteralDfa2_0(active0, 0x7001800000010000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa2_0(active0, 0x7001800000010000L, active1, 0L);
       case 115:
-         return jjMoveStringLiteralDfa2_0(active0, 0x4000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa2_0(active0, 0x4000L, active1, 0L);
       case 116:
-         return jjMoveStringLiteralDfa2_0(active0, 0x30000000000000L, active1, 0L, active2, 0x1L);
+         return jjMoveStringLiteralDfa2_0(active0, 0x30000000000000L, active1, 0x4000000000000000L);
       case 117:
-         return jjMoveStringLiteralDfa2_0(active0, 0x42200000000000L, active1, 0L, active2, 0x4L);
+         return jjMoveStringLiteralDfa2_0(active0, 0x42200000000000L, active1, 0L);
       case 119:
-         return jjMoveStringLiteralDfa2_0(active0, 0x80000000000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa2_0(active0, 0x80000000000000L, active1, 0L);
       case 120:
-         return jjMoveStringLiteralDfa2_0(active0, 0x20000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa2_0(active0, 0x20000000L, active1, 0L);
       case 121:
-         return jjMoveStringLiteralDfa2_0(active0, 0x100000000020000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa2_0(active0, 0x100000000020000L, active1, 0L);
       case 124:
          if ((active1 & 0x400000000L) != 0L)
             return jjStopAtPos(1, 98);
@@ -384,15 +382,15 @@ private int jjMoveStringLiteralDfa1_0(long active0, long active1, long active2)
       default :
          break;
    }
-   return jjStartNfa_0(0, active0, active1, active2);
+   return jjStartNfa_0(0, active0, active1);
 }
-private int jjMoveStringLiteralDfa2_0(long old0, long active0, long old1, long active1, long old2, long active2)
+private int jjMoveStringLiteralDfa2_0(long old0, long active0, long old1, long active1)
 {
-   if (((active0 &= old0) | (active1 &= old1) | (active2 &= old2)) == 0L)
-      return jjStartNfa_0(0, old0, old1, old2);
+   if (((active0 &= old0) | (active1 &= old1)) == 0L)
+      return jjStartNfa_0(0, old0, old1);
    try { curChar = input_stream.readChar(); }
    catch(java.io.IOException e) {
-      jjStopStringLiteralDfa_0(1, active0, active1, active2);
+      jjStopStringLiteralDfa_0(1, active0, active1);
       return 2;
    }
    switch(curChar)
@@ -413,52 +411,42 @@ private int jjMoveStringLiteralDfa2_0(long old0, long active0, long old1, long a
             jjmatchedKind = 123;
             jjmatchedPos = 2;
          }
-         return jjMoveStringLiteralDfa3_0(active0, 0L, active1, 0x200000000000000L, active2, 0L);
+         return jjMoveStringLiteralDfa3_0(active0, 0L, active1, 0x200000000000000L);
       case 97:
-         return jjMoveStringLiteralDfa3_0(active0, 0x1010000000300000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa3_0(active0, 0x1010000000300000L, active1, 0L);
       case 98:
-         return jjMoveStringLiteralDfa3_0(active0, 0x2000000000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa3_0(active0, 0x2000000000000L, active1, 0L);
       case 99:
-         return jjMoveStringLiteralDfa3_0(active0, 0x400000000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa3_0(active0, 0x400000000000L, active1, 0L);
       case 101:
-         return jjMoveStringLiteralDfa3_0(active0, 0x10000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa3_0(active0, 0x10000L, active1, 0L);
       case 102:
-         return jjMoveStringLiteralDfa3_0(active0, 0x1000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa3_0(active0, 0x1000000L, active1, 0L);
       case 105:
-         return jjMoveStringLiteralDfa3_0(active0, 0x8280800000000000L, active1, 0x2L, active2, 0L);
+         return jjMoveStringLiteralDfa3_0(active0, 0x8280800000000000L, active1, 0x2L);
       case 108:
-         return jjMoveStringLiteralDfa3_0(active0, 0x200040000000L, active1, 0x1L, active2, 0L);
+         return jjMoveStringLiteralDfa3_0(active0, 0x200040000000L, active1, 0x1L);
       case 110:
-         return jjMoveStringLiteralDfa3_0(active0, 0x100040180c00000L, active1, 0x4L, active2, 0L);
+         return jjMoveStringLiteralDfa3_0(active0, 0x100040180c00000L, active1, 0x4L);
       case 111:
-         return jjMoveStringLiteralDfa3_0(active0, 0x9000200008000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa3_0(active0, 0x9000200008000L, active1, 0L);
       case 112:
-         return jjMoveStringLiteralDfa3_0(active0, 0x40006000000000L, active1, 0L, active2, 0L);
-      case 113:
-         if ((active2 & 0x2L) != 0L)
-            return jjStartNfaWithStates_0(2, 75, 32);
-         break;
+         return jjMoveStringLiteralDfa3_0(active0, 0x40006000000000L, active1, 0L);
       case 114:
          if ((active0 & 0x400000000L) != 0L)
             return jjStartNfaWithStates_0(2, 34, 32);
-         return jjMoveStringLiteralDfa3_0(active0, 0xc20000000000000L, active1, 0L, active2, 0x8L);
+         return jjMoveStringLiteralDfa3_0(active0, 0xc20000000000000L, active1, 0x4000000000000000L);
       case 115:
-         return jjMoveStringLiteralDfa3_0(active0, 0x8008046000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa3_0(active0, 0x8008046000L, active1, 0L);
       case 116:
          if ((active0 & 0x10000000000L) != 0L)
          {
             jjmatchedKind = 40;
             jjmatchedPos = 2;
          }
-         else if ((active1 & 0x8000000000000000L) != 0L)
-            return jjStartNfaWithStates_0(2, 75, 32);
-         else if ((active2 & 0x1L) != 0L)
-            return jjStartNfaWithStates_0(2, 75, 32);
-         else if ((active2 & 0x4L) != 0L)
-            return jjStartNfaWithStates_0(2, 75, 32);
-         return jjMoveStringLiteralDfa3_0(active0, 0x40a08200a0000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa3_0(active0, 0x40a08200a0000L, active1, 0L);
       case 117:
-         return jjMoveStringLiteralDfa3_0(active0, 0x2000000014000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa3_0(active0, 0x2000000014000000L, active1, 0L);
       case 119:
          if ((active0 & 0x100000000000L) != 0L)
             return jjStartNfaWithStates_0(2, 44, 32);
@@ -470,15 +458,15 @@ private int jjMoveStringLiteralDfa2_0(long old0, long active0, long old1, long a
       default :
          break;
    }
-   return jjStartNfa_0(1, active0, active1, active2);
+   return jjStartNfa_0(1, active0, active1);
 }
-private int jjMoveStringLiteralDfa3_0(long old0, long active0, long old1, long active1, long old2, long active2)
+private int jjMoveStringLiteralDfa3_0(long old0, long active0, long old1, long active1)
 {
-   if (((active0 &= old0) | (active1 &= old1) | (active2 &= old2)) == 0L)
-      return jjStartNfa_0(1, old0, old1, old2);
+   if (((active0 &= old0) | (active1 &= old1)) == 0L)
+      return jjStartNfa_0(1, old0, old1);
    try { curChar = input_stream.readChar(); }
    catch(java.io.IOException e) {
-      jjStopStringLiteralDfa_0(2, active0, active1, active2);
+      jjStopStringLiteralDfa_0(2, active0, active1);
       return 3;
    }
    switch(curChar)
@@ -488,15 +476,15 @@ private int jjMoveStringLiteralDfa3_0(long old0, long active0, long old1, long a
             return jjStopAtPos(3, 121);
          break;
       case 97:
-         return jjMoveStringLiteralDfa4_0(active0, 0x381010000L, active1, 0x1L, active2, 0L);
+         return jjMoveStringLiteralDfa4_0(active0, 0x381010000L, active1, 0x1L);
       case 98:
-         return jjMoveStringLiteralDfa4_0(active0, 0x4000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa4_0(active0, 0x4000000L, active1, 0L);
       case 99:
-         return jjMoveStringLiteralDfa4_0(active0, 0x100000000080000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa4_0(active0, 0x100000000080000L, active1, 0L);
       case 100:
          if ((active0 & 0x8000000000000000L) != 0L)
             return jjStartNfaWithStates_0(3, 63, 32);
-         return jjMoveStringLiteralDfa4_0(active0, 0L, active1, 0x4L, active2, 0L);
+         return jjMoveStringLiteralDfa4_0(active0, 0L, active1, 0x4L);
       case 101:
          if ((active0 & 0x20000L) != 0L)
             return jjStartNfaWithStates_0(3, 17, 32);
@@ -506,57 +494,55 @@ private int jjMoveStringLiteralDfa3_0(long old0, long active0, long old1, long a
             return jjStartNfaWithStates_0(3, 27, 32);
          else if ((active0 & 0x2000000000000000L) != 0L)
             return jjStartNfaWithStates_0(3, 61, 32);
-         return jjMoveStringLiteralDfa4_0(active0, 0x40020020004000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa4_0(active0, 0x40020020004000L, active1, 0L);
       case 103:
          if ((active0 & 0x40000000000L) != 0L)
             return jjStartNfaWithStates_0(3, 42, 32);
          break;
       case 105:
-         return jjMoveStringLiteralDfa4_0(active0, 0x20080000000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa4_0(active0, 0x20080000000000L, active1, 0x4000000000000000L);
       case 107:
-         return jjMoveStringLiteralDfa4_0(active0, 0x400000000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa4_0(active0, 0x400000000000L, active1, 0L);
       case 108:
          if ((active0 & 0x200000000000L) != 0L)
             return jjStartNfaWithStates_0(3, 45, 32);
-         return jjMoveStringLiteralDfa4_0(active0, 0x2002000008000L, active1, 0x2L, active2, 0L);
+         return jjMoveStringLiteralDfa4_0(active0, 0x2002000008000L, active1, 0x2L);
       case 109:
          if ((active0 & 0x10000000L) != 0L)
             return jjStartNfaWithStates_0(3, 28, 32);
-         else if ((active2 & 0x8L) != 0L)
-            return jjStartNfaWithStates_0(3, 75, 32);
          break;
       case 110:
-         return jjMoveStringLiteralDfa4_0(active0, 0x1000000000000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa4_0(active0, 0x1000000000000000L, active1, 0L);
       case 111:
          if ((active0 & 0x800000000L) != 0L)
             return jjStartNfaWithStates_0(3, 35, 32);
-         return jjMoveStringLiteralDfa4_0(active0, 0xc00004000000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa4_0(active0, 0xc00004000000000L, active1, 0L);
       case 114:
          if ((active0 & 0x100000L) != 0L)
             return jjStartNfaWithStates_0(3, 20, 32);
-         return jjMoveStringLiteralDfa4_0(active0, 0x8000000000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa4_0(active0, 0x8000000000000L, active1, 0L);
       case 115:
          if ((active0 & 0x200000000000000L) != 0L)
             return jjStartNfaWithStates_0(3, 57, 32);
-         return jjMoveStringLiteralDfa4_0(active0, 0x40600000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa4_0(active0, 0x40600000L, active1, 0L);
       case 116:
-         return jjMoveStringLiteralDfa4_0(active0, 0x91008000802000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa4_0(active0, 0x91008000802000L, active1, 0L);
       case 117:
-         return jjMoveStringLiteralDfa4_0(active0, 0x4000000000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa4_0(active0, 0x4000000000000L, active1, 0L);
       case 118:
-         return jjMoveStringLiteralDfa4_0(active0, 0x800000000000L, active1, 0L, active2, 0L);
+         return jjMoveStringLiteralDfa4_0(active0, 0x800000000000L, active1, 0L);
       default :
          break;
    }
-   return jjStartNfa_0(2, active0, active1, active2);
+   return jjStartNfa_0(2, active0, active1);
 }
-private int jjMoveStringLiteralDfa4_0(long old0, long active0, long old1, long active1, long old2, long active2)
+private int jjMoveStringLiteralDfa4_0(long old0, long active0, long old1, long active1)
 {
-   if (((active0 &= old0) | (active1 &= old1) | (active2 &= old2)) == 0L)
-      return jjStartNfa_0(2, old0, old1, old2);
+   if (((active0 &= old0) | (active1 &= old1)) == 0L)
+      return jjStartNfa_0(2, old0, old1);
    try { curChar = input_stream.readChar(); }
    catch(java.io.IOException e) {
-      jjStopStringLiteralDfa_0(3, active0, active1, 0L);
+      jjStopStringLiteralDfa_0(3, active0, active1);
       return 4;
    }
    switch(curChar)
@@ -589,7 +575,7 @@ private int jjMoveStringLiteralDfa4_0(long old0, long active0, long old1, long a
          }
          return jjMoveStringLiteralDfa5_0(active0, 0x104000000L, active1, 0L);
       case 110:
-         return jjMoveStringLiteralDfa5_0(active0, 0x20000000L, active1, 0L);
+         return jjMoveStringLiteralDfa5_0(active0, 0x20000000L, active1, 0x4000000000000000L);
       case 114:
          if ((active0 & 0x40000000000000L) != 0L)
             return jjStartNfaWithStates_0(4, 54, 32);
@@ -620,15 +606,15 @@ private int jjMoveStringLiteralDfa4_0(long old0, long active0, long old1, long a
       default :
          break;
    }
-   return jjStartNfa_0(3, active0, active1, 0L);
+   return jjStartNfa_0(3, active0, active1);
 }
 private int jjMoveStringLiteralDfa5_0(long old0, long active0, long old1, long active1)
 {
    if (((active0 &= old0) | (active1 &= old1)) == 0L)
-      return jjStartNfa_0(3, old0, old1, 0L);
+      return jjStartNfa_0(3, old0, old1);
    try { curChar = input_stream.readChar(); }
    catch(java.io.IOException e) {
-      jjStopStringLiteralDfa_0(4, active0, active1, 0L);
+      jjStopStringLiteralDfa_0(4, active0, active1);
       return 5;
    }
    switch(curChar)
@@ -652,6 +638,8 @@ private int jjMoveStringLiteralDfa5_0(long old0, long active0, long old1, long a
       case 102:
          return jjMoveStringLiteralDfa6_0(active0, 0x20000000000L, active1, 0L);
       case 103:
+         if ((active1 & 0x4000000000000000L) != 0L)
+            return jjStartNfaWithStates_0(5, 75, 32);
          return jjMoveStringLiteralDfa6_0(active0, 0x400000000000L, active1, 0L);
       case 104:
          if ((active0 & 0x80000000000000L) != 0L)
@@ -682,15 +670,15 @@ private int jjMoveStringLiteralDfa5_0(long old0, long active0, long old1, long a
       default :
          break;
    }
-   return jjStartNfa_0(4, active0, active1, 0L);
+   return jjStartNfa_0(4, active0, active1);
 }
 private int jjMoveStringLiteralDfa6_0(long old0, long active0, long old1, long active1)
 {
    if (((active0 &= old0) | (active1 &= old1)) == 0L)
-      return jjStartNfa_0(4, old0, old1, 0L);
+      return jjStartNfa_0(4, old0, old1);
    try { curChar = input_stream.readChar(); }
    catch(java.io.IOException e) {
-      jjStopStringLiteralDfa_0(5, active0, active1, 0L);
+      jjStopStringLiteralDfa_0(5, active0, active1);
       return 6;
    }
    switch(curChar)
@@ -734,15 +722,15 @@ private int jjMoveStringLiteralDfa6_0(long old0, long active0, long old1, long a
       default :
          break;
    }
-   return jjStartNfa_0(5, active0, active1, 0L);
+   return jjStartNfa_0(5, active0, active1);
 }
 private int jjMoveStringLiteralDfa7_0(long old0, long active0, long old1, long active1)
 {
    if (((active0 &= old0) | (active1 &= old1)) == 0L)
-      return jjStartNfa_0(5, old0, old1, 0L);
+      return jjStartNfa_0(5, old0, old1);
    try { curChar = input_stream.readChar(); }
    catch(java.io.IOException e) {
-      jjStopStringLiteralDfa_0(6, active0, active1, 0L);
+      jjStopStringLiteralDfa_0(6, active0, active1);
       return 7;
    }
    switch(curChar)
@@ -770,15 +758,15 @@ private int jjMoveStringLiteralDfa7_0(long old0, long active0, long old1, long a
       default :
          break;
    }
-   return jjStartNfa_0(6, active0, active1, 0L);
+   return jjStartNfa_0(6, active0, active1);
 }
 private int jjMoveStringLiteralDfa8_0(long old0, long active0, long old1, long active1)
 {
    if (((active0 &= old0) | (active1 &= old1)) == 0L)
-      return jjStartNfa_0(6, old0, old1, 0L);
+      return jjStartNfa_0(6, old0, old1);
    try { curChar = input_stream.readChar(); }
    catch(java.io.IOException e) {
-      jjStopStringLiteralDfa_0(7, active0, active1, 0L);
+      jjStopStringLiteralDfa_0(7, active0, active1);
       return 8;
    }
    switch(curChar)
@@ -806,15 +794,15 @@ private int jjMoveStringLiteralDfa8_0(long old0, long active0, long old1, long a
       default :
          break;
    }
-   return jjStartNfa_0(7, active0, active1, 0L);
+   return jjStartNfa_0(7, active0, active1);
 }
 private int jjMoveStringLiteralDfa9_0(long old0, long active0, long old1, long active1)
 {
    if (((active0 &= old0) | (active1 &= old1)) == 0L)
-      return jjStartNfa_0(7, old0, old1, 0L);
+      return jjStartNfa_0(7, old0, old1);
    try { curChar = input_stream.readChar(); }
    catch(java.io.IOException e) {
-      jjStopStringLiteralDfa_0(8, active0, 0L, 0L);
+      jjStopStringLiteralDfa_0(8, active0, 0L);
       return 9;
    }
    switch(curChar)
@@ -832,15 +820,15 @@ private int jjMoveStringLiteralDfa9_0(long old0, long active0, long old1, long a
       default :
          break;
    }
-   return jjStartNfa_0(8, active0, 0L, 0L);
+   return jjStartNfa_0(8, active0, 0L);
 }
 private int jjMoveStringLiteralDfa10_0(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
-      return jjStartNfa_0(8, old0, 0L, 0L);
+      return jjStartNfa_0(8, old0, 0L);
    try { curChar = input_stream.readChar(); }
    catch(java.io.IOException e) {
-      jjStopStringLiteralDfa_0(9, active0, 0L, 0L);
+      jjStopStringLiteralDfa_0(9, active0, 0L);
       return 10;
    }
    switch(curChar)
@@ -850,15 +838,15 @@ private int jjMoveStringLiteralDfa10_0(long old0, long active0)
       default :
          break;
    }
-   return jjStartNfa_0(9, active0, 0L, 0L);
+   return jjStartNfa_0(9, active0, 0L);
 }
 private int jjMoveStringLiteralDfa11_0(long old0, long active0)
 {
    if (((active0 &= old0)) == 0L)
-      return jjStartNfa_0(9, old0, 0L, 0L);
+      return jjStartNfa_0(9, old0, 0L);
    try { curChar = input_stream.readChar(); }
    catch(java.io.IOException e) {
-      jjStopStringLiteralDfa_0(10, active0, 0L, 0L);
+      jjStopStringLiteralDfa_0(10, active0, 0L);
       return 11;
    }
    switch(curChar)
@@ -870,7 +858,7 @@ private int jjMoveStringLiteralDfa11_0(long old0, long active0)
       default :
          break;
    }
-   return jjStartNfa_0(10, active0, 0L, 0L);
+   return jjStartNfa_0(10, active0, 0L);
 }
 private int jjStartNfaWithStates_0(int pos, int kind, int state)
 {
@@ -1491,8 +1479,8 @@ null, null, null, null, null, null, null, null, null, "\50", "\51", "\173", "\17
 "\72", "\75\75", "\74\75", "\76\75", "\41\75", "\174\174", "\46\46", "\53\53", 
 "\55\55", "\53", "\55", "\52", "\57", "\46", "\174", "\136", "\45", "\74\74", "\53\75", 
 "\55\75", "\52\75", "\57\75", "\46\75", "\174\75", "\136\75", "\45\75", "\74\74\75", 
-"\76\76\75", "\76\76\76\75", "\56\56\56", "\76\76\76", "\76\76", "\76", "\137", 
-"\141\143\164", "\141\164\164", "\162\145\161", "\141\165\164", "\164\145\162\155", };
+"\76\76\75", "\76\76\76\75", "\56\56\56", "\76\76\76", "\76\76", "\76", 
+"\123\164\162\151\156\147", };
 
 /** Lexer state names. */
 public static final String[] lexStateNames = {
@@ -1509,19 +1497,19 @@ public static final int[] jjnewLexState = {
    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 
-   -1, -1, -1, -1, -1, -1, -1, 
+   -1, -1, 
 };
 static final long[] jjtoToken = {
-   0xffffffffffffe001L, 0xffffffffffffce8fL, 0xfL, 
+   0xffffffffffffe001L, 0x7fffffffffffce8fL, 
 };
 static final long[] jjtoSkip = {
-   0xe3eL, 0x0L, 0x0L, 
+   0xe3eL, 0x0L, 
 };
 static final long[] jjtoSpecial = {
-   0xe00L, 0x0L, 0x0L, 
+   0xe00L, 0x0L, 
 };
 static final long[] jjtoMore = {
-   0x11c0L, 0x0L, 0x0L, 
+   0x11c0L, 0x0L, 
 };
 protected JavaCharStream input_stream;
 private final int[] jjrounds = new int[52];
@@ -1745,23 +1733,23 @@ void SkipLexicalActions(Token matchedToken)
    {
       case 1 :
          image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
-       identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+       JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 2 :
          image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
-        identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 3 :
          image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
-        identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 4 :
          image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
-        identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 5 :
          image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
-        identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       default :
          break;
@@ -1788,267 +1776,267 @@ void TokenLexicalActions(Token matchedToken)
       case 13 :
         image.append(jjstrLiteralImages[13]);
         lengthOfMatch = jjstrLiteralImages[13].length();
-                            identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                            JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 14 :
         image.append(jjstrLiteralImages[14]);
         lengthOfMatch = jjstrLiteralImages[14].length();
-                        identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 15 :
         image.append(jjstrLiteralImages[15]);
         lengthOfMatch = jjstrLiteralImages[15].length();
-                          identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                          JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 16 :
         image.append(jjstrLiteralImages[16]);
         lengthOfMatch = jjstrLiteralImages[16].length();
-                      identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 17 :
         image.append(jjstrLiteralImages[17]);
         lengthOfMatch = jjstrLiteralImages[17].length();
-                    identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 18 :
         image.append(jjstrLiteralImages[18]);
         lengthOfMatch = jjstrLiteralImages[18].length();
-                    identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 19 :
         image.append(jjstrLiteralImages[19]);
         lengthOfMatch = jjstrLiteralImages[19].length();
-                      identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 20 :
         image.append(jjstrLiteralImages[20]);
         lengthOfMatch = jjstrLiteralImages[20].length();
-                    identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 21 :
         image.append(jjstrLiteralImages[21]);
         lengthOfMatch = jjstrLiteralImages[21].length();
-                      identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 22 :
         image.append(jjstrLiteralImages[22]);
         lengthOfMatch = jjstrLiteralImages[22].length();
-                      identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 23 :
         image.append(jjstrLiteralImages[23]);
         lengthOfMatch = jjstrLiteralImages[23].length();
-                            identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                            JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 24 :
         image.append(jjstrLiteralImages[24]);
         lengthOfMatch = jjstrLiteralImages[24].length();
-                           identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                           JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 25 :
         image.append(jjstrLiteralImages[25]);
         lengthOfMatch = jjstrLiteralImages[25].length();
-               identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+               JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 26 :
         image.append(jjstrLiteralImages[26]);
         lengthOfMatch = jjstrLiteralImages[26].length();
-                        identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 27 :
         image.append(jjstrLiteralImages[27]);
         lengthOfMatch = jjstrLiteralImages[27].length();
-                    identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 28 :
         image.append(jjstrLiteralImages[28]);
         lengthOfMatch = jjstrLiteralImages[28].length();
-                    identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 29 :
         image.append(jjstrLiteralImages[29]);
         lengthOfMatch = jjstrLiteralImages[29].length();
-                         identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                         JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 30 :
         image.append(jjstrLiteralImages[30]);
         lengthOfMatch = jjstrLiteralImages[30].length();
-                      identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 31 :
         image.append(jjstrLiteralImages[31]);
         lengthOfMatch = jjstrLiteralImages[31].length();
-                      identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 32 :
         image.append(jjstrLiteralImages[32]);
         lengthOfMatch = jjstrLiteralImages[32].length();
-                          identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                          JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 33 :
         image.append(jjstrLiteralImages[33]);
         lengthOfMatch = jjstrLiteralImages[33].length();
-                      identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 34 :
         image.append(jjstrLiteralImages[34]);
         lengthOfMatch = jjstrLiteralImages[34].length();
-                  identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 35 :
         image.append(jjstrLiteralImages[35]);
         lengthOfMatch = jjstrLiteralImages[35].length();
-                    identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 36 :
         image.append(jjstrLiteralImages[36]);
         lengthOfMatch = jjstrLiteralImages[36].length();
-                identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 37 :
         image.append(jjstrLiteralImages[37]);
         lengthOfMatch = jjstrLiteralImages[37].length();
-                                identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                                JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 38 :
         image.append(jjstrLiteralImages[38]);
         lengthOfMatch = jjstrLiteralImages[38].length();
-                        identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 39 :
         image.append(jjstrLiteralImages[39]);
         lengthOfMatch = jjstrLiteralImages[39].length();
-                                identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                                JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 40 :
         image.append(jjstrLiteralImages[40]);
         lengthOfMatch = jjstrLiteralImages[40].length();
-                  identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 41 :
         image.append(jjstrLiteralImages[41]);
         lengthOfMatch = jjstrLiteralImages[41].length();
-                              identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                              JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 42 :
         image.append(jjstrLiteralImages[42]);
         lengthOfMatch = jjstrLiteralImages[42].length();
-                   identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                   JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 43 :
         image.append(jjstrLiteralImages[43]);
         lengthOfMatch = jjstrLiteralImages[43].length();
-                        identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 44 :
         image.append(jjstrLiteralImages[44]);
         lengthOfMatch = jjstrLiteralImages[44].length();
-                  identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 45 :
         image.append(jjstrLiteralImages[45]);
         lengthOfMatch = jjstrLiteralImages[45].length();
-                    identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 46 :
         image.append(jjstrLiteralImages[46]);
         lengthOfMatch = jjstrLiteralImages[46].length();
-                        identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 47 :
         image.append(jjstrLiteralImages[47]);
         lengthOfMatch = jjstrLiteralImages[47].length();
-                          identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                          JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 48 :
         image.append(jjstrLiteralImages[48]);
         lengthOfMatch = jjstrLiteralImages[48].length();
-                              identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                              JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 49 :
         image.append(jjstrLiteralImages[49]);
         lengthOfMatch = jjstrLiteralImages[49].length();
-                        identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 50 :
         image.append(jjstrLiteralImages[50]);
         lengthOfMatch = jjstrLiteralImages[50].length();
-                       identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                       JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 51 :
         image.append(jjstrLiteralImages[51]);
         lengthOfMatch = jjstrLiteralImages[51].length();
-                      identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 52 :
         image.append(jjstrLiteralImages[52]);
         lengthOfMatch = jjstrLiteralImages[52].length();
-                        identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 53 :
         image.append(jjstrLiteralImages[53]);
         lengthOfMatch = jjstrLiteralImages[53].length();
-                            identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                            JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 54 :
         image.append(jjstrLiteralImages[54]);
         lengthOfMatch = jjstrLiteralImages[54].length();
-                      identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 55 :
         image.append(jjstrLiteralImages[55]);
         lengthOfMatch = jjstrLiteralImages[55].length();
-                        identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 56 :
         image.append(jjstrLiteralImages[56]);
         lengthOfMatch = jjstrLiteralImages[56].length();
-                                    identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 57 :
         image.append(jjstrLiteralImages[57]);
         lengthOfMatch = jjstrLiteralImages[57].length();
-                    identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 58 :
         image.append(jjstrLiteralImages[58]);
         lengthOfMatch = jjstrLiteralImages[58].length();
-                      identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 59 :
         image.append(jjstrLiteralImages[59]);
         lengthOfMatch = jjstrLiteralImages[59].length();
-                        identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 60 :
         image.append(jjstrLiteralImages[60]);
         lengthOfMatch = jjstrLiteralImages[60].length();
-                              identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                              JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 61 :
         image.append(jjstrLiteralImages[61]);
         lengthOfMatch = jjstrLiteralImages[61].length();
-                    identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 62 :
         image.append(jjstrLiteralImages[62]);
         lengthOfMatch = jjstrLiteralImages[62].length();
-                  identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 63 :
         image.append(jjstrLiteralImages[63]);
         lengthOfMatch = jjstrLiteralImages[63].length();
-                    identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 64 :
         image.append(jjstrLiteralImages[64]);
         lengthOfMatch = jjstrLiteralImages[64].length();
-                            identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                            JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 65 :
         image.append(jjstrLiteralImages[65]);
         lengthOfMatch = jjstrLiteralImages[65].length();
-                      identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 67 :
         image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
@@ -2068,82 +2056,86 @@ void TokenLexicalActions(Token matchedToken)
       case 78 :
         image.append(jjstrLiteralImages[78]);
         lengthOfMatch = jjstrLiteralImages[78].length();
-                   identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                   JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 79 :
         image.append(jjstrLiteralImages[79]);
         lengthOfMatch = jjstrLiteralImages[79].length();
-                   identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                   JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 80 :
         image.append(jjstrLiteralImages[80]);
         lengthOfMatch = jjstrLiteralImages[80].length();
-                   identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                   JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 81 :
         image.append(jjstrLiteralImages[81]);
         lengthOfMatch = jjstrLiteralImages[81].length();
-                   identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                if(JavaParser.flagCond == false){
+                        JavaParserTokenManager.identLu = image.toString();
+                        JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+
+                }
          break;
       case 82 :
         image.append(jjstrLiteralImages[82]);
         lengthOfMatch = jjstrLiteralImages[82].length();
-                     identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 83 :
         image.append(jjstrLiteralImages[83]);
         lengthOfMatch = jjstrLiteralImages[83].length();
-                     identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                     JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 84 :
         image.append(jjstrLiteralImages[84]);
         lengthOfMatch = jjstrLiteralImages[84].length();
-                      identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 85 :
         image.append(jjstrLiteralImages[85]);
         lengthOfMatch = jjstrLiteralImages[85].length();
-                  identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 86 :
         image.append(jjstrLiteralImages[86]);
         lengthOfMatch = jjstrLiteralImages[86].length();
-                identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 87 :
         image.append(jjstrLiteralImages[87]);
         lengthOfMatch = jjstrLiteralImages[87].length();
-               identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+               JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 88 :
         image.append(jjstrLiteralImages[88]);
         lengthOfMatch = jjstrLiteralImages[88].length();
-                  identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 89 :
         image.append(jjstrLiteralImages[89]);
         lengthOfMatch = jjstrLiteralImages[89].length();
-               identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+               JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 90 :
         image.append(jjstrLiteralImages[90]);
         lengthOfMatch = jjstrLiteralImages[90].length();
-                 identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                 JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 91 :
         image.append(jjstrLiteralImages[91]);
         lengthOfMatch = jjstrLiteralImages[91].length();
-                  identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 92 :
         image.append(jjstrLiteralImages[92]);
         lengthOfMatch = jjstrLiteralImages[92].length();
-                 identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                 JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 93 :
         image.append(jjstrLiteralImages[93]);
         lengthOfMatch = jjstrLiteralImages[93].length();
-                  identLu = image.toString();JavaParser.declCompt.recopierNotCondition(identLu, JavaParser.notCondition);
+                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 94 :
         image.append(jjstrLiteralImages[94]);

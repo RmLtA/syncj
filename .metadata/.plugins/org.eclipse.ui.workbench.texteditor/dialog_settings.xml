@@ -13,18 +13,20 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="ClassOrInterfaceBody" key="selection"/>
+		<item value="flagCond" key="selection"/>
 		<list key="findhistory">
-			<item value="ClassOrInterfaceBody"/>
-			<item value="class"/>
-			<item value="Result"/>
-			<item value="Primitive"/>
-			<item value="ClassOrInterface"/>
-			<item value="PrimitiveType"/>
-			<item value="ReferenceType"/>
+			<item value="flagCond"/>
+			<item value="Block"/>
+			<item value="Blcok"/>
+			<item value="&quot;}&quot;"/>
+			<item value="Statement"/>
 			<item value="ResultType"/>
+			<item value="MethodDecl"/>
+			<item value="TypeParameters"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Statement"/>
+			<item value="JavaParserTokenManager.identLu"/>
 		</list>
 	</section>
 </section>

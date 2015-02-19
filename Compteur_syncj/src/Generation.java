@@ -112,7 +112,7 @@ public class Generation{
 		
 		
 		Ecriture.ecrireString(FichierGen,methode+"_"+"act-- ;\n\t\t\t");
-		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t");
+		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t}");
 	}
 	
 	
