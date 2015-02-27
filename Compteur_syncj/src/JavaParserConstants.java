@@ -378,7 +378,6 @@ public interface JavaParserConstants {
     "\">>>\"",
     "\">>\"",
     "\">\"",
-    "\"String\"",
   };
 
 }

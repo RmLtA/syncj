@@ -84,6 +84,7 @@ public class TabIdent {
 	}
 	
 	public void ajoutCompteur(String compteur){		
+		System.out.println(compteur);
 		buffer.add(compteur);
 	}
 		

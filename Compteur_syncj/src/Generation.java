@@ -8,7 +8,7 @@ public class Generation{
 	
 	
 	public Generation(){
-		FichierGen=Ecriture.ouvrir("gen.java");
+		FichierGen=Ecriture.ouvrir("gen2.java");
 	}
 	
 	public void declInitCompt(String methode){
