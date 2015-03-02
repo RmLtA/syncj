@@ -6,6 +6,7 @@ public class LecteurRedacteur{
 	
 	private int tab_lec=0;
 	private int tab_red=0;
+	
 
 	private int lire_req = 0;
 	private int lire_aut = 0;
@@ -22,7 +23,7 @@ public class LecteurRedacteur{
 	}
 
 	
-	public void lire(){
+	public String lire(){
 		 synchronized(this){ 
 			lire_req++ ;
 			this.notifyAll();

@@ -51,12 +51,14 @@ public class JavaParser
 	/*verifie si c'est dans une methode qui est liee a une condition*/
 	public static boolean flagCond = false;
 	
+	
 	public static String exprBool = "";
 	public static String methode = "";
 	public static String buffer = "";
 	public static ArrayList<String> listMethode = new ArrayList<String>();
 	
 	public static String testMethode = "";
+	public static String test = "";
    /**
     * Class to hold modifiers.
     */
@@ -362,8 +364,27 @@ TOKEN :
 {
   < IDENTIFIER: <LETTER> (<LETTER>|<DIGIT>)* > 
   {
+  
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		
+  		/*Reconnaissance des méthodes*/
+  	if (JavaParser.tabIdent.existeIdent(JavaParserTokenManager.identLu, Token.beginLine)){
+  		JavaParser.testMethode = JavaParserTokenManager.identLu;
+  		System.out.println("testMethode = "+JavaParserTokenManager.identLu+ " ligne : "+Token.beginLine);
+  		  
+  
+  	}
+  	
+  	/*Reconnaissance des compteurs*/
+  	if (JavaParser.isExprBool == true){
+  			JavaParser.tabIdent.ajoutCompteur(JavaParserTokenManager.identLu);
+  	} 
+  	
+  
+  	
+  	/*Consctruction de l'expression booleenne*/
+  	JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		
   }
 |
   < #LETTER:
@@ -831,17 +852,15 @@ void MethodDeclaration(int modifiers):
   ResultType()
   MethodDeclarator() [ "throws" NameList() ]
   ( Block() | ";" )
+  
 }
 
 void MethodDeclarator():
 {}
 {
+  
   <IDENTIFIER>
-  {
-  	JavaParser.testMethode = JavaParserTokenManager.identLu;
 
-  	System.out.println("testMethode = "+JavaParser.testMethode+ " ligne : "+Token.beginLine);
-  }
   FormalParameters() ( "[" "]" )*
 }
 
@@ -940,7 +959,7 @@ void WildcardBounds():
 void PrimitiveType():
 {}
 {
-  "boolean"  
+  "boolean"
 |
   "char"
 |
@@ -963,12 +982,6 @@ void ResultType():
 {
   "void"
 |
-
-  "String"
-  {
-  	System.out.println(JavaParserTokenManager.identLu + " String +++++");
- }
-|
   Type()
 
 }
@@ -982,6 +995,7 @@ void Name():
 {
 
   <IDENTIFIER> ( LOOKAHEAD(2) "." <IDENTIFIER> )* 
+  
 
 }
 
@@ -1212,11 +1226,7 @@ void MemberSelector():
 void PrimaryPrefix():
 {}
 {
-  Literal(){ 
-  	if (JavaParser.isExprBool == true /*&& JavaParser.tabIdent.verifCompteur(JavaParserTokenManager.identLu) == true*/){
-  			tabIdent.ajoutCompteur(JavaParserTokenManager.identLu);
-  		} 
-  	}
+  Literal()
 |
   "this"
 |
@@ -1247,7 +1257,7 @@ void PrimarySuffix():
 |
   "[" Expression() "]"
 |
-  "." <IDENTIFIER>
+  "." <IDENTIFIER>  
 |
   Arguments()
 }

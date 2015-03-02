@@ -2047,11 +2047,23 @@ void TokenLexicalActions(Token matchedToken)
         image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
                 identLu = image.toString();
 
-        if (JavaParser.isExprBool == true /*&& JavaParser.tabIdent.verifCompteur(JavaParserTokenManager.identLu) == true*/){
-                        JavaParser.tabIdent.ajoutCompteur(JavaParserTokenManager.identLu);
-                }
+                /*Reconnaissance des méthodes*/
+        if (JavaParser.tabIdent.existeIdent(JavaParserTokenManager.identLu, Token.beginLine)){
+                JavaParser.testMethode = JavaParserTokenManager.identLu;
+                System.out.println("testMethode = "+JavaParserTokenManager.identLu+ " ligne : "+Token.beginLine);
 
-                JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+
+        }
+
+        /*Reconnaissance des compteurs*/
+        if (JavaParser.isExprBool == true){
+                        JavaParser.tabIdent.ajoutCompteur(JavaParserTokenManager.identLu);
+        }
+
+
+
+        /*Consctruction de l'expression booleenne*/
+        JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
          break;
       case 78 :
         image.append(jjstrLiteralImages[78]);

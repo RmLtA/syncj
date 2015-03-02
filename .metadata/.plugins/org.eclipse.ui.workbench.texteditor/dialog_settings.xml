@@ -13,16 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="PrimaryPre" key="selection"/>
+		<item value="isMethod" key="selection"/>
 		<list key="findhistory">
-			<item value="PrimaryPre"/>
-			<item value="void Name()"/>
-			<item value="condition"/>
-			<item value="condition(="/>
-			<item value="Name()"/>
-			<item value="condition()"/>
-			<item value="Allocation"/>
-			<item value="PrimaryPrefi"/>
+			<item value="isMethod"/>
+			<item value="methode"/>
+			<item value="Method"/>
+			<item value="isMethod "/>
+			<item value="isMethod = true"/>
+			<item value="isMthod = true"/>
+			<item value="public static String identLu;"/>
+			<item value="PrimitiveType"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Statement"/>

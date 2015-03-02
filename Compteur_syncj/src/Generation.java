@@ -8,7 +8,7 @@ public class Generation{
 	
 	
 	public Generation(){
-		FichierGen=Ecriture.ouvrir("gen2.java");
+		FichierGen=Ecriture.ouvrir("gen.java");
 	}
 	
 	public void declInitCompt(String methode){
@@ -16,14 +16,12 @@ public class Generation{
 			declComptReq(methode);
 			Ecriture.ecrireString(FichierGen,"\t");
 		
-		
 			declComptAut(methode);
 			Ecriture.ecrireString(FichierGen,"\t");
 		
 		
 			declComptTerm(methode);
 			Ecriture.ecrireString(FichierGen,"\t");
-		
 		
 	}
 	

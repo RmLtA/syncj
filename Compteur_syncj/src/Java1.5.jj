@@ -51,6 +51,7 @@ public class JavaParser
 	/*verifie si c'est dans une methode qui est liee a une condition*/
 	public static boolean flagCond = false;
 	
+	
 	public static String exprBool = "";
 	public static String methode = "";
 	public static String buffer = "";
@@ -363,13 +364,26 @@ TOKEN :
 {
   < IDENTIFIER: <LETTER> (<LETTER>|<DIGIT>)* > 
   {
+  
   		identLu = image.toString();
   		
-  	if (JavaParser.isExprBool == true /*&& JavaParser.tabIdent.verifCompteur(JavaParserTokenManager.identLu) == true*/){
-  			tabIdent.ajoutCompteur(JavaParserTokenManager.identLu);
+  		/*Reconnaissance des méthodes*/
+  	if (JavaParser.tabIdent.existeIdent(JavaParserTokenManager.identLu, Token.beginLine)){
+  		JavaParser.testMethode = JavaParserTokenManager.identLu;
+  		System.out.println("testMethode = "+JavaParserTokenManager.identLu+ " ligne : "+Token.beginLine);
+  		  
+  
+  	}
+  	
+  	/*Reconnaissance des compteurs*/
+  	if (JavaParser.isExprBool == true){
+  			JavaParser.tabIdent.ajoutCompteur(JavaParserTokenManager.identLu);
   	} 
   	
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  
+  	
+  	/*Consctruction de l'expression booleenne*/
+  	JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
   		
   }
 |
@@ -838,16 +852,15 @@ void MethodDeclaration(int modifiers):
   ResultType()
   MethodDeclarator() [ "throws" NameList() ]
   ( Block() | ";" )
+  
 }
 
 void MethodDeclarator():
 {}
 {
+  
   <IDENTIFIER>
-  {
-  	JavaParser.testMethode = JavaParserTokenManager.identLu;
-  	System.out.println("testMethode = "+JavaParserTokenManager.identLu+ " ligne : "+Token.beginLine);
-  }
+
   FormalParameters() ( "[" "]" )*
 }
 
@@ -947,7 +960,6 @@ void PrimitiveType():
 {}
 {
   "boolean"
-  {System.out.println("testboolean = "+JavaParserTokenManager.identLu+ " ligne : "+Token.beginLine);  }
 |
   "char"
 |
@@ -1218,9 +1230,7 @@ void PrimaryPrefix():
 |
   "this"
 |
-  "super" "." <IDENTIFIER>{ 
-  	  			tabIdent.ajoutCompteur(JavaParserTokenManager.identLu);
-  		} 
+  "super" "." <IDENTIFIER>
 |
   "(" Expression() ")"
 |
@@ -1247,9 +1257,7 @@ void PrimarySuffix():
 |
   "[" Expression() "]"
 |
-  "." <IDENTIFIER> { 
-  	  			tabIdent.ajoutCompteur(JavaParserTokenManager.identLu);
-  		} 
+  "." <IDENTIFIER>  
 |
   Arguments()
 }
