@@ -11,9 +11,17 @@ public class Generation{
 		FichierGen=Ecriture.ouvrir("gen.java");
 	}
 	
-	public void declInitCompt(String methode){
-		
-			declComptReq(methode);
+	public void declInitCompt(TabIdent t, String methode){
+		int i;
+		String compteur;
+		Ident ident = new Ident(methode);
+		ident = t.chercheIdent(methode);
+		for (i=0;i<ident.getTailleTabParam();i++){
+			compteur=ident.getCompteur(i);
+			/*condition*/
+				ecrireCompt(compteur);
+		}
+			/*declComptReq(methode);
 			Ecriture.ecrireString(FichierGen,"\t");
 		
 			declComptAut(methode);
@@ -22,7 +30,22 @@ public class Generation{
 		
 			declComptTerm(methode);
 			Ecriture.ecrireString(FichierGen,"\t");
+			
+			declComptAct(methode);
+			Ecriture.ecrireString(FichierGen,"\t");
+			
+			declComptAtt(methode);
+			Ecriture.ecrireString(FichierGen,"\t");*/
 		
+	}
+
+	
+	public void ecrireCompt(String compteur){
+		Ecriture.ecrireString(FichierGen,"private ");
+		Ecriture.ecrireString(FichierGen,"int ");
+		Ecriture.ecrireString(FichierGen,compteur);
+		Ecriture.ecrireString(FichierGen,"= 0;");
+		Ecriture.ecrireString(FichierGen,"\n");
 	}
 	
 	public void declComptReq(String methode){
@@ -45,6 +68,22 @@ public class Generation{
 		Ecriture.ecrireString(FichierGen,"private ");
 		Ecriture.ecrireString(FichierGen,"int ");
 		Ecriture.ecrireString(FichierGen,methode+"_"+"term ");
+		Ecriture.ecrireString(FichierGen,"= 0;");
+		Ecriture.ecrireString(FichierGen,"\n");
+	}
+	
+	public void declComptAct(String methode){
+		Ecriture.ecrireString(FichierGen,"private ");
+		Ecriture.ecrireString(FichierGen,"int ");
+		Ecriture.ecrireString(FichierGen,methode+"_"+"act ");
+		Ecriture.ecrireString(FichierGen,"= 0;");
+		Ecriture.ecrireString(FichierGen,"\n");
+	}
+	
+	public void declComptAtt(String methode){
+		Ecriture.ecrireString(FichierGen,"private ");
+		Ecriture.ecrireString(FichierGen,"int ");
+		Ecriture.ecrireString(FichierGen,methode+"_"+"att ");
 		Ecriture.ecrireString(FichierGen,"= 0;");
 		Ecriture.ecrireString(FichierGen,"\n");
 	}
@@ -81,36 +120,53 @@ public class Generation{
 		
 	}
 	
-	public void declSynchronizedAvant(String methode){
+	public void declSynchronizedAvant(String methode,TabIdent t){
+		
+		String compteur;
+		Ident ident = new Ident(methode);
+		ident = t.chercheIdent(methode);
+		/*++ seulement si truc_act dans condition, sinon pour les autres compteurs voir les endroits ou il faut faire ++ ou --*/
+		
 		Ecriture.ecrireString(FichierGen,"\n\t\t synchronized(this){ \n\t\t\t");
-		Ecriture.ecrireString(FichierGen,methode+"_"+"req++ ;\n\t\t\t");
+		/*Ecriture.ecrireString(FichierGen,methode+"_"+"req++ ;\n\t\t\t");
 		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t");
 		
 		Ecriture.ecrireString(FichierGen,methode+"_"+"att++ ;\n\t\t\t");
 		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t");
-		
+		*/
 		Ecriture.ecrireString(FichierGen,"while(!");
 		Ecriture.ecrireString(FichierGen,"cond_"+methode+"()){\n\t\t\t\t");
 		Ecriture.ecrireString(FichierGen,"this.wait();\n\t\t\t\t}\n\t\t\t");
 		
+		/*
 		Ecriture.ecrireString(FichierGen,methode+"_"+"aut++ ;\n\t\t\t");
 		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t");
 		
 		Ecriture.ecrireString(FichierGen,methode+"_"+"att-- ;\n\t\t\t");
-		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t");
+		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t");*/
 		
-		Ecriture.ecrireString(FichierGen,methode+"_"+"act++ ;\n\t\t\t");
-		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t");
+			compteur=ident.getNom();
+			Ecriture.ecrireString(FichierGen,compteur+"_act++ ;\n\t\t\t");
+			Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t");
+		
+		
 	}
 	
-	public void declSynchronizedApres(String methode){
+	public void declSynchronizedApres(String methode, TabIdent t){
+		
+		String compteur;
+		Ident ident = new Ident(methode);
+		ident = t.chercheIdent(methode);
 		Ecriture.ecrireString(FichierGen,"synchronized(this){ \n\t\t\t");
-		Ecriture.ecrireString(FichierGen,methode+"_"+"term++ ;\n\t\t\t");
-		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t");
+		/*Ecriture.ecrireString(FichierGen,methode+"_"+"term++ ;\n\t\t\t");
+		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t");*/
 		
 		
-		Ecriture.ecrireString(FichierGen,methode+"_"+"act-- ;\n\t\t\t");
-		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t}");
+		
+			compteur=ident.getNom();
+			Ecriture.ecrireString(FichierGen,compteur+"_act-- ;\n\t\t\t");
+			Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t}");
+		
 	}
 	
 	

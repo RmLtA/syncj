@@ -12,7 +12,6 @@ public class LecteurRedacteur{
 	condition ecrire = ((ecrire_act == 0) && (lire_act == 0));
 	
 	public String lire(){
-		
 		String s = tab[tab_lec];
 		tab_lec=(tab_lec+1)%TAILLE;
 		return s;

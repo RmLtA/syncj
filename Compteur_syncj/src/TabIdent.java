@@ -4,7 +4,7 @@ import java.util.Map.Entry;
 
 public class TabIdent {
 	
-	private HashMap<String,Ident> condition;
+	public HashMap<String,Ident> condition;
 	public ArrayList<String> buffer;
 	
 	public TabIdent(int taille) {
@@ -13,13 +13,12 @@ public class TabIdent {
 
 	}
 	
-	public Ident chercheIdent(String cle, int ligne) {
+	public Ident chercheIdent(String cle){
 		Ident ident = new Ident(cle);
 		ident = condition.get(cle);
 		if(ident!=null){
 			return ident;
 		}else{
-			System.out.println("\n erreur ligne : "+ligne+" chercheIdent() n'arrive pas à trouver l'identificateur de nom : "+cle+" car elle n'existe pas dans la table\n");
 			return null;
 		}	
 	}
@@ -60,7 +59,7 @@ public class TabIdent {
 	}
 	
 	public void afficheCompteur(String methode, int beginLine){
-		Ident id = chercheIdent(methode, beginLine);
+		Ident id = chercheIdent(methode);
 		for(int i =0; i<id.compteur.size(); i++){
 			System.out.println(id.compteur.get(i)+"\n");
 		}
@@ -83,7 +82,8 @@ public class TabIdent {
 		}
 	}
 	
-	public void ajoutCompteur(String compteur){		
+	public void ajoutCompteur(String compteur){	
+		
 		buffer.add(compteur);
 	}
 		

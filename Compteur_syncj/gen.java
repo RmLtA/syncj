@@ -8,45 +8,32 @@ public class LecteurRedacteur{
 	private int tab_red=0;
 	
 
-	private int lire_req = 0;
-	private int lire_aut = 0;
-	private int lire_term = 0;
-	public boolean cond_lire(){
+	private int ecrire_act= 0;
+public boolean cond_lire(){
 		return (ecrire_act == 0 );
 	}
 
-	private int ecrire_req = 0;
-	private int ecrire_aut = 0;
-	private int ecrire_term = 0;
-	public boolean cond_ecrire(){
+	private int ecrire_act= 0;  /* il faut rajouter une méthode qui vérifie avant -- à enlever */
+private int lire_act= 0;
+public boolean cond_ecrire(){
 		return (ecrire_act == 0 && lire_act == 0 );
 	}
 
 	
 	public String lire(){
 		 synchronized(this){ 
-			lire_req++ ;
-			this.notifyAll();
-			lire_att++ ;
-			this.notifyAll();
 			while(!cond_lire()){
 				this.wait();
 				}
-			lire_aut++ ;
-			this.notifyAll();
-			lire_att-- ;
-			this.notifyAll();
 			lire_act++ ;
 			this.notifyAll();
 			}
 		
-		
 		String s = tab[tab_lec];
 		tab_lec=(tab_lec+1)%TAILLE;
+		/*mettre toujours le synchronized avant le return peut importe le nombre de return*/
 		return s;
 	synchronized(this){ 
-			lire_term++ ;
-			this.notifyAll();
 			lire_act-- ;
 			this.notifyAll();
 			}
@@ -54,17 +41,9 @@ public class LecteurRedacteur{
 
 	public void ecrire(String s){
 		 synchronized(this){ 
-			ecrire_req++ ;
-			this.notifyAll();
-			ecrire_att++ ;
-			this.notifyAll();
 			while(!cond_ecrire()){
 				this.wait();
 				}
-			ecrire_aut++ ;
-			this.notifyAll();
-			ecrire_att-- ;
-			this.notifyAll();
 			ecrire_act++ ;
 			this.notifyAll();
 			}
@@ -72,8 +51,6 @@ public class LecteurRedacteur{
 		tab[tab_red]=s;
 		tab_red=(tab_red+1)%TAILLE;
 	synchronized(this){ 
-			ecrire_term++ ;
-			this.notifyAll();
 			ecrire_act-- ;
 			this.notifyAll();
 			}

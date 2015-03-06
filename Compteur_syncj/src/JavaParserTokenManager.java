@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /** Token Manager. */
 public class JavaParserTokenManager implements JavaParserConstants
 {
-	public static String identLu;
+public static String identLu;
   /** Debug output. */
   public  java.io.PrintStream debugStream = System.out;
   /** Set debug output. */
@@ -2047,12 +2047,10 @@ void TokenLexicalActions(Token matchedToken)
         image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
                 identLu = image.toString();
 
-                /*Reconnaissance des méthodes*/
+        /*Reconnaissance des méthodes*/
         if (JavaParser.tabIdent.existeIdent(JavaParserTokenManager.identLu, Token.beginLine)){
                 JavaParser.testMethode = JavaParserTokenManager.identLu;
                 System.out.println("testMethode = "+JavaParserTokenManager.identLu+ " ligne : "+Token.beginLine);
-
-
         }
 
         /*Reconnaissance des compteurs*/
