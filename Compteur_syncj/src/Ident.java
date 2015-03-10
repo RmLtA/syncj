@@ -4,12 +4,12 @@ import java.util.ArrayList;
 public class Ident {
 	public String nom;
 	public String expressionBooleen;
-	public ArrayList<String> compteur;
+	public ArrayList<Compteur> compteur;
 	
 	public Ident(String n){
 		this.nom=n;
 		expressionBooleen="";
-		compteur = new ArrayList<String>();
+		compteur = new ArrayList<Compteur>();
 	}
 	
 	public String getNom(){
@@ -24,12 +24,12 @@ public class Ident {
 		expressionBooleen = e;
 	}
 	
-	public void addCompteur(String s){
+	public void addCompteur(Compteur s){
 		compteur.add(s);
 	}
 	
 	public String getCompteur(int i){
-		return compteur.get(i);
+		return compteur.get(i).nom;
 	}
 
 	public int getTailleTabParam(){

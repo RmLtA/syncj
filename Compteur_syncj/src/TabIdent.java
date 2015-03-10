@@ -6,10 +6,12 @@ public class TabIdent {
 	
 	public HashMap<String,Ident> condition;
 	public ArrayList<String> buffer;
+	public ArrayList<Integer> bufferType;
 	
 	public TabIdent(int taille) {
 		condition = new HashMap<String,Ident>(taille);
-		buffer = new ArrayList<String>(); 
+		buffer = new ArrayList<String>();
+		bufferType = new ArrayList<Integer>();
 
 	}
 	
@@ -33,12 +35,15 @@ public class TabIdent {
 	
 	public void createIdent(String n, String exprb, int ligne){
 		Ident id = new Ident(n);
+		
 		id.setExprBool(exprb);
 		for (int i = 0; i<buffer.size(); i++){
-			id.addCompteur(buffer.get(i));
+			Compteur c = new Compteur(buffer.get(i), bufferType.get(i));
+			id.addCompteur(c);
 		}
 		rangeIdent(n, id, ligne);
 		buffer.clear();
+		bufferType.clear();
 		
 	}
 	
@@ -66,25 +71,23 @@ public class TabIdent {
 	}
 	
 	public boolean verifCompteur(String expr){
-		switch(expr){
-			case "att":
+		String cle;
+		for(Entry<String, Ident> e : condition.entrySet()) {
+			cle = e.getKey();
+			Ident i = chercheIdent(cle);
+			if(i.compteur.contains(expr)==true){
 				return true;
-			case "act":
-				return true;
-			case "req":
-				return true;
-			case "aut":
-				return true;
-			case "term":
-				return true;
-			default:
-				return false;
+			}
 		}
+		return false;
 	}
 	
 	public void ajoutCompteur(String compteur){	
-		
 		buffer.add(compteur);
+	}
+	
+	public void ajoutType(int type){	
+		bufferType.add(type);
 	}
 		
 	

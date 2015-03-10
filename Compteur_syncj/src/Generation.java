@@ -5,10 +5,11 @@ import java.util.Stack;
 public class Generation{
 	
 	OutputStream FichierGen ;
-	
+	public ArrayList<String> buffer;
 	
 	public Generation(){
 		FichierGen=Ecriture.ouvrir("gen.java");
+		buffer = new ArrayList<String>(); 
 	}
 	
 	public void declInitCompt(TabIdent t, String methode){
@@ -17,9 +18,13 @@ public class Generation{
 		Ident ident = new Ident(methode);
 		ident = t.chercheIdent(methode);
 		for (i=0;i<ident.getTailleTabParam();i++){
+			
 			compteur=ident.getCompteur(i);
-			/*condition*/
+			if(!buffer.contains(compteur)){
+				buffer.add(compteur);
 				ecrireCompt(compteur);
+			}
+	
 		}
 			/*declComptReq(methode);
 			Ecriture.ecrireString(FichierGen,"\t");
@@ -158,16 +163,14 @@ public class Generation{
 		Ident ident = new Ident(methode);
 		ident = t.chercheIdent(methode);
 		Ecriture.ecrireString(FichierGen,"synchronized(this){ \n\t\t\t");
-		/*Ecriture.ecrireString(FichierGen,methode+"_"+"term++ ;\n\t\t\t");
-		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t");*/
-		
-		
-		
-			compteur=ident.getNom();
-			Ecriture.ecrireString(FichierGen,compteur+"_act-- ;\n\t\t\t");
-			Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t}");
+
+		compteur=ident.getNom();
+		Ecriture.ecrireString(FichierGen,compteur+"_act-- ;\n\t\t\t}");
+			
+		/*pourquoi c'est act-- et dans le cas général? on a le type de condition lié aux compteurs --> notify ou pas */
 		
 	}
+	
 	
 	
 	

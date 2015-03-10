@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /** Token Manager. */
 public class JavaParserTokenManager implements JavaParserConstants
 {
-public static String identLu;
+	public static String identLu;
   /** Debug output. */
   public  java.io.PrintStream debugStream = System.out;
   /** Set debug output. */
@@ -1956,7 +1956,14 @@ void TokenLexicalActions(Token matchedToken)
       case 50 :
         image.append(jjstrLiteralImages[50]);
         lengthOfMatch = jjstrLiteralImages[50].length();
-                       JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                JavaParser.flagReturn = true;
+                JavaParserTokenManager.identLu = image.toString();
+                if(JavaParser.tabIdent.existeIdent(JavaParser.testMethode, Token.beginLine) && JavaParser.flagReturn == true){
+                        JavaParser.declCompt.declSynchronizedApres(JavaParser.testMethode, JavaParser.tabIdent);
+                        JavaParser.flagCond = false;
+                        JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+
+                }
          break;
       case 51 :
         image.append(jjstrLiteralImages[51]);
@@ -2057,7 +2064,6 @@ void TokenLexicalActions(Token matchedToken)
         if (JavaParser.isExprBool == true){
                         JavaParser.tabIdent.ajoutCompteur(JavaParserTokenManager.identLu);
         }
-
 
 
         /*Consctruction de l'expression booleenne*/

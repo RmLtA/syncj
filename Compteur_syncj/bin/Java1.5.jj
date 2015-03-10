@@ -51,11 +51,12 @@ public class JavaParser
 	/*verifie si c'est dans une methode qui est liee a une condition*/
 	public static boolean flagCond = false;
 	
+	public static boolean flagReturn = false;
+	
 	
 	public static String exprBool = "";
 	public static String methode = "";
-	public static String buffer = "";
-	public static ArrayList<String> listMethode = new ArrayList<String>();
+
 	
 	public static String testMethode = "";
 	public static String test = "";
@@ -277,7 +278,16 @@ TOKEN :
 | < PRIVATE: "private" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
 | < PROTECTED: "protected" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
 | < PUBLIC: "public" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < RETURN: "return" >{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
+| < RETURN: "return" >{
+		JavaParser.flagReturn = true;
+		JavaParserTokenManager.identLu = image.toString();
+		if(JavaParser.tabIdent.existeIdent(JavaParser.testMethode, Token.beginLine) && JavaParser.flagReturn == true){
+  			JavaParser.declCompt.declSynchronizedApres(JavaParser.testMethode, JavaParser.tabIdent);
+  			JavaParser.flagCond = false;
+  			JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+  			
+  		}
+	}
 | < SHORT: "short" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
 | < STATIC: "static" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
 | < STRICTFP: "strictfp" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
@@ -378,7 +388,6 @@ TOKEN :
   			JavaParser.tabIdent.ajoutCompteur(JavaParserTokenManager.identLu);
   	} 
   	
- 
   	
   	/*Consctruction de l'expression booleenne*/
   	JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
@@ -1405,11 +1414,15 @@ void Block():
 
   	"}" 
   	{
-  		if(tabIdent.existeIdent(JavaParser.testMethode, Token.beginLine)){
+  		if(tabIdent.existeIdent(JavaParser.testMethode, Token.beginLine) && JavaParser.flagReturn == false){
   			declCompt.declSynchronizedApres(JavaParser.testMethode, tabIdent);
   			JavaParser.flagCond = false;
   		}
+  		JavaParser.flagReturn = false;
+  		
   	}
+  	
+  	
   	
 }
 
