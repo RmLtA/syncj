@@ -35,5 +35,14 @@ public class Ident {
 	public int getTailleTabParam(){
 		return compteur.size();
 	}
+	
+	public Compteur verifCompteur(String expr){
+		for (int i = 0; i<compteur.size();i++){
+			if(getCompteur(i).equals(expr)){
+				return compteur.get(i);
+			}
+		}
+		return null;
+	}
 
 }

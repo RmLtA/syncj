@@ -70,17 +70,7 @@ public class TabIdent {
 		}
 	}
 	
-	public boolean verifCompteur(String expr){
-		String cle;
-		for(Entry<String, Ident> e : condition.entrySet()) {
-			cle = e.getKey();
-			Ident i = chercheIdent(cle);
-			if(i.compteur.contains(expr)==true){
-				return true;
-			}
-		}
-		return false;
-	}
+	
 	
 	public void ajoutCompteur(String compteur){	
 		buffer.add(compteur);

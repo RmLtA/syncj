@@ -2,7 +2,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class Generation{
+public class Generation implements Constant{
 	
 	OutputStream FichierGen ;
 	public ArrayList<String> buffer;
@@ -150,9 +150,11 @@ public class Generation{
 		Ecriture.ecrireString(FichierGen,methode+"_"+"att-- ;\n\t\t\t");
 		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t");*/
 		
-			compteur=ident.getNom();
-			Ecriture.ecrireString(FichierGen,compteur+"_act++ ;\n\t\t\t");
-			Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t");
+			compteur=ident.getNom()+"_act";
+			Ecriture.ecrireString(FichierGen,compteur+"++ ;\n\t\t\t");
+			if(ident.verifCompteur(compteur).getType()==Constant.SUPERIEUR){
+				Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t");
+			}
 		
 		
 	}
@@ -164,8 +166,11 @@ public class Generation{
 		ident = t.chercheIdent(methode);
 		Ecriture.ecrireString(FichierGen,"synchronized(this){ \n\t\t\t");
 
-		compteur=ident.getNom();
-		Ecriture.ecrireString(FichierGen,compteur+"_act-- ;\n\t\t\t}");
+		compteur=ident.getNom()+"_act";
+		Ecriture.ecrireString(FichierGen,compteur+"-- ;\n\t\t\t}");
+		if(ident.verifCompteur(compteur).getType()==Constant.EGALITE || ident.verifCompteur(compteur).getType()==Constant.INFERIEUR){
+			Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t");
+		}
 			
 		/*pourquoi c'est act-- et dans le cas général? on a le type de condition lié aux compteurs --> notify ou pas */
 		

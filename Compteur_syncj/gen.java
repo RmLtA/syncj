@@ -25,13 +25,20 @@ public boolean cond_ecrire(){
 				this.wait();
 				}
 			lire_act++ ;
-			this.notifyAll();
+			//this.notifyAll();
 			}
 		
 		String s = tab[tab_lec];
 		tab_lec=(tab_lec+1)%TAILLE;
 		synchronized(this){ 
 			lire_act-- ;
+			//le notify est ici 
+			/*récupérer la fonction cond_ecrire 
+			 * if(cond_ecrire()){
+			 * 	this.notifyAll();
+			 * }
+			 * 
+			 */
 			}return s;
 	}
 

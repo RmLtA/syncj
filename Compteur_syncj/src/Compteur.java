@@ -7,4 +7,12 @@ public class Compteur {
 		nom=n;
 		type=t;
 	}
+	
+	public int getType(){
+		return type;
+	}
+	
+	public String getNomCompt(){
+		return nom;
+	}
 }
