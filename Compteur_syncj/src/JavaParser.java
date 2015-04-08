@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Grammar to parse Java version 1.5
  * @author Sreenivasa Viswanadha - Simplified and enhanced for 1.5
  */
-public class JavaParser implements JavaParserConstants {
+public class JavaParser implements Type, JavaParserConstants {
         public static Generation declCompt = new Generation();
 
         public static TabIdent tabIdent = new TabIdent(100);
@@ -3450,47 +3450,6 @@ public class JavaParser implements JavaParserConstants {
     catch(LookaheadSuccess ls) { return true; }
   }
 
-  private boolean jj_3R_294() {
-    if (jj_3R_300()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_285() {
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_3R_294()) jj_scanpos = xsp;
-    if (jj_scan_token(SEMICOLON)) return true;
-    xsp = jj_scanpos;
-    if (jj_3R_295()) jj_scanpos = xsp;
-    if (jj_scan_token(SEMICOLON)) return true;
-    xsp = jj_scanpos;
-    if (jj_3R_296()) jj_scanpos = xsp;
-    return false;
-  }
-
-  private boolean jj_3R_270() {
-    if (jj_3R_210()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_284() {
-    if (jj_3R_60()) return true;
-    if (jj_scan_token(IDENTIFIER)) return true;
-    if (jj_scan_token(COLON)) return true;
-    if (jj_3R_70()) return true;
-    return false;
-  }
-
-  private boolean jj_3R_256() {
-    if (jj_scan_token(IDENTIFIER)) return true;
-    Token xsp;
-    xsp = jj_scanpos;
-    if (jj_3R_268()) jj_scanpos = xsp;
-    xsp = jj_scanpos;
-    if (jj_3R_269()) jj_scanpos = xsp;
-    return false;
-  }
-
   private boolean jj_3R_258() {
     if (jj_scan_token(SEMICOLON)) return true;
     Token xsp;
@@ -5961,6 +5920,47 @@ public class JavaParser implements JavaParserConstants {
       if (jj_3R_113()) { jj_scanpos = xsp; break; }
     }
     if (jj_scan_token(GT)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_294() {
+    if (jj_3R_300()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_285() {
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3R_294()) jj_scanpos = xsp;
+    if (jj_scan_token(SEMICOLON)) return true;
+    xsp = jj_scanpos;
+    if (jj_3R_295()) jj_scanpos = xsp;
+    if (jj_scan_token(SEMICOLON)) return true;
+    xsp = jj_scanpos;
+    if (jj_3R_296()) jj_scanpos = xsp;
+    return false;
+  }
+
+  private boolean jj_3R_270() {
+    if (jj_3R_210()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_284() {
+    if (jj_3R_60()) return true;
+    if (jj_scan_token(IDENTIFIER)) return true;
+    if (jj_scan_token(COLON)) return true;
+    if (jj_3R_70()) return true;
+    return false;
+  }
+
+  private boolean jj_3R_256() {
+    if (jj_scan_token(IDENTIFIER)) return true;
+    Token xsp;
+    xsp = jj_scanpos;
+    if (jj_3R_268()) jj_scanpos = xsp;
+    xsp = jj_scanpos;
+    if (jj_3R_269()) jj_scanpos = xsp;
     return false;
   }
 

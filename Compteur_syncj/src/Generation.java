@@ -2,7 +2,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class Generation implements Constant{
+public class Generation implements Type{
 	
 	OutputStream FichierGen ;
 	public ArrayList<String> buffer;
@@ -19,28 +19,13 @@ public class Generation implements Constant{
 		ident = t.chercheIdent(methode);
 		for (i=0;i<ident.getTailleTabParam();i++){
 			
-			compteur=ident.getCompteur(i);
+			compteur=ident.getCompteur(i).getNomCompt();
 			if(!buffer.contains(compteur)){
 				buffer.add(compteur);
 				ecrireCompt(compteur);
 			}
 	
 		}
-			/*declComptReq(methode);
-			Ecriture.ecrireString(FichierGen,"\t");
-		
-			declComptAut(methode);
-			Ecriture.ecrireString(FichierGen,"\t");
-		
-		
-			declComptTerm(methode);
-			Ecriture.ecrireString(FichierGen,"\t");
-			
-			declComptAct(methode);
-			Ecriture.ecrireString(FichierGen,"\t");
-			
-			declComptAtt(methode);
-			Ecriture.ecrireString(FichierGen,"\t");*/
 		
 	}
 
@@ -130,30 +115,21 @@ public class Generation implements Constant{
 		String compteur;
 		Ident ident = new Ident(methode);
 		ident = t.chercheIdent(methode);
-		/*++ seulement si truc_act dans condition, sinon pour les autres compteurs voir les endroits ou il faut faire ++ ou --*/
 		
 		Ecriture.ecrireString(FichierGen,"\n\t\t synchronized(this){ \n\t\t\t");
-		/*Ecriture.ecrireString(FichierGen,methode+"_"+"req++ ;\n\t\t\t");
-		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t");
-		
-		Ecriture.ecrireString(FichierGen,methode+"_"+"att++ ;\n\t\t\t");
-		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t");
-		*/
+
 		Ecriture.ecrireString(FichierGen,"while(!");
 		Ecriture.ecrireString(FichierGen,"cond_"+methode+"()){\n\t\t\t\t");
 		Ecriture.ecrireString(FichierGen,"this.wait();\n\t\t\t\t}\n\t\t\t");
 		
-		/*
-		Ecriture.ecrireString(FichierGen,methode+"_"+"aut++ ;\n\t\t\t");
-		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t");
-		
-		Ecriture.ecrireString(FichierGen,methode+"_"+"att-- ;\n\t\t\t");
-		Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t");*/
-		
 			compteur=ident.getNom()+"_act";
 			Ecriture.ecrireString(FichierGen,compteur+"++ ;\n\t\t\t");
-			if(ident.verifCompteur(compteur).getType()==Constant.SUPERIEUR){
+			
+			if(t.verifCompteur(compteur).containType(Type.SUPERIEUR)
+			   ||t.verifCompteur(compteur).containType(Type.SUPEGAL)){
 				Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t");
+			}else{
+				Ecriture.ecrireString(FichierGen,"\n\t\t\t}\n\t\t");
 			}
 		
 		
@@ -168,11 +144,14 @@ public class Generation implements Constant{
 
 		compteur=ident.getNom()+"_act";
 		Ecriture.ecrireString(FichierGen,compteur+"-- ;\n\t\t\t}");
-		if(ident.verifCompteur(compteur).getType()==Constant.EGALITE || ident.verifCompteur(compteur).getType()==Constant.INFERIEUR){
+		if(t.verifCompteur(compteur).containType(Type.EGALITE) 
+		   || t.verifCompteur(compteur).containType(Type.INFERIEUR)
+		   || t.verifCompteur(compteur).containType(Type.INFEGAL)){
 			Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t");
+		}else{
+			Ecriture.ecrireString(FichierGen,"\n\t\t\t}\n\t\t");
 		}
 			
-		/*pourquoi c'est act-- et dans le cas général? on a le type de condition lié aux compteurs --> notify ou pas */
 		
 	}
 	

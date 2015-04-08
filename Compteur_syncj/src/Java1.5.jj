@@ -36,7 +36,7 @@ import java.util.ArrayList;
  * Grammar to parse Java version 1.5
  * @author Sreenivasa Viswanadha - Simplified and enhanced for 1.5
  */
-public class JavaParser
+public class JavaParser implements Type
 {
 	public static Generation declCompt = new Generation();
 	
@@ -444,7 +444,6 @@ TOKEN :
 		if(JavaParser.flagCond == false){
 			JavaParserTokenManager.identLu = image.toString();
 			JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
-		
 		}
 	}
 | < LBRACKET: "[" >{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
@@ -468,14 +467,23 @@ TOKEN :
 | < EQ: "==" > 
 	{
   		identLu = image.toString();
+  		if (JavaParser.isExprBool == true){
+  			JavaParser.tabIdent.ajoutType(Type.EGALITE);
+  		}
   		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
   	}
 | < LE: "<=" > {
   		identLu = image.toString();
+  		if (JavaParser.isExprBool == true){
+  			JavaParser.tabIdent.ajoutType(Type.INFEGAL);
+  		}
   		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
   	}
 | < GE: ">=" >{
   		identLu = image.toString();
+  		if (JavaParser.isExprBool == true){
+  			JavaParser.tabIdent.ajoutType(Type.SUPEGAL);
+  		}
   		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
   	}
 | < NE: "!=" > {
@@ -1069,8 +1077,6 @@ void condition():{}
 	 	 
 	 	/*generation des methodes condition*/
 	 	declCompt.declMethodeBool(methode, exprBool); 
-	 	
-	 	
 	 	
 	 	tabIdent.affiche(exprBool);
 	 	tabIdent.afficheCompteur(methode, Token.beginLine);

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /** Token Manager. */
 public class JavaParserTokenManager implements JavaParserConstants
 {
-	public static String identLu;
+public static String identLu;
   /** Debug output. */
   public  java.io.PrintStream debugStream = System.out;
   /** Set debug output. */
@@ -2157,18 +2157,27 @@ void TokenLexicalActions(Token matchedToken)
         image.append(jjstrLiteralImages[94]);
         lengthOfMatch = jjstrLiteralImages[94].length();
                 identLu = image.toString();
+                if (JavaParser.isExprBool == true){
+                        JavaParser.tabIdent.ajoutType(Type.EGALITE);
+                }
                 JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
          break;
       case 95 :
         image.append(jjstrLiteralImages[95]);
         lengthOfMatch = jjstrLiteralImages[95].length();
                 identLu = image.toString();
+                if (JavaParser.isExprBool == true){
+                        JavaParser.tabIdent.ajoutType(Type.INFEGAL);
+                }
                 JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
          break;
       case 96 :
         image.append(jjstrLiteralImages[96]);
         lengthOfMatch = jjstrLiteralImages[96].length();
                 identLu = image.toString();
+                if (JavaParser.isExprBool == true){
+                        JavaParser.tabIdent.ajoutType(Type.SUPEGAL);
+                }
                 JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
          break;
       case 97 :

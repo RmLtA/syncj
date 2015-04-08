@@ -28,21 +28,14 @@ public class Ident {
 		compteur.add(s);
 	}
 	
-	public String getCompteur(int i){
-		return compteur.get(i).nom;
+	public Compteur getCompteur(int i){
+		return compteur.get(i);
 	}
 
 	public int getTailleTabParam(){
 		return compteur.size();
 	}
 	
-	public Compteur verifCompteur(String expr){
-		for (int i = 0; i<compteur.size();i++){
-			if(getCompteur(i).equals(expr)){
-				return compteur.get(i);
-			}
-		}
-		return null;
-	}
+
 
 }

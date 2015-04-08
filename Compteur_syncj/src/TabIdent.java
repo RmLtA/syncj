@@ -38,7 +38,7 @@ public class TabIdent {
 		
 		id.setExprBool(exprb);
 		for (int i = 0; i<buffer.size(); i++){
-			Compteur c = new Compteur(buffer.get(i), bufferType.get(i));
+			Compteur c = new Compteur(buffer.get(i), bufferType);
 			id.addCompteur(c);
 		}
 		rangeIdent(n, id, ligne);
@@ -65,9 +65,23 @@ public class TabIdent {
 	
 	public void afficheCompteur(String methode, int beginLine){
 		Ident id = chercheIdent(methode);
+		System.out.println("Compteurs de la condition : ");
 		for(int i =0; i<id.compteur.size(); i++){
-			System.out.println(id.compteur.get(i)+"\n");
+			System.out.println(id.compteur.get(i).getNomCompt()+"\n");
 		}
+	}
+	
+	public Compteur verifCompteur(String expr){
+		for(Entry<String, Ident> e : condition.entrySet()) {
+			Ident id = e.getValue();
+			for(int i = 0; i<id.compteur.size(); i++){
+				if(id.getCompteur(i).getNomCompt().equals(expr))
+					return id.getCompteur(i);
+			}
+			
+		}
+		System.out.println("Compteur null");
+		return null;
 	}
 	
 	

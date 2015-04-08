@@ -1,0 +1,24 @@
+import java.util.ArrayList;
+
+
+public class Compteur {
+	public String nom;
+	public ArrayList<int> listetype;
+	
+	public Compteur(String n, ArrayList<Type> l){
+		nom=n;
+		listetype=l;
+	}
+	
+	public boolean containType(int t){
+		return listetype.contains(t);
+	}
+	
+	public String getNomCompt(){
+		return nom;
+	}
+	
+	public void addType(Type t){
+		listetype.add(t);
+	}
+}
