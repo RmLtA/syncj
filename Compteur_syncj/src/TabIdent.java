@@ -15,9 +15,14 @@ public class TabIdent {
 
 	}
 	
-	public Ident chercheIdent(String cle){
-		Ident ident = new Ident(cle);
-		ident = condition.get(cle);
+	/**
+	 * Return the identifier which is identified by the key
+	 * @param key
+	 * @return identifier
+	 */
+	public Ident searchIdent(String key){
+		Ident ident = new Ident(key);
+		ident = condition.get(key);
 		if(ident!=null){
 			return ident;
 		}else{
@@ -25,58 +30,91 @@ public class TabIdent {
 		}	
 	}
 	
-	public boolean existeIdent(String cle,int ligne) {
-		if(condition.containsKey(cle))
+	/**
+	 * Check if the identifier identified by the key exists in the table
+	 * @param cle
+	 * @param line the line in the source code for returning a message error
+	 * @return bool
+	 */
+	public boolean existIdent(String key,int line) {
+		if(condition.containsKey(key))
 				return true;
 		else
 			
 			return false;		
 	}
 	
+	/**
+	 * Create an identifier
+	 * @param n name
+	 * @param exprb boolean expression
+	 * @param line the line in the source for returning a message error
+	 */
 	public void createIdent(String n, String exprb, int ligne){
 		Ident id = new Ident(n);
 		
 		id.setExprBool(exprb);
 		for (int i = 0; i<buffer.size(); i++){
-			Compteur c = new Compteur(buffer.get(i), bufferType);
+			Counter c = new Counter(buffer.get(i), bufferType);
 			id.addCompteur(c);
 		}
-		rangeIdent(n, id, ligne);
+		putIdent(n, id, ligne);
 		buffer.clear();
 		bufferType.clear();
 		
 	}
 	
-	public void rangeIdent(String cle, Ident valeur, int ligne) {
-		if(!existeIdent(cle, ligne) && cle!=null){
-			condition.put(cle, valeur);
+	/**
+	 * Put the identifier created in the table
+	 * @param key
+	 * @param value
+	 * @param line
+	 */
+	public void putIdent(String key, Ident value, int line) {
+		if(!existIdent(key, line) && key!=null){
+			condition.put(key, value);
 		}
 	
 	}
 	
-	public void affiche(String expr) {
-		System.out.println("\n\nVoici la table des identificateurs : ");
+	/**
+	 * Display the identifier table
+	 * @param expr !!!!! 
+	 */
+	public void display(String expr) {
+		System.out.println("\n\nThe identifier table : ");
 		for(Entry<String, Ident> e : condition.entrySet()) {
 			System.out.println(e.getKey() + " = " + expr);
 		}
 
 		System.out.println("}\n");
 	}
-	
-	public void afficheCompteur(String methode, int beginLine){
-		Ident id = chercheIdent(methode);
-		System.out.println("Compteurs de la condition : ");
-		for(int i =0; i<id.compteur.size(); i++){
-			System.out.println(id.compteur.get(i).getNomCompt()+"\n");
+
+	/**
+	 * Display the counters of a condition
+	 * @param methode the name of the condition
+	 * @param beginLine the line of the source code to display message error
+	 */
+	public void displayCounter(String methode, int beginLine){
+		Ident id = searchIdent(methode);
+		System.out.println("Counters of the condition : ");
+		for(int i =0; i<id.counter.size(); i++){
+			System.out.println(id.counter.get(i).getName()+"\n");
 		}
 	}
-	
-	public Compteur verifCompteur(String expr){
+
+	/**
+	 * Return a an object counter identified by expr which exists in 
+	 * the arrayList of identifiers in the table
+	 * @param expr identifies the counter
+	 * @return counter
+	 */
+	public Counter checkCounter(String expr){
 		for(Entry<String, Ident> e : condition.entrySet()) {
 			Ident id = e.getValue();
-			for(int i = 0; i<id.compteur.size(); i++){
-				if(id.getCompteur(i).getNomCompt().equals(expr))
-					return id.getCompteur(i);
+			for(int i = 0; i<id.counter.size(); i++){
+				if(id.getCounter(i).getName().equals(expr))
+					return id.getCounter(i);
 			}
 			
 		}
@@ -85,12 +123,19 @@ public class TabIdent {
 	}
 	
 	
-	
-	public void ajoutCompteur(String compteur){	
-		buffer.add(compteur);
+	/**
+	 * Add a counter in the buffer
+	 * @param counter
+	 */
+	public void addCounter(String counter){	
+		buffer.add(counter);
 	}
 	
-	public void ajoutType(int type){	
+	/**
+	 * Add a type in the bufferType
+	 * @param type
+	 */
+	public void addType(int type){	
 		bufferType.add(type);
 	}
 		

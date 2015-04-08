@@ -1,0 +1,41 @@
+import java.util.ArrayList;
+
+
+public class Ident {
+	public String name;
+	public String booleanExpression;
+	public ArrayList<Counter> counter;
+	
+	public Ident(String n){
+		this.name=n;
+		booleanExpression="";
+		counter = new ArrayList<Counter>();
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public String getExprBool(){
+		return booleanExpression;
+	}
+	
+	public void setExprBool(String e){
+		expressionBooleen = e;
+	}
+	
+	public void addCompteur(Compteur s){
+		compteur.add(s);
+	}
+	
+	public Compteur getCompteur(int i){
+		return compteur.get(i);
+	}
+
+	public int getTailleTabParam(){
+		return compteur.size();
+	}
+	
+
+
+}

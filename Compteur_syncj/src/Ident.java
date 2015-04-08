@@ -2,38 +2,38 @@ import java.util.ArrayList;
 
 
 public class Ident {
-	public String nom;
-	public String expressionBooleen;
-	public ArrayList<Compteur> compteur;
+	public String name;
+	public String booleanExpression;
+	public ArrayList<Counter> counter;
 	
 	public Ident(String n){
-		this.nom=n;
-		expressionBooleen="";
-		compteur = new ArrayList<Compteur>();
+		this.name=n;
+		booleanExpression="";
+		counter = new ArrayList<Counter>();
 	}
 	
-	public String getNom(){
-		return nom;
+	public String getName(){
+		return name;
 	}
 	
 	public String getExprBool(){
-		return expressionBooleen;
+		return booleanExpression;
 	}
 	
 	public void setExprBool(String e){
-		expressionBooleen = e;
+		booleanExpression = e;
 	}
 	
-	public void addCompteur(Compteur s){
-		compteur.add(s);
+	public void addCompteur(Counter c){
+		counter.add(c);
 	}
 	
-	public Compteur getCompteur(int i){
-		return compteur.get(i);
+	public Counter getCounter(int i){
+		return counter.get(i);
 	}
 
-	public int getTailleTabParam(){
-		return compteur.size();
+	public int getsizeTabCounter(){
+		return counter.size();
 	}
 	
 

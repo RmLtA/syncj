@@ -1728,23 +1728,23 @@ void SkipLexicalActions(Token matchedToken)
    {
       case 1 :
          image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
-       JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+       JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 2 :
          image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
-        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 3 :
          image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
-        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 4 :
          image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
-        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 5 :
          image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
-        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       default :
          break;
@@ -1771,274 +1771,273 @@ void TokenLexicalActions(Token matchedToken)
       case 13 :
         image.append(jjstrLiteralImages[13]);
         lengthOfMatch = jjstrLiteralImages[13].length();
-                            JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                            JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 14 :
         image.append(jjstrLiteralImages[14]);
         lengthOfMatch = jjstrLiteralImages[14].length();
-                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 15 :
         image.append(jjstrLiteralImages[15]);
         lengthOfMatch = jjstrLiteralImages[15].length();
-                          JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                          JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 16 :
         image.append(jjstrLiteralImages[16]);
         lengthOfMatch = jjstrLiteralImages[16].length();
-                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 17 :
         image.append(jjstrLiteralImages[17]);
         lengthOfMatch = jjstrLiteralImages[17].length();
-                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 18 :
         image.append(jjstrLiteralImages[18]);
         lengthOfMatch = jjstrLiteralImages[18].length();
-                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 19 :
         image.append(jjstrLiteralImages[19]);
         lengthOfMatch = jjstrLiteralImages[19].length();
-                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 20 :
         image.append(jjstrLiteralImages[20]);
         lengthOfMatch = jjstrLiteralImages[20].length();
-                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 21 :
         image.append(jjstrLiteralImages[21]);
         lengthOfMatch = jjstrLiteralImages[21].length();
-                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 22 :
         image.append(jjstrLiteralImages[22]);
         lengthOfMatch = jjstrLiteralImages[22].length();
-                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 23 :
         image.append(jjstrLiteralImages[23]);
         lengthOfMatch = jjstrLiteralImages[23].length();
-                            JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                            JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 24 :
         image.append(jjstrLiteralImages[24]);
         lengthOfMatch = jjstrLiteralImages[24].length();
-                           JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                           JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 25 :
         image.append(jjstrLiteralImages[25]);
         lengthOfMatch = jjstrLiteralImages[25].length();
-               JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+               JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 26 :
         image.append(jjstrLiteralImages[26]);
         lengthOfMatch = jjstrLiteralImages[26].length();
-                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 27 :
         image.append(jjstrLiteralImages[27]);
         lengthOfMatch = jjstrLiteralImages[27].length();
-                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 28 :
         image.append(jjstrLiteralImages[28]);
         lengthOfMatch = jjstrLiteralImages[28].length();
-                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 29 :
         image.append(jjstrLiteralImages[29]);
         lengthOfMatch = jjstrLiteralImages[29].length();
-                         JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                         JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 30 :
         image.append(jjstrLiteralImages[30]);
         lengthOfMatch = jjstrLiteralImages[30].length();
-                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 31 :
         image.append(jjstrLiteralImages[31]);
         lengthOfMatch = jjstrLiteralImages[31].length();
-                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 32 :
         image.append(jjstrLiteralImages[32]);
         lengthOfMatch = jjstrLiteralImages[32].length();
-                          JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                          JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 33 :
         image.append(jjstrLiteralImages[33]);
         lengthOfMatch = jjstrLiteralImages[33].length();
-                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 34 :
         image.append(jjstrLiteralImages[34]);
         lengthOfMatch = jjstrLiteralImages[34].length();
-                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 35 :
         image.append(jjstrLiteralImages[35]);
         lengthOfMatch = jjstrLiteralImages[35].length();
-                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 36 :
         image.append(jjstrLiteralImages[36]);
         lengthOfMatch = jjstrLiteralImages[36].length();
-                JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 37 :
         image.append(jjstrLiteralImages[37]);
         lengthOfMatch = jjstrLiteralImages[37].length();
-                                JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                                JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 38 :
         image.append(jjstrLiteralImages[38]);
         lengthOfMatch = jjstrLiteralImages[38].length();
-                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 39 :
         image.append(jjstrLiteralImages[39]);
         lengthOfMatch = jjstrLiteralImages[39].length();
-                                JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                                JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 40 :
         image.append(jjstrLiteralImages[40]);
         lengthOfMatch = jjstrLiteralImages[40].length();
-                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 41 :
         image.append(jjstrLiteralImages[41]);
         lengthOfMatch = jjstrLiteralImages[41].length();
-                              JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                              JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 42 :
         image.append(jjstrLiteralImages[42]);
         lengthOfMatch = jjstrLiteralImages[42].length();
-                   JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                   JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 43 :
         image.append(jjstrLiteralImages[43]);
         lengthOfMatch = jjstrLiteralImages[43].length();
-                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 44 :
         image.append(jjstrLiteralImages[44]);
         lengthOfMatch = jjstrLiteralImages[44].length();
-                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 45 :
         image.append(jjstrLiteralImages[45]);
         lengthOfMatch = jjstrLiteralImages[45].length();
-                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 46 :
         image.append(jjstrLiteralImages[46]);
         lengthOfMatch = jjstrLiteralImages[46].length();
-                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 47 :
         image.append(jjstrLiteralImages[47]);
         lengthOfMatch = jjstrLiteralImages[47].length();
-                          JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                          JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 48 :
         image.append(jjstrLiteralImages[48]);
         lengthOfMatch = jjstrLiteralImages[48].length();
-                              JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                              JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 49 :
         image.append(jjstrLiteralImages[49]);
         lengthOfMatch = jjstrLiteralImages[49].length();
-                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 50 :
         image.append(jjstrLiteralImages[50]);
         lengthOfMatch = jjstrLiteralImages[50].length();
                 JavaParser.flagReturn = true;
                 JavaParserTokenManager.identLu = image.toString();
-                if(JavaParser.tabIdent.existeIdent(JavaParser.testMethode, Token.beginLine) && JavaParser.flagReturn == true){
-                        JavaParser.declCompt.declSynchronizedApres(JavaParser.testMethode, JavaParser.tabIdent);
+                if(JavaParser.tabIdent.existIdent(JavaParser.testMethode, Token.beginLine) && JavaParser.flagReturn == true){
+                        JavaParser.declCompt.declSecondBlockSynchronized(JavaParser.testMethode, JavaParser.tabIdent);
+                        JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
                         JavaParser.flagCond = false;
-                        JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
-
                 }
          break;
       case 51 :
         image.append(jjstrLiteralImages[51]);
         lengthOfMatch = jjstrLiteralImages[51].length();
-                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 52 :
         image.append(jjstrLiteralImages[52]);
         lengthOfMatch = jjstrLiteralImages[52].length();
-                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 53 :
         image.append(jjstrLiteralImages[53]);
         lengthOfMatch = jjstrLiteralImages[53].length();
-                            JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                            JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 54 :
         image.append(jjstrLiteralImages[54]);
         lengthOfMatch = jjstrLiteralImages[54].length();
-                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 55 :
         image.append(jjstrLiteralImages[55]);
         lengthOfMatch = jjstrLiteralImages[55].length();
-                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 56 :
         image.append(jjstrLiteralImages[56]);
         lengthOfMatch = jjstrLiteralImages[56].length();
-                                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 57 :
         image.append(jjstrLiteralImages[57]);
         lengthOfMatch = jjstrLiteralImages[57].length();
-                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 58 :
         image.append(jjstrLiteralImages[58]);
         lengthOfMatch = jjstrLiteralImages[58].length();
-                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 59 :
         image.append(jjstrLiteralImages[59]);
         lengthOfMatch = jjstrLiteralImages[59].length();
-                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                        JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 60 :
         image.append(jjstrLiteralImages[60]);
         lengthOfMatch = jjstrLiteralImages[60].length();
-                              JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                              JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 61 :
         image.append(jjstrLiteralImages[61]);
         lengthOfMatch = jjstrLiteralImages[61].length();
-                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 62 :
         image.append(jjstrLiteralImages[62]);
         lengthOfMatch = jjstrLiteralImages[62].length();
-                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 63 :
         image.append(jjstrLiteralImages[63]);
         lengthOfMatch = jjstrLiteralImages[63].length();
-                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 64 :
         image.append(jjstrLiteralImages[64]);
         lengthOfMatch = jjstrLiteralImages[64].length();
-                            JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                            JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 65 :
         image.append(jjstrLiteralImages[65]);
         lengthOfMatch = jjstrLiteralImages[65].length();
-                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 67 :
         image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
@@ -2050,115 +2049,121 @@ void TokenLexicalActions(Token matchedToken)
                 identLu = image.toString();
                 JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
          break;
+      case 73 :
+        image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
+                identLu = image.toString();
+                JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+         break;
+      case 74 :
+        image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
+                identLu = image.toString();
+                JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+         break;
       case 75 :
         image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
                 identLu = image.toString();
-
-        /*Reconnaissance des méthodes*/
-        if (JavaParser.tabIdent.existeIdent(JavaParserTokenManager.identLu, Token.beginLine)){
+        /*Recognition of the method bounded to a condition*/
+        if (JavaParser.tabIdent.existIdent(JavaParserTokenManager.identLu, Token.beginLine)){
                 JavaParser.testMethode = JavaParserTokenManager.identLu;
-                System.out.println("testMethode = "+JavaParserTokenManager.identLu+ " ligne : "+Token.beginLine);
         }
 
-        /*Reconnaissance des compteurs*/
+        /*Recognition of a counter*/
         if (JavaParser.isExprBool == true){
-                        JavaParser.tabIdent.ajoutCompteur(JavaParserTokenManager.identLu);
+                        JavaParser.tabIdent.addCounter(JavaParserTokenManager.identLu);
         }
 
-
-        /*Consctruction de l'expression booleenne*/
+        /*Construction of the boolean expression*/
         JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
          break;
       case 78 :
         image.append(jjstrLiteralImages[78]);
         lengthOfMatch = jjstrLiteralImages[78].length();
-                   JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                   JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 79 :
         image.append(jjstrLiteralImages[79]);
         lengthOfMatch = jjstrLiteralImages[79].length();
-                   JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                   JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 80 :
         image.append(jjstrLiteralImages[80]);
         lengthOfMatch = jjstrLiteralImages[80].length();
-                   JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                   JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 81 :
         image.append(jjstrLiteralImages[81]);
         lengthOfMatch = jjstrLiteralImages[81].length();
                 if(JavaParser.flagCond == false){
                         JavaParserTokenManager.identLu = image.toString();
-                        JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
-
+                        JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
                 }
          break;
       case 82 :
         image.append(jjstrLiteralImages[82]);
         lengthOfMatch = jjstrLiteralImages[82].length();
-                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                    JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 83 :
         image.append(jjstrLiteralImages[83]);
         lengthOfMatch = jjstrLiteralImages[83].length();
-                     JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                     JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 84 :
         image.append(jjstrLiteralImages[84]);
         lengthOfMatch = jjstrLiteralImages[84].length();
-                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                      JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 85 :
         image.append(jjstrLiteralImages[85]);
         lengthOfMatch = jjstrLiteralImages[85].length();
-                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 86 :
         image.append(jjstrLiteralImages[86]);
         lengthOfMatch = jjstrLiteralImages[86].length();
-                JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 87 :
         image.append(jjstrLiteralImages[87]);
         lengthOfMatch = jjstrLiteralImages[87].length();
-               JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+               JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 88 :
         image.append(jjstrLiteralImages[88]);
         lengthOfMatch = jjstrLiteralImages[88].length();
-                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 89 :
         image.append(jjstrLiteralImages[89]);
         lengthOfMatch = jjstrLiteralImages[89].length();
-               JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+               JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 90 :
         image.append(jjstrLiteralImages[90]);
         lengthOfMatch = jjstrLiteralImages[90].length();
-                 JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                 JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 91 :
         image.append(jjstrLiteralImages[91]);
         lengthOfMatch = jjstrLiteralImages[91].length();
-                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 92 :
         image.append(jjstrLiteralImages[92]);
         lengthOfMatch = jjstrLiteralImages[92].length();
-                 JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                 JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 93 :
         image.append(jjstrLiteralImages[93]);
         lengthOfMatch = jjstrLiteralImages[93].length();
-                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.recopierNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+                  JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
          break;
       case 94 :
         image.append(jjstrLiteralImages[94]);
         lengthOfMatch = jjstrLiteralImages[94].length();
                 identLu = image.toString();
                 if (JavaParser.isExprBool == true){
-                        JavaParser.tabIdent.ajoutType(Type.EGALITE);
+                        JavaParser.tabIdent.addType(Type.EQUAL);
                 }
                 JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
          break;
@@ -2167,7 +2172,7 @@ void TokenLexicalActions(Token matchedToken)
         lengthOfMatch = jjstrLiteralImages[95].length();
                 identLu = image.toString();
                 if (JavaParser.isExprBool == true){
-                        JavaParser.tabIdent.ajoutType(Type.INFEGAL);
+                        JavaParser.tabIdent.addType(Type.INFEQUAL);
                 }
                 JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
          break;
@@ -2176,7 +2181,7 @@ void TokenLexicalActions(Token matchedToken)
         lengthOfMatch = jjstrLiteralImages[96].length();
                 identLu = image.toString();
                 if (JavaParser.isExprBool == true){
-                        JavaParser.tabIdent.ajoutType(Type.SUPEGAL);
+                        JavaParser.tabIdent.addType(Type.SUPEQUAL);
                 }
                 JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
          break;
@@ -2184,6 +2189,9 @@ void TokenLexicalActions(Token matchedToken)
         image.append(jjstrLiteralImages[97]);
         lengthOfMatch = jjstrLiteralImages[97].length();
                 identLu = image.toString();
+                if (JavaParser.isExprBool == true){
+                        JavaParser.tabIdent.addType(Type.DIFF);
+                }
                 JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
          break;
       case 98 :

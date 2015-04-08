@@ -1,132 +1,127 @@
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Stack;
-
+/**
+ * 
+ * @author 
+ * Handle the code generation 
+ */
 public class Generation implements Type{
 	
-	OutputStream FichierGen ;
-	public ArrayList<String> buffer;
+	private OutputStream FichierGen ;
+	private ArrayList<String> buffer;
 	
 	public Generation(){
-		FichierGen=Ecriture.ouvrir("gen.java");
+		FichierGen=Ecriture.ouvrir("result.java");
 		buffer = new ArrayList<String>(); 
 	}
 	
-	public void declInitCompt(TabIdent t, String methode){
+	/**
+	 * Generate the code to initialize the counters
+	 * @param t the table of identifiers
+	 * @param identCondition the name of the condition
+	 */
+	public void declInitCount(TabIdent t, String identCondition){
 		int i;
-		String compteur;
-		Ident ident = new Ident(methode);
-		ident = t.chercheIdent(methode);
-		for (i=0;i<ident.getTailleTabParam();i++){
-			
-			compteur=ident.getCompteur(i).getNomCompt();
-			if(!buffer.contains(compteur)){
-				buffer.add(compteur);
-				ecrireCompt(compteur);
+		String counter;
+		
+		Ident ident = new Ident(identCondition);
+		ident = t.searchIdent(identCondition);
+		
+		for (i=0;i<ident.getsizeTabCounter();i++){	
+			counter=ident.getCounter(i).getName();
+			if(!buffer.contains(counter)){
+				buffer.add(counter);
+				writeCounter(counter);
 			}
 	
 		}
 		
 	}
 
-	
-	public void ecrireCompt(String compteur){
+	/**
+	 * Generate the code of the counters
+	 * @param counter
+	 */
+	public void writeCounter(String counter){
 		Ecriture.ecrireString(FichierGen,"private ");
 		Ecriture.ecrireString(FichierGen,"int ");
-		Ecriture.ecrireString(FichierGen,compteur);
+		Ecriture.ecrireString(FichierGen,counter);
 		Ecriture.ecrireString(FichierGen,"= 0;");
 		Ecriture.ecrireString(FichierGen,"\n");
 	}
 	
-	public void declComptReq(String methode){
-		Ecriture.ecrireString(FichierGen,"private ");
-		Ecriture.ecrireString(FichierGen,"int ");
-		Ecriture.ecrireString(FichierGen,methode+"_"+"req ");
-		Ecriture.ecrireString(FichierGen,"= 0;");
-		Ecriture.ecrireString(FichierGen,"\n");
-	}
-	
-	public void declComptAut(String methode){
-		Ecriture.ecrireString(FichierGen,"private ");
-		Ecriture.ecrireString(FichierGen,"int ");
-		Ecriture.ecrireString(FichierGen,methode+"_"+"aut ");
-		Ecriture.ecrireString(FichierGen,"= 0;");
-		Ecriture.ecrireString(FichierGen,"\n");
-	}
-	
-	public void declComptTerm(String methode){
-		Ecriture.ecrireString(FichierGen,"private ");
-		Ecriture.ecrireString(FichierGen,"int ");
-		Ecriture.ecrireString(FichierGen,methode+"_"+"term ");
-		Ecriture.ecrireString(FichierGen,"= 0;");
-		Ecriture.ecrireString(FichierGen,"\n");
-	}
-	
-	public void declComptAct(String methode){
-		Ecriture.ecrireString(FichierGen,"private ");
-		Ecriture.ecrireString(FichierGen,"int ");
-		Ecriture.ecrireString(FichierGen,methode+"_"+"act ");
-		Ecriture.ecrireString(FichierGen,"= 0;");
-		Ecriture.ecrireString(FichierGen,"\n");
-	}
-	
-	public void declComptAtt(String methode){
-		Ecriture.ecrireString(FichierGen,"private ");
-		Ecriture.ecrireString(FichierGen,"int ");
-		Ecriture.ecrireString(FichierGen,methode+"_"+"att ");
-		Ecriture.ecrireString(FichierGen,"= 0;");
-		Ecriture.ecrireString(FichierGen,"\n");
-	}
-	
-	public String consExprbool(String identLu, String exprBool, boolean notCondition, boolean isExprBool){
+
+	/**
+	 * Concatenation of the boolean expression of a condition 
+	 * @param ident the identifier red 
+	 * @param exprBool boolean expression
+	 * @param notCondition boolean check if it is a part of a condition expression
+	 * @param isExprBool boolean check if it is a part of a boolean expression
+	 * @return the expression concatenated
+	 */
+	public String consExprbool(String ident , String exprBool, boolean notCondition, boolean isExprBool){
 		if(!notCondition )
-	  		recopier(identLu);
+	  		rewrite(ident);
 		
 		if(isExprBool){
-			exprBool+=identLu+ " ";
+			exprBool+=ident+ " ";
 		}
 			return exprBool;
 			
 	}
 	
-	public void recopierNotCondition(String identLu, boolean flag){
-		if(!flag) recopier(identLu);
+	/**
+	 * Rewrite identifier which is not a part of a condition
+	 * @param ident
+	 * @param flag
+	 */
+	public void rewriteNotCondition(String ident, boolean flag){
+		if(!flag) rewrite(ident);
 	}
 	
-	public void recopier(String identLu){
-		Ecriture.ecrireString(FichierGen,identLu);
+	public void rewrite(String ident){
+		Ecriture.ecrireString(FichierGen,ident);
 	}
 	
-	public void recopierInt(int entierLu){
+	public void rewriteInt(int entierLu){
 		Ecriture.ecrireInt(FichierGen,entierLu);
 	}
 	
-	public void declMethodeBool(String methode, String exprBool){
+	/**
+	 * Generate the code of the declaration of the methods of the condition
+	 * @param method the name of the condition identifier
+	 * @param exprBool the boolean expression
+	 */
+	public void declMethodBool(String method, String exprBool){
 		Ecriture.ecrireString(FichierGen,"public ");
 		Ecriture.ecrireString(FichierGen,"boolean ");
-		Ecriture.ecrireString(FichierGen,"cond_"+methode+"(){\n\t\t");
+		Ecriture.ecrireString(FichierGen,"cond_"+method+"(){\n\t\t");
 		Ecriture.ecrireString(FichierGen,"return "+"("+exprBool+")");
 		Ecriture.ecrireString(FichierGen,";\n\t}\n");
 		
 	}
-	
-	public void declSynchronizedAvant(String methode,TabIdent t){
+
+	/**
+	 * Generate the code of the first block synchronized before the instructions of the method
+	 * @param method the name of the condition identifier
+	 * @param t the table of identifiers
+	 */
+	public void declFirstBlockSynchronized(String method,TabIdent t){
 		
-		String compteur;
-		Ident ident = new Ident(methode);
-		ident = t.chercheIdent(methode);
+		String counter;
+		Ident ident = new Ident(method);
+		ident = t.searchIdent(method);
+		counter=ident.getName()+"_act";
 		
 		Ecriture.ecrireString(FichierGen,"\n\t\t synchronized(this){ \n\t\t\t");
-
 		Ecriture.ecrireString(FichierGen,"while(!");
-		Ecriture.ecrireString(FichierGen,"cond_"+methode+"()){\n\t\t\t\t");
+		Ecriture.ecrireString(FichierGen,"cond_"+method+"()){\n\t\t\t\t");
 		Ecriture.ecrireString(FichierGen,"this.wait();\n\t\t\t\t}\n\t\t\t");
-		
-			compteur=ident.getNom()+"_act";
-			Ecriture.ecrireString(FichierGen,compteur+"++ ;\n\t\t\t");
+		Ecriture.ecrireString(FichierGen,counter+"++ ;\n\t\t\t");
 			
-			if(t.verifCompteur(compteur).containType(Type.SUPERIEUR)
-			   ||t.verifCompteur(compteur).containType(Type.SUPEGAL)){
+		if(t.checkCounter(counter).containType(Type.SUP)||
+		   t.checkCounter(counter).containType(Type.SUPEQUAL)){
 				Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t");
 			}else{
 				Ecriture.ecrireString(FichierGen,"\n\t\t\t}\n\t\t");
@@ -134,19 +129,25 @@ public class Generation implements Type{
 		
 		
 	}
-	
-	public void declSynchronizedApres(String methode, TabIdent t){
+
+	/**
+	 * Generate the code of the second block synchronized after the instructions of the method
+	 * @param method the name of the condition identifier
+	 * @param t the table of identifiers
+	 */
+	public void declSecondBlockSynchronized(String method, TabIdent t){
 		
 		String compteur;
-		Ident ident = new Ident(methode);
-		ident = t.chercheIdent(methode);
+		Ident ident = new Ident(method);
+		ident = t.searchIdent(method);
+		compteur=ident.getName()+"_act";
+		
 		Ecriture.ecrireString(FichierGen,"synchronized(this){ \n\t\t\t");
-
-		compteur=ident.getNom()+"_act";
 		Ecriture.ecrireString(FichierGen,compteur+"-- ;\n\t\t\t}");
-		if(t.verifCompteur(compteur).containType(Type.EGALITE) 
-		   || t.verifCompteur(compteur).containType(Type.INFERIEUR)
-		   || t.verifCompteur(compteur).containType(Type.INFEGAL)){
+		
+		if(t.checkCounter(compteur).containType(Type.EQUAL) || 
+		   t.checkCounter(compteur).containType(Type.INF)   || 
+		   t.checkCounter(compteur).containType(Type.INFEQUAL)){
 			Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t");
 		}else{
 			Ecriture.ecrireString(FichierGen,"\n\t\t\t}\n\t\t");

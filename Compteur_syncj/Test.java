@@ -22,5 +22,4 @@ public class LecteurRedacteur{
 		tab_red=(tab_red+1)%TAILLE;
 	}
 	
-
 }
