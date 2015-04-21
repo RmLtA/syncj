@@ -42,6 +42,8 @@ public class JavaParser implements Type
 	
 	public static TabIdent tabIdent = new TabIdent(100);
 	
+	public static ErrorTreatment error = new ErrorTreatment();
+	
 	/* check if it is not a part of a condition*/
 	public static boolean notCondition = false;
 	
@@ -381,6 +383,14 @@ TOKEN :
   < IDENTIFIER: <LETTER> (<LETTER>|<DIGIT>)* > 
   {
   		identLu = image.toString();
+  	try {
+  		if(JavaParser.isExprBool == false){
+  			JavaParser.error.checkIdent(JavaParserTokenManager.identLu, Token.beginLine);
+  		}	
+  	} catch (CounterException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
   	/*Recognition of the method bounded to a condition*/
   	if (JavaParser.tabIdent.existIdent(JavaParserTokenManager.identLu, Token.beginLine)){
   		JavaParser.testMethode = JavaParserTokenManager.identLu;
@@ -393,6 +403,7 @@ TOKEN :
   	
   	/*Construction of the boolean expression*/
   	JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);		
+  
   }
 |
   < #LETTER:

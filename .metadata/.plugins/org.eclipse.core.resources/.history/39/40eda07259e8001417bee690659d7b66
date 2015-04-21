@@ -1,0 +1,19 @@
+Public classe ReaderWriter{
+Private final int size = 10 ; 
+Private string tab[] = new string [size] ;
+Private int index_writer=0 ;
+ Private int index_reader=0 ;
+
+Condition read(write.act==0) ;
+Condition write(read.act==0 && write.act==0) ;
+
+Public String read(){
+String s = tab[index_reader] ;
+index_reader=( index_reader+1)%size ;
+return s ;
+}
+Public void write(String s){
+tab[index_writer]=s ;
+index_writer=( index_writer+1)%size ;
+}
+}

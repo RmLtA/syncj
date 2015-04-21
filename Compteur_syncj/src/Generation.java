@@ -1,3 +1,4 @@
+
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Stack;
@@ -12,7 +13,7 @@ public class Generation implements Type{
 	private ArrayList<String> buffer;
 	
 	public Generation(){
-		FichierGen=Ecriture.ouvrir("result.java");
+		FichierGen=Ecriture.ouvrir("resultContainSync.java");
 		buffer = new ArrayList<String>(); 
 	}
 	
@@ -50,6 +51,11 @@ public class Generation implements Type{
 		Ecriture.ecrireString(FichierGen,"= 0;");
 		Ecriture.ecrireString(FichierGen,"\n");
 	}
+	
+	public void writeAcc(){
+		Ecriture.ecrireString(FichierGen,"\t}");
+	}
+
 	
 
 	/**
@@ -94,7 +100,7 @@ public class Generation implements Type{
 	 * @param exprBool the boolean expression
 	 */
 	public void declMethodBool(String method, String exprBool){
-		Ecriture.ecrireString(FichierGen,"public ");
+		Ecriture.ecrireString(FichierGen,"\tpublic ");
 		Ecriture.ecrireString(FichierGen,"boolean ");
 		Ecriture.ecrireString(FichierGen,"cond_"+method+"(){\n\t\t");
 		Ecriture.ecrireString(FichierGen,"return "+"("+exprBool+")");
@@ -117,14 +123,14 @@ public class Generation implements Type{
 		Ecriture.ecrireString(FichierGen,"\n\t\t synchronized(this){ \n\t\t\t");
 		Ecriture.ecrireString(FichierGen,"while(!");
 		Ecriture.ecrireString(FichierGen,"cond_"+method+"()){\n\t\t\t\t");
-		Ecriture.ecrireString(FichierGen,"this.wait();\n\t\t\t\t}\n\t\t\t");
+		Ecriture.ecrireString(FichierGen,"this.wait();\n\t\t\t}\n\t\t\t");
 		Ecriture.ecrireString(FichierGen,counter+"++ ;\n\t\t\t");
 			
 		if(t.checkCounter(counter).containType(Type.SUP)||
 		   t.checkCounter(counter).containType(Type.SUPEQUAL)){
 				Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t");
 			}else{
-				Ecriture.ecrireString(FichierGen,"\n\t\t\t}\n\t\t");
+				Ecriture.ecrireString(FichierGen,"\n\t\t}\n\t\t");
 			}
 		
 		
@@ -142,16 +148,16 @@ public class Generation implements Type{
 		ident = t.searchIdent(method);
 		compteur=ident.getName()+"_act";
 		
-		Ecriture.ecrireString(FichierGen,"synchronized(this){ \n\t\t\t");
-		Ecriture.ecrireString(FichierGen,compteur+"-- ;\n\t\t\t}");
+		Ecriture.ecrireString(FichierGen,"\n\t\tsynchronized(this){ \n\t\t\t");
+		Ecriture.ecrireString(FichierGen,compteur+"-- ;\n\t\t\t");
 		
 		if(t.checkCounter(compteur).containType(Type.EQUAL) || 
 		   t.checkCounter(compteur).containType(Type.INF)   || 
 		   t.checkCounter(compteur).containType(Type.INFEQUAL)){
-			Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t");
-		}else{
-			Ecriture.ecrireString(FichierGen,"\n\t\t\t}\n\t\t");
+			Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t");
 		}
+			Ecriture.ecrireString(FichierGen,"\n\t\t}");
+		
 			
 		
 	}

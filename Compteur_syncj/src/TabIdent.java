@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -99,7 +100,12 @@ public class TabIdent {
 		Ident id = searchIdent(methode);
 		System.out.println("Counters of the condition : ");
 		for(int i =0; i<id.counter.size(); i++){
-			System.out.println(id.counter.get(i).getName()+"\n");
+			if(id.counter.get(i).getName().contains("_act") || id.counter.get(i).getName().contains("_att") || id.counter.get(i).getName().contains("_req") || id.counter.get(i).getName().contains("_term") || id.counter.get(i).getName().contains("_aut")){
+				System.out.println(id.counter.get(i).getName()+"\n");
+			}else{
+				System.err.println("ERROR : Invalide counter name ");
+			}
+			
 		}
 	}
 
@@ -127,7 +133,7 @@ public class TabIdent {
 	 * Add a counter in the buffer
 	 * @param counter
 	 */
-	public void addCounter(String counter){	
+	public void addCounter(String counter){
 		buffer.add(counter);
 	}
 	

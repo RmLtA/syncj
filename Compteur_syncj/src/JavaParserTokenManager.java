@@ -2062,6 +2062,14 @@ void TokenLexicalActions(Token matchedToken)
       case 75 :
         image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
                 identLu = image.toString();
+        try {
+                if(JavaParser.isExprBool == false){
+                        JavaParser.error.checkIdent(JavaParserTokenManager.identLu, Token.beginLine);
+                }
+        } catch (CounterException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+        }
         /*Recognition of the method bounded to a condition*/
         if (JavaParser.tabIdent.existIdent(JavaParserTokenManager.identLu, Token.beginLine)){
                 JavaParser.testMethode = JavaParserTokenManager.identLu;

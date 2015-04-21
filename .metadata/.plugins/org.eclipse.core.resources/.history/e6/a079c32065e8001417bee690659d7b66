@@ -1,0 +1,21 @@
+package syncj;
+
+public class ErrorTreatment extends CounterException{
+
+	public void checkIdent(String expr) throws CounterException{
+		if(expr.contains("_att")){
+			System.err.println("");
+			new CounterException();
+		}
+		
+		if(expr.contains("_act")){
+			new CounterException();
+		}
+		
+		if(expr.contains("_term")){
+			new CounterException();
+		}
+		
+		
+	}
+}

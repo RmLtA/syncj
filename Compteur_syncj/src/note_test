@@ -1,7 +1,9 @@
-faire des exemples bêtes
-des exemples correctes
-voir ce qu'on fait si quelqu'un s'amuse à utiliser nos compteurs
+
+
 sujet de TP --> objectif faire l'objet d'un TP
 
 penser aux tests du parallélisme
 penser à la démo
+
+Cas d'erreur : déclaration de faux compteur write_xxx --> le programme ajoute write_act dans le buffer ça c'est OK
+mais dans la méthode condition c'est write_act qui est rajouté !!!
