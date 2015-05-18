@@ -1,0 +1,7 @@
+
+public class Reader extends Thread{
+	public Reader(String name){
+		super(name);
+	}
+
+}

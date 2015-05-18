@@ -1,0 +1,22 @@
+
+public class Reader extends Thread{
+	public Reader(String name){
+		super(name);
+	}
+	
+	public void run(){
+		ReaderWriter test = new ReaderWriter();
+		int i = 0;
+		while(true){
+			try {
+				i++;
+				test.write("element1");
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+	}
+
+}

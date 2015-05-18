@@ -1,0 +1,24 @@
+
+
+public class Writer extends Thread{
+	ReaderWriter rwt;
+	public Writer(String name,ReaderWriter rw){
+		super(name);
+		rwt = rw;
+	}
+	
+	public void run(){
+		int i = 0;
+		while(true){
+			try {
+				i++;
+				rwt.write("element "+i);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+	}
+
+}

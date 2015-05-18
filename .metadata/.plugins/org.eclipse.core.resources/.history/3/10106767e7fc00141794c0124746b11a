@@ -1,0 +1,14 @@
+
+public class Reader extends Thread{
+	public Reader(String name){
+		super(name);
+	}
+	
+	public void run(){
+		while(true){
+			test.write("element1");
+
+		}
+	}
+
+}

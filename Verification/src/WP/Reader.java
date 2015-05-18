@@ -1,0 +1,24 @@
+package WP;
+
+
+public class Reader extends Thread {
+	private ReaderWriter buf;
+	private int identité;
+	
+	public Reader(ReaderWriter c, int n) {
+		buf = c; 
+		this.identité = n;
+	}
+	public void run() {
+		while(true){
+			try {
+				System.out.println("Consommateur #" + this.identité + " lit : " + buf.read());
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+		}
+
+	}
+}
+

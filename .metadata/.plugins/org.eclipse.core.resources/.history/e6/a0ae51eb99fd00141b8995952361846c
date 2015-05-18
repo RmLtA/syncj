@@ -1,0 +1,20 @@
+
+
+sujet de TP --> objectif faire l'objet d'un TP
+
+penser aux tests du parallélisme
+penser à la démo
+
+Cas d'erreur : 
+1- déclaration de faux compteur write_xxx --> le programme ajoute write_act dans le buffer ça c'est OK
+mais dans la méthode condition c'est write_act qui est rajouté !!!
+
+2- adding throws declaration in the method
+
+3- bonne usage : 
+	ne pas oublier le constructeur 
+	faire un display pour voir l'état du tableau
+
+4- index_writer index_reader tab sont en publics static
+
+------> faire les tests pas à pas
