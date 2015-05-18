@@ -1,6 +1,0 @@
-
-public interface Constant {
-	public int EGALITE = 1;
-	public int INFERIEUR = 1;
-	public int SUPERIEUR = 1;
-}

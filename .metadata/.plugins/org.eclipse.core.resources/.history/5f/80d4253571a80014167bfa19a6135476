@@ -1,8 +1,0 @@
-import java.util.ArrayList;
-
-
-public class Ident {
-	public String nom;
-	public ArrayList<Integer> param = new ArrayList<Integer>();
-
-}

@@ -1,7 +1,0 @@
-
-public class CounterException extends Exception{
-
-	public CounterException(){
-		super();
-	}
-}

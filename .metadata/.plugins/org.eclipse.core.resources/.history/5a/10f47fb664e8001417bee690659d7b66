@@ -1,8 +1,0 @@
-package syncj;
-
-public class ErrorTreatment extends CounterException{
-
-	public void checkIdent(String expr) throws CounterException{
-		
-	}
-}

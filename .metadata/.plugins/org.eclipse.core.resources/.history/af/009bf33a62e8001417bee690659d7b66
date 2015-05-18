@@ -1,5 +1,0 @@
-
-public class ErrorTreatmentException extends Exception {
-
-	public Error
-}
