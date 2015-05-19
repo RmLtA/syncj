@@ -37,6 +37,15 @@ public class Ident {
 		return counter.size();
 	}
 	
+	public boolean existCounter(String c){
+		for(int i = 0; i<getsizeTabCounter(); i++){
+			if( getCounter(i).getName().equals(c)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 
 
 }

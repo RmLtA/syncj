@@ -114,24 +114,57 @@ public class Generation implements Type{
 	 * @param t the table of identifiers
 	 */
 	public void declFirstBlockSynchronized(String method,TabIdent t){
-		
+		System.err.println("Methode a tester : "+method);
 		String counter;
 		Ident ident = new Ident(method);
 		ident = t.searchIdent(method);
-		counter=ident.getName()+"_act";
+		
+		System.err.println("condition att : "+t.existCounter(ident.getName()+"_att"));
+		if(t.existCounter(ident.getName()+"_att")){
+			update_att_inc(ident.getName());
+			counter=ident.getName()+"_att";
+			generateNotifyForSup(counter,t);
+		}
+		
 		
 		Ecriture.ecrireString(FichierGen,"\n\t\t synchronized(this){ \n\t\t\t");
+		System.err.println("condition req : "+t.existCounter(ident.getName()+"_req"));
+		if(t.existCounter(ident.getName()+"_req")){
+			update_req_inc(ident.getName());
+			counter=ident.getName()+"_req";
+			generateNotifyForSup(counter,t);
+			
+		}
+		
+		
 		Ecriture.ecrireString(FichierGen,"while(!");
 		Ecriture.ecrireString(FichierGen,"cond_"+method+"()){\n\t\t\t\t");
 		Ecriture.ecrireString(FichierGen,"this.wait();\n\t\t\t}\n\t\t\t");
-		Ecriture.ecrireString(FichierGen,counter+"++ ;\n\t\t\t");
-			
-		if(t.checkCounter(counter).containType(Type.SUP)||
-		   t.checkCounter(counter).containType(Type.SUPEQUAL)){
-				Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t\t}\n\t\t");
-			}else{
-				Ecriture.ecrireString(FichierGen,"\n\t\t}\n\t\t");
-			}
+		
+		System.err.println("condition "+ident.getName()+"_aut"+" : "+t.existCounter(ident.getName()+"_aut"));
+		if(t.existCounter(ident.getName()+"_aut")){
+			update_req_inc(ident.getName());
+			counter=ident.getName()+"_aut";
+			generateNotifyForSup(counter,t);
+		}
+		
+		System.err.println("condition "+ident.getName()+"_att"+" : "+t.existCounter(ident.getName()+"_att"));
+		if(t.existCounter(ident.getName()+"_att")){
+			update_att_dec(ident.getName());
+			counter=ident.getName()+"_att";
+			generateNotifyForInf(counter,t);
+		}
+		
+		System.err.println("condition "+ident.getName()+"_act"+" : "+t.existCounter(ident.getName()+"_act"));
+		
+		if(t.existCounter(ident.getName()+"_act")){
+			update_act_inc(ident.getName());
+			counter=ident.getName()+"_act";
+			generateNotifyForSup(counter,t);
+		}
+		
+		Ecriture.ecrireString(FichierGen,"\n\t\t}\n\t\t");
+	
 		
 		
 	}
@@ -143,20 +176,25 @@ public class Generation implements Type{
 	 */
 	public void declSecondBlockSynchronized(String method, TabIdent t){
 		
-		String compteur;
+		String counter;
 		Ident ident = new Ident(method);
 		ident = t.searchIdent(method);
-		compteur=ident.getName()+"_act";
+
 		
 		Ecriture.ecrireString(FichierGen,"\n\t\tsynchronized(this){ \n\t\t\t");
-		Ecriture.ecrireString(FichierGen,compteur+"-- ;\n\t\t\t");
-		
-		if(t.checkCounter(compteur).containType(Type.EQUAL) || 
-		   t.checkCounter(compteur).containType(Type.INF)   || 
-		   t.checkCounter(compteur).containType(Type.INFEQUAL)){
-			Ecriture.ecrireString(FichierGen,"this.notifyAll();\n\t\t");
+		if(t.existCounter(ident.getName()+"_term")){
+			update_act_inc(ident.getName());
+			counter=ident.getName()+"_term";
+			generateNotifyForSup(counter,t);
 		}
-			Ecriture.ecrireString(FichierGen,"\n\t\t}");
+		
+		if(t.existCounter(ident.getName()+"_act")){
+			update_act_dec(ident.getName());
+			counter=ident.getName()+"_act";
+			generateNotifyForInf(counter,t);
+		}
+		
+		Ecriture.ecrireString(FichierGen,"\n\t\t}");
 		
 	}
 	
@@ -171,6 +209,50 @@ public class Generation implements Type{
 			Ecriture.ecrireString(FichierGen," throws InterruptedException");
 		}
 
+	}
+	
+	public void generateNotifyForSup(String counter, TabIdent t){
+		if(t.checkCounter(counter).containType(Type.SUP)||t.checkCounter(counter).containType(Type.SUPEQUAL)){
+			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
+		}
+	}
+	
+	public void generateNotifyForInf(String counter, TabIdent t){
+		if(t.checkCounter(counter).containType(Type.EQUAL) || t.checkCounter(counter).containType(Type.INF)   || t.checkCounter(counter).containType(Type.INFEQUAL)){
+			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t\t");
+		}
+	}
+	
+	public void update_act_inc(String ident){
+		Ecriture.ecrireString(FichierGen," "+ident+"_act++;\n\t\t");
+	}
+	
+	public void update_act_dec(String ident){
+		Ecriture.ecrireString(FichierGen," "+ident+"_act--;\n\t\t");
+	}
+
+	public void update_att_inc(String ident){
+		Ecriture.ecrireString(FichierGen,"\n\t\t"+ident+"_att++;\n\t\t");
+	}
+	
+	public void update_att_dec(String ident){
+		Ecriture.ecrireString(FichierGen," "+ident+"_att--;\n\t\t");
+	}
+	
+	public void update_aut_inc(String ident){
+		Ecriture.ecrireString(FichierGen," "+ident+"_aut++;\n\t\t");
+	}
+	
+	public void update_aut_dec(String ident){
+		Ecriture.ecrireString(FichierGen," "+ident+"_aut--;\n\t\t");
+	}
+	
+	public void update_req_inc(String ident){
+		Ecriture.ecrireString(FichierGen," "+ident+"_req++;\n\t\t");
+	}
+	
+	public void update_term_dec(String ident){
+		Ecriture.ecrireString(FichierGen," "+ident+"_term++;\n\t\t");
 	}
 	
 	

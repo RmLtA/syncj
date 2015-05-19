@@ -2330,8 +2330,11 @@ public class JavaParser implements Type, JavaParserConstants {
       BlockStatement();
     }
                 JavaParser.flagCond = false;
-
-
+                //System.err.println("testMethode : "+JavaParser.testMethode);
+                //System.err.println("existIdent : "+tabIdent.existIdent(JavaParser.testMethode, Token.beginLine));
+                //System.err.println("flagReturn : "+JavaParser.flagReturn);
+                //System.err.println("syncmethod : "+JavaParser.syncmethod);
+                //System.err.println("comeFromReturn : "+JavaParser.comeFromReturn);  		
                 if(tabIdent.existIdent(JavaParser.testMethode, Token.beginLine) && JavaParser.flagReturn == false && JavaParser.syncmethod == true && JavaParser.comeFromReturn == false){
                         declCompt.declSecondBlockSynchronized(JavaParser.testMethode, tabIdent);
                         declCompt.writeTr();
@@ -3464,6 +3467,17 @@ public class JavaParser implements Type, JavaParserConstants {
     catch(LookaheadSuccess ls) { return true; }
   }
 
+  private boolean jj_3R_254() {
+    if (jj_scan_token(EXTENDS)) return true;
+    if (jj_3R_123()) return true;
+    Token xsp;
+    while (true) {
+      xsp = jj_scanpos;
+      if (jj_3R_266()) { jj_scanpos = xsp; break; }
+    }
+    return false;
+  }
+
   private boolean jj_3R_170() {
     if (jj_scan_token(SWITCH)) return true;
     if (jj_scan_token(LPAREN)) return true;
@@ -3476,17 +3490,6 @@ public class JavaParser implements Type, JavaParserConstants {
       if (jj_3R_282()) { jj_scanpos = xsp; break; }
     }
     if (jj_scan_token(RBRACE)) return true;
-    return false;
-  }
-
-  private boolean jj_3R_254() {
-    if (jj_scan_token(EXTENDS)) return true;
-    if (jj_3R_123()) return true;
-    Token xsp;
-    while (true) {
-      xsp = jj_scanpos;
-      if (jj_3R_266()) { jj_scanpos = xsp; break; }
-    }
     return false;
   }
 

@@ -8,12 +8,13 @@ public class TabIdent {
 	public HashMap<String,Ident> condition;
 	public ArrayList<String> buffer;
 	public ArrayList<Integer> bufferType;
+	public ArrayList<Counter> bufferCounter;
 	
 	public TabIdent() {
 		condition = new HashMap<String,Ident>();
 		buffer = new ArrayList<String>();
 		bufferType = new ArrayList<Integer>();
-
+		bufferCounter = new ArrayList<Counter>();
 	}
 	
 	/**
@@ -57,6 +58,7 @@ public class TabIdent {
 		id.setExprBool(exprb);
 		for (int i = 0; i<buffer.size(); i++){
 			Counter c = new Counter(buffer.get(i), bufferType);
+			bufferCounter.add(c);
 			id.addCompteur(c);
 		}
 		putIdent(n, id, ligne);
@@ -143,6 +145,19 @@ public class TabIdent {
 	 */
 	public void addType(int type){	
 		bufferType.add(type);
+	}
+	
+	public ArrayList<Counter> getbufferCounter(){
+		return bufferCounter;
+	}
+	
+	public boolean existCounter(String c){
+		for(int i=0; i<bufferCounter.size(); i++){
+			if(bufferCounter.get(i).getName().equals(c)){
+				return true;
+			}
+		}
+		return false;
 	}
 		
 	

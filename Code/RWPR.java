@@ -7,13 +7,14 @@ public class ReaderWriter{
 	condition read = (write_act==0) ;
 	condition write = (read_act==0 && write_act==0 && read_att==0) ;
 
+	public void write(String s){
+		tab[index_writer]=s ;
+		index_writer=( index_writer+1)%size ;
+	}
 	public String read(){
 		String s = tab[index_reader] ;
 		index_reader=( index_reader+1)%size ;
 		return s ;
 	}
-	public void write(String s){
-		tab[index_writer]=s ;
-		index_writer=( index_writer+1)%size ;
-	}
+
 }
