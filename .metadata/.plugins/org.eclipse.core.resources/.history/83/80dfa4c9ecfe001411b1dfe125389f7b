@@ -1455,7 +1455,12 @@ void Block():
   	}
   	( BlockStatement() )* 
   	 {
-  		JavaParser.flagCond = false; 		
+  		JavaParser.flagCond = false;
+  		//System.err.println("testMethode : "+JavaParser.testMethode);
+  		//System.err.println("existIdent : "+tabIdent.existIdent(JavaParser.testMethode, Token.beginLine));
+  		//System.err.println("flagReturn : "+JavaParser.flagReturn);
+  		//System.err.println("syncmethod : "+JavaParser.syncmethod);
+  		//System.err.println("comeFromReturn : "+JavaParser.comeFromReturn);  		
   		if(tabIdent.existIdent(JavaParser.testMethode, Token.beginLine) && JavaParser.flagReturn == false && JavaParser.syncmethod == true && JavaParser.comeFromReturn == false){
   			declCompt.declSecondBlockSynchronized(JavaParser.testMethode, tabIdent);
   			declCompt.writeTr();

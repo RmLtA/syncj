@@ -9,6 +9,19 @@
 	</section>
 	<section name="completion_proposal_size">
 	</section>
+	<section name="FatJarPackageWizard">
+		<item value="syncj.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
+		<item value="JavaParser - Code" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
+		<item value="C:\Users\Rasata Liantsoa\Documents\4INFO\Parallelisme\GITHUB\syncj" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
+		<item value="false" key="FatJarPackageWizardPage.ANTSCRIPT_SAVE"/>
+		<item value="1" key="FatJarPackageWizardPage.LIBRARY_HANDLING"/>
+		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="syncj.jar"/>
+		</list>
+		<list key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION_HISTORY">
+			<item value=".xml"/>
+		</list>
+	</section>
 	<section name="quick_assist_proposal_size">
 	</section>
 </section>

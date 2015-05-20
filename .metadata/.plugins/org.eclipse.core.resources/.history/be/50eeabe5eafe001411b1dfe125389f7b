@@ -9,7 +9,6 @@ public class CounterException extends Exception{
 
 	public CounterException(String msg){
 		super();
-		//SYsteme print message
 	}
 
 }

@@ -3,7 +3,7 @@
 public class ErrorTreatment extends CounterException{
 	
 	public ErrorTreatment(){
-		super("Errors detected ... ");
+		super("ERROR");
 	}
 
 	public void checkIdent(String expr, int line) throws CounterException{
