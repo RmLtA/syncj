@@ -3,10 +3,13 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Stack;
 /**
- * 
- * @author 
- * Handle the code generation 
- */
+* <b> SYNCJ Project
+* The purpose of the SYNCJ project is to develop a solution to facilitate the learning of synchronization tools for 4th year programming students from INSA Rennes. 
+* In order to do that, we have implemented the synchronization counters mechanism in JAVA.
+*
+* @author INSA of Rennes students : Nour Romdhane - Liantsoa Rasata - Mathilde Leparquier - Othmane Kabir - Ibrahim Benali
+*/
+
 public class Generation implements Type{
 	
 	private OutputStream FichierGen ;
@@ -49,10 +52,6 @@ public class Generation implements Type{
 		Ecriture.ecrireString(FichierGen,"int ");
 		Ecriture.ecrireString(FichierGen,counter);
 		Ecriture.ecrireString(FichierGen,"= 0;");
-		Ecriture.ecrireString(FichierGen,"\n\t");
-	}
-	
-	public void writeTr(){
 		Ecriture.ecrireString(FichierGen,"\n\t");
 	}
 
@@ -114,12 +113,10 @@ public class Generation implements Type{
 	 * @param t the table of identifiers
 	 */
 	public void declFirstBlockSynchronized(String method,TabIdent t){
-		System.err.println("Methode a tester : "+method);
 		String counter;
 		Ident ident = new Ident(method);
 		ident = t.searchIdent(method);
 		
-		System.err.println("condition att : "+t.existCounter(ident.getName()+"_att"));
 		if(t.existCounter(ident.getName()+"_att")){
 			update_att_inc(ident.getName());
 			counter=ident.getName()+"_att";
@@ -128,7 +125,7 @@ public class Generation implements Type{
 		
 		
 		Ecriture.ecrireString(FichierGen,"\n\t\t synchronized(this){ \n\t\t\t");
-		System.err.println("condition req : "+t.existCounter(ident.getName()+"_req"));
+
 		if(t.existCounter(ident.getName()+"_req")){
 			update_req_inc(ident.getName());
 			counter=ident.getName()+"_req";
@@ -137,25 +134,23 @@ public class Generation implements Type{
 		}
 		
 		
+		
 		Ecriture.ecrireString(FichierGen,"while(!");
 		Ecriture.ecrireString(FichierGen,"cond_"+method+"()){\n\t\t\t\t");
 		Ecriture.ecrireString(FichierGen,"this.wait();\n\t\t\t}\n\t\t\t");
 		
-		System.err.println("condition "+ident.getName()+"_aut"+" : "+t.existCounter(ident.getName()+"_aut"));
 		if(t.existCounter(ident.getName()+"_aut")){
 			update_req_inc(ident.getName());
 			counter=ident.getName()+"_aut";
 			generateNotifyForSup(counter,t);
 		}
 		
-		System.err.println("condition "+ident.getName()+"_att"+" : "+t.existCounter(ident.getName()+"_att"));
 		if(t.existCounter(ident.getName()+"_att")){
 			update_att_dec(ident.getName());
 			counter=ident.getName()+"_att";
 			generateNotifyForInf(counter,t);
 		}
 		
-		System.err.println("condition "+ident.getName()+"_act"+" : "+t.existCounter(ident.getName()+"_act"));
 		
 		if(t.existCounter(ident.getName()+"_act")){
 			update_act_inc(ident.getName());
@@ -210,49 +205,99 @@ public class Generation implements Type{
 		}
 
 	}
-	
+
+	/**
+	 * Generate code after the update of the counter if the type of the counter is SUP or SUPEQUAL or EQUAL
+	 * @param counter : the name of the counter 
+	 * @param t : the table of identifier
+	 */	
 	public void generateNotifyForSup(String counter, TabIdent t){
-		if(t.checkCounter(counter).containType(Type.SUP)||t.checkCounter(counter).containType(Type.SUPEQUAL)){
+		if(t.checkCounter(counter).containType(Type.SUP)||t.checkCounter(counter).containType(Type.SUPEQUAL)||t.checkCounter(counter).containType(Type.EQUAL) ){
 			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
 		}
 	}
 	
+	/**
+	 * Generate code after the update of the counter if the type of the counter is INF or INFEQUAL or EQUAL
+	 * @param counter : the name of the counter 
+	 * @param t : the table of identifier
+	 */	
 	public void generateNotifyForInf(String counter, TabIdent t){
 		if(t.checkCounter(counter).containType(Type.EQUAL) || t.checkCounter(counter).containType(Type.INF)   || t.checkCounter(counter).containType(Type.INFEQUAL)){
 			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t\t");
 		}
 	}
 	
+	/**
+	 * Increment <name>_act
+	 * @param ident : the identifier of a condition
+	 */	
 	public void update_act_inc(String ident){
 		Ecriture.ecrireString(FichierGen," "+ident+"_act++;\n\t\t");
 	}
 	
+	/**
+	 * Decrement <name>_act
+	 * @param ident : the identifier of a condition
+	 */	
 	public void update_act_dec(String ident){
 		Ecriture.ecrireString(FichierGen," "+ident+"_act--;\n\t\t");
 	}
 
+	/**
+	 * Increment <name>_att
+	 * @param ident : the identifier of a condition
+	 */
 	public void update_att_inc(String ident){
 		Ecriture.ecrireString(FichierGen,"\n\t\t"+ident+"_att++;\n\t\t");
 	}
 	
+	/**
+	 * Decrement <name>_att
+	 * @param ident : the identifier of a condition
+	 */
 	public void update_att_dec(String ident){
 		Ecriture.ecrireString(FichierGen," "+ident+"_att--;\n\t\t");
 	}
 	
+	/**
+	 * Increment <name>_aut
+	 * @param ident : the identifier of a condition
+	 */
 	public void update_aut_inc(String ident){
 		Ecriture.ecrireString(FichierGen," "+ident+"_aut++;\n\t\t");
 	}
 	
+	/**
+	 * Decrement <name>_aut
+	 * @param ident : the identifier of a condition
+	 */
 	public void update_aut_dec(String ident){
 		Ecriture.ecrireString(FichierGen," "+ident+"_aut--;\n\t\t");
 	}
 	
+	/**
+	 * Increment <name>_req
+	 * @param ident : the identifier of a condition
+	 */
 	public void update_req_inc(String ident){
 		Ecriture.ecrireString(FichierGen," "+ident+"_req++;\n\t\t");
 	}
 	
+	/**
+	 * Decrement <name>_term
+	 * @param ident : the identifier of a condition
+	 */
 	public void update_term_dec(String ident){
 		Ecriture.ecrireString(FichierGen," "+ident+"_term++;\n\t\t");
+	}
+	
+	/**
+	 * Generate "\n\t"
+	 */
+	
+	public void writeTr(){
+		Ecriture.ecrireString(FichierGen,"\n\t");
 	}
 	
 	

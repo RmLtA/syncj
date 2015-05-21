@@ -8,6 +8,5 @@
 </listAttribute>
 <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="JavaParser"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="ErrorFile.java error.java"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Code"/>
 </launchConfiguration>

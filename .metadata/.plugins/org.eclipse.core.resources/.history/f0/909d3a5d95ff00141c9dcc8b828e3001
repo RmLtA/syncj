@@ -1,0 +1,15 @@
+
+
+public class CounterException extends Exception{
+	
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Launch exception linked to a counter
+	 * @param	String msg : error message
+	 */
+	public CounterException(String msg){
+		super();
+	}
+
+}

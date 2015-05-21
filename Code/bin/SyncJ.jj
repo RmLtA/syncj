@@ -36,6 +36,14 @@ import java.util.ArrayList;
  * Grammar to parse Java version 1.5
  * @author Sreenivasa Viswanadha - Simplified and enhanced for 1.5
  */
+ 
+ /**
+ * <b> Code added in Java for SYNCJ Project 
+ * The purpose of the SYNCJ project is to develop a solution to facilitate the learning of synchronization tools for 4th year programming students from INSA Rennes. 
+ * In order to do that, we have implemented the synchronization counters mechanism in JAVA.
+ *
+ * @author INSA of Rennes students : Nour Romdhane - Liantsoa Rasata - Mathilde Leparquier - Othmane Kabir - Ibrahim Benali
+ */
 public class JavaParser implements Type
 {	
 	
@@ -211,35 +219,35 @@ SKIP :
 
 MORE :
 {
-  "//" {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);} : IN_SINGLE_LINE_COMMENT
+  "//" : IN_SINGLE_LINE_COMMENT
 |
   <"/**" ~["/"]>  { input_stream.backup(1); } : IN_FORMAL_COMMENT
 |
-  "/*" {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);} : IN_MULTI_LINE_COMMENT
+  "/*" : IN_MULTI_LINE_COMMENT
 }
 
 <IN_SINGLE_LINE_COMMENT>
 SPECIAL_TOKEN :
 {
-  <SINGLE_LINE_COMMENT: "\n" | "\r" | "\r\n" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);} : DEFAULT
+  <SINGLE_LINE_COMMENT: "\n" | "\r" | "\r\n" > : DEFAULT
 }
 
 <IN_FORMAL_COMMENT>
 SPECIAL_TOKEN :
 {
-  <FORMAL_COMMENT: "*/" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);} : DEFAULT
+  <FORMAL_COMMENT: "*/" > : DEFAULT
 }
 
 <IN_MULTI_LINE_COMMENT>
 SPECIAL_TOKEN :
 {
-  <MULTI_LINE_COMMENT: "*/" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);} : DEFAULT
+  <MULTI_LINE_COMMENT: "*/" > : DEFAULT
 }
 
 <IN_SINGLE_LINE_COMMENT,IN_FORMAL_COMMENT,IN_MULTI_LINE_COMMENT>
 MORE :
 {
-  < ~[] > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
+  < ~[] > 
 }
 
 /* RESERVED WORDS AND LITERALS */

@@ -2,6 +2,13 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
+/**
+* <b> SYNCJ Project
+* The purpose of the SYNCJ project is to develop a solution to facilitate the learning of synchronization tools for 4th year programming students from INSA Rennes. 
+* In order to do that, we have implemented the synchronization counters mechanism in JAVA.
+*
+* @author INSA of Rennes students : Nour Romdhane - Liantsoa Rasata - Mathilde Leparquier - Othmane Kabir - Ibrahim Benali
+*/
 
 public class TabIdent {
 	
@@ -9,7 +16,10 @@ public class TabIdent {
 	public ArrayList<String> buffer;
 	public ArrayList<Integer> bufferType;
 	public ArrayList<Counter> bufferCounter;
-	
+
+	/**
+	 * Counstructor of the table of ident
+	 */
 	public TabIdent() {
 		condition = new HashMap<String,Ident>();
 		buffer = new ArrayList<String>();
@@ -82,7 +92,7 @@ public class TabIdent {
 	
 	/**
 	 * Display the identifier table
-	 * @param expr !!!!! 
+	 * @param expr : the expression to display 
 	 */
 	public void display(String expr) {
 		System.out.println("\n\nThe identifier table : ");
@@ -126,7 +136,7 @@ public class TabIdent {
 			}
 			
 		}
-		System.out.println("Compteur null");
+		System.out.println("Counter null");
 		return null;
 	}
 	
@@ -147,10 +157,19 @@ public class TabIdent {
 		bufferType.add(type);
 	}
 	
+	/**
+	 * Getter of the buffer of counter of the current identifier
+	 * @return ArrayList<Counter>
+	 */
 	public ArrayList<Counter> getbufferCounter(){
 		return bufferCounter;
 	}
 	
+	/**
+	 * Check if the counter already exists in the buffer of counter
+	 * @param c : the nam of the counter
+	 * @return boolean
+	 */
 	public boolean existCounter(String c){
 		for(int i=0; i<bufferCounter.size(); i++){
 			if(bufferCounter.get(i).getName().equals(c)){

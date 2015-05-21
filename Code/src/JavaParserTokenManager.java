@@ -5,8 +5,7 @@ import java.util.ArrayList;
 /** Token Manager. */
 public class JavaParserTokenManager implements JavaParserConstants
 {
-	public static String identLu;
-
+public static String identLu;
   /** Debug output. */
   public  java.io.PrintStream debugStream = System.out;
   /** Set debug output. */
@@ -2106,8 +2105,6 @@ void TokenLexicalActions(Token matchedToken)
         if (JavaParser.tabIdent.existIdent(JavaParserTokenManager.identLu, Token.beginLine)){
                 JavaParser.testMethode = JavaParserTokenManager.identLu;
                 JavaParser.syncmethod = true;
-
-                System.err.println("methode detectee : "+JavaParser.testMethode+" syncmethod true");
         }
 
         /*Recognition of a counter*/
