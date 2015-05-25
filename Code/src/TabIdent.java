@@ -13,8 +13,11 @@ import java.util.Map.Entry;
 public class TabIdent {
 	
 	public HashMap<String,Ident> condition;
+	
 	public ArrayList<String> buffer;
 	public ArrayList<Integer> bufferType;
+	public ArrayList<Integer> buffersign;
+	
 	public ArrayList<Counter> bufferCounter;
 
 	/**
@@ -67,13 +70,13 @@ public class TabIdent {
 		
 		id.setExprBool(exprb);
 		for (int i = 0; i<buffer.size(); i++){
-			Counter c = new Counter(buffer.get(i), bufferType);
+			Counter c = new Counter(buffer.get(i), bufferType, buffersign.get(i));
 			bufferCounter.add(c);
 			id.addCompteur(c);
 		}
 		putIdent(n, id, ligne);
-		buffer.clear();
-		bufferType.clear();
+		clearAllbuffer();
+
 		
 	}
 	
@@ -106,13 +109,12 @@ public class TabIdent {
 	/**
 	 * Display the counters of a condition
 	 * @param methode the name of the condition
-	 * @param beginLine the line of the source code to display message error
 	 */
-	public void displayCounter(String methode, int beginLine){
+	public void displayCounter(String methode){
 		Ident id = searchIdent(methode);
 		System.out.println("Counters of the condition : ");
 		for(int i =0; i<id.counter.size(); i++){
-			if(id.counter.get(i).getName().contains("_act") || id.counter.get(i).getName().contains("_att") || id.counter.get(i).getName().contains("_req") || id.counter.get(i).getName().contains("_term") || id.counter.get(i).getName().contains("_aut")){
+			if(id.counter.get(i).getName().endsWith("_act") || id.counter.get(i).getName().endsWith("_att") || id.counter.get(i).getName().endsWith("_req") || id.counter.get(i).getName().endsWith("_term") || id.counter.get(i).getName().endsWith("_aut")){
 				System.out.println(id.counter.get(i).getName()+"\n");
 			}else{
 				System.err.println("ERROR : Invalide counter name ");
@@ -142,11 +144,16 @@ public class TabIdent {
 	
 	
 	/**
-	 * Add a counter in the buffer
-	 * @param counter
+	 * Add a counter and sign in the buffer
+	 * @param String counter
+	 * @param boolean afterminus 
 	 */
-	public void addCounter(String counter){
+	public void addCounter(String counter, boolean afterminus){
 		buffer.add(counter);
+		if(afterminus == true)
+			buffersign.add(Sign.MINUS);
+		else
+			buffersign.add(Sign.PLUS);
 	}
 	
 	/**
@@ -167,7 +174,7 @@ public class TabIdent {
 	
 	/**
 	 * Check if the counter already exists in the buffer of counter
-	 * @param c : the nam of the counter
+	 * @param c : the name of the counter
 	 * @return boolean
 	 */
 	public boolean existCounter(String c){
@@ -177,6 +184,16 @@ public class TabIdent {
 			}
 		}
 		return false;
+	}
+	
+	/**
+	 * Clear all the buffers
+	 */
+	public void clearAllbuffer(){
+		buffer.clear();
+		bufferType.clear();
+		buffersign.clear();
+		
 	}
 		
 	

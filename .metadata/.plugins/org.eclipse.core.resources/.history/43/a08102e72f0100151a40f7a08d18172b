@@ -1,0 +1,7 @@
+
+public class ExprBoolException {
+	public ExprBoolException(String msg){
+		super();
+	}
+
+}

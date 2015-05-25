@@ -1,0 +1,13 @@
+
+public class ErrorExprBoolTreatment extends ExprBoolException{
+	
+	public ErrorExprBoolTreatment(String msg) {
+		super(msg);
+
+	}
+
+	public void checkExprBool(int line){
+		throw new ExprBoolException("Boolean expression not allowed. Line :"+line);
+	}
+
+}

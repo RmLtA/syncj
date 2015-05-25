@@ -1,0 +1,20 @@
+
+
+sujet de TP --> objectif faire l'objet d'un TP
+
+penser aux tests du parallélisme
+penser à la démo
+
+Cas d'erreur : 
+1- déclaration de faux compteur write_xxx --> le programme ajoute write_act dans le buffer ça c'est OK
+mais dans la méthode condition c'est write_act qui est rajouté !!!
+
+4- Vendredi 11h00 
+
+5- pour la règle bloc(), il détecte aussi pour un bloc while. methodDeclaration
+
+6- correction counters
+
+7- faire une série de tests sur le programme
+- pas 'évaluation de --i dans l'expression booléenne
+- pas de condition comme suit : c1_act == c3_act 

@@ -1,0 +1,8 @@
+
+public class ExprBoolException extends Throwable{
+	
+	public ExprBoolException(String msg){
+		super();
+	}
+
+}

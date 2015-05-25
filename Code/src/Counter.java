@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Counter {
 	private String name;
 	private ArrayList<Integer> listType;
+	private int sign;
 	
 	/**
 	 * Constructor
@@ -19,9 +20,10 @@ public class Counter {
 	 * @param 	l : list of Type 
 	 */
 	
-	public Counter(String n, ArrayList<Integer> l){
+	public Counter(String n, ArrayList<Integer> l, int s){
 		name=n;
 		listType= new ArrayList<Integer>();
+		sign = s;
 		for(int i=0; i<l.size(); i++){
 			listType.add(l.get(i));
 		}
@@ -34,10 +36,7 @@ public class Counter {
 	 * @return boolean
 	 */
 	public boolean containType(int t){
-		if( this!=null)
-			return listType.contains(t);
-		else
-			return false;
+		return listType.contains(t);
 	}
 	
 	
@@ -55,5 +54,9 @@ public class Counter {
 	 */
 	public String getName(){
 		return name;
+	}
+	
+	public int getSign(){
+		return sign;
 	}
 }

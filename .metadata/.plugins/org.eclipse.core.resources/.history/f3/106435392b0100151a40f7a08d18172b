@@ -1,0 +1,31 @@
+
+public class SyncManager {
+	
+	public SyncManager(){}
+
+	/**
+	 * Generate code after the update of the counter if the type of the counter is SUP or SUPEQUAL or EQUAL
+	 * @param counter : the name of the counter 
+	 * @param t : the table of identifier
+	 */	
+	public boolean syncManagerSup(String counter, TabIdent t){
+		if(t.checkCounter(counter).containType(Type.SUP)||t.checkCounter(counter).containType(Type.SUPEQUAL) ){
+			if(t.checkCounter(counter).getSign() == Sign.PLUS)
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Generate code after the update of the counter if the type of the counter is INF or INFEQUAL or EQUAL
+	 * @param counter : the name of the counter 
+	 * @param t : the table of identifier
+	 */	
+	public void generateNotifyForInf(String counter, TabIdent t){
+		if(t.checkCounter(counter).containType(Type.EQUAL) || t.checkCounter(counter).containType(Type.INF)   || t.checkCounter(counter).containType(Type.INFEQUAL)){
+			//Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t\t");
+		}
+	}
+
+	
+}

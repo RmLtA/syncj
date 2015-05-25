@@ -1,7 +1,6 @@
 
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Stack;
 /**
 * <b> SYNCJ Project
 * The purpose of the SYNCJ project is to develop a solution to facilitate the learning of synchronization tools for 4th year programming students from INSA Rennes. 
@@ -14,10 +13,12 @@ public class Generation implements Type{
 	
 	private OutputStream FichierGen ;
 	private ArrayList<String> buffer;
+
 	
 	public Generation(String file){
 		FichierGen=Ecriture.ouvrir(file);
 		buffer = new ArrayList<String>(); 
+
 	}
 	
 	/**
@@ -120,7 +121,7 @@ public class Generation implements Type{
 		if(t.existCounter(ident.getName()+"_att")){
 			update_att_inc(ident.getName());
 			counter=ident.getName()+"_att";
-			generateNotifyForSup(counter,t);
+			generateNotifyInc(counter,t);
 		}
 		
 		
@@ -129,7 +130,7 @@ public class Generation implements Type{
 		if(t.existCounter(ident.getName()+"_req")){
 			update_req_inc(ident.getName());
 			counter=ident.getName()+"_req";
-			generateNotifyForSup(counter,t);
+			generateNotifyInc(counter,t);
 			
 		}
 		
@@ -142,20 +143,20 @@ public class Generation implements Type{
 		if(t.existCounter(ident.getName()+"_aut")){
 			update_req_inc(ident.getName());
 			counter=ident.getName()+"_aut";
-			generateNotifyForSup(counter,t);
+			generateNotifyInc(counter,t);
 		}
 		
 		if(t.existCounter(ident.getName()+"_att")){
 			update_att_dec(ident.getName());
 			counter=ident.getName()+"_att";
-			generateNotifyForInf(counter,t);
+			generateNotifyDec(counter,t);
 		}
 		
 		
 		if(t.existCounter(ident.getName()+"_act")){
 			update_act_inc(ident.getName());
 			counter=ident.getName()+"_act";
-			generateNotifyForSup(counter,t);
+			generateNotifyInc(counter,t);
 		}
 		
 		Ecriture.ecrireString(FichierGen,"\n\t\t}\n\t\t");
@@ -180,13 +181,13 @@ public class Generation implements Type{
 		if(t.existCounter(ident.getName()+"_term")){
 			update_act_inc(ident.getName());
 			counter=ident.getName()+"_term";
-			generateNotifyForSup(counter,t);
+			generateNotifyInc(counter,t);
 		}
 		
 		if(t.existCounter(ident.getName()+"_act")){
 			update_act_dec(ident.getName());
 			counter=ident.getName()+"_act";
-			generateNotifyForInf(counter,t);
+			generateNotifyDec(counter,t);
 		}
 		
 		Ecriture.ecrireString(FichierGen,"\n\t\t}");
@@ -207,26 +208,36 @@ public class Generation implements Type{
 	}
 
 	/**
-	 * Generate code after the update of the counter if the type of the counter is SUP or SUPEQUAL or EQUAL
+	 * Generate code after the incrementation of the counter 
 	 * @param counter : the name of the counter 
 	 * @param t : the table of identifier
 	 */	
-	public void generateNotifyForSup(String counter, TabIdent t){
-		if(t.checkCounter(counter).containType(Type.SUP)||t.checkCounter(counter).containType(Type.SUPEQUAL)||t.checkCounter(counter).containType(Type.EQUAL) ){
+	public void generateNotifyInc(String counter, TabIdent t){
+		if((t.checkCounter(counter).containType(Type.SUP) && t.checkCounter(counter).getSign() == Sign.PLUS)
+				|| (t.checkCounter(counter).containType(Type.SUPEQUAL) && t.checkCounter(counter).getSign() == Sign.PLUS)
+				|| (t.checkCounter(counter).containType(Type.INFEQUAL) && t.checkCounter(counter).getSign() == Sign.MINUS)
+				|| (t.checkCounter(counter).containType(Type.INF) && t.checkCounter(counter).getSign() == Sign.MINUS)){
+			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
+		}
+
+	}
+	
+	
+	/**
+	 * Generate code after the decrementation of the counter 
+	 * @param counter : the name of the counter 
+	 * @param t : the table of identifier
+	 */	
+	public void generateNotifyDec(String counter, TabIdent t){
+		if((t.checkCounter(counter).containType(Type.SUP) && t.checkCounter(counter).getSign() == Sign.MINUS)
+				|| (t.checkCounter(counter).containType(Type.SUPEQUAL) && t.checkCounter(counter).getSign() == Sign.MINUS)
+				|| (t.checkCounter(counter).containType(Type.INFEQUAL) && t.checkCounter(counter).getSign() == Sign.PLUS)
+				|| (t.checkCounter(counter).containType(Type.INF) && t.checkCounter(counter).getSign() == Sign.PLUS)){
 			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
 		}
 	}
 	
-	/**
-	 * Generate code after the update of the counter if the type of the counter is INF or INFEQUAL or EQUAL
-	 * @param counter : the name of the counter 
-	 * @param t : the table of identifier
-	 */	
-	public void generateNotifyForInf(String counter, TabIdent t){
-		if(t.checkCounter(counter).containType(Type.EQUAL) || t.checkCounter(counter).containType(Type.INF)   || t.checkCounter(counter).containType(Type.INFEQUAL)){
-			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t\t");
-		}
-	}
+	
 	
 	/**
 	 * Increment <name>_act
@@ -299,8 +310,6 @@ public class Generation implements Type{
 	public void writeTr(){
 		Ecriture.ecrireString(FichierGen,"\n\t");
 	}
-	
-	
 	
 	
 	

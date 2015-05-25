@@ -1,0 +1,6 @@
+
+public interface Sign {
+	public int MINUS = 1;
+	public int ADD = 2;
+
+}

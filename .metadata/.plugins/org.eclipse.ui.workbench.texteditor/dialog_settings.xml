@@ -13,18 +13,19 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="MethodDecla" key="selection"/>
+		<item value="LETTER" key="selection"/>
 		<list key="findhistory">
-			<item value="MethodDecla"/>
-			<item value="Block"/>
-			<item value="Methode a tester"/>
-			<item value="methodDe"/>
-			<item value="method"/>
-			<item value="system.err"/>
-			<item value="system.out"/>
-			<item value=".err."/>
+			<item value="LETTER"/>
+			<item value="DIGIT"/>
+			<item value="TOKEN"/>
+			<item value="addType"/>
+			<item value="displayCounter"/>
+			<item value="_dec"/>
+			<item value="++"/>
+			<item value="addCounter"/>
 		</list>
 		<list key="replacehistory">
+			<item value=".isCondition"/>
 		</list>
 	</section>
 </section>

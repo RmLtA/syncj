@@ -54,7 +54,7 @@ public class JavaParser implements Type
 	public static TabIdent tabIdent = new TabIdent();
 	
 	/* check if it is not a part of a condition*/
-	public static boolean notCondition = false;
+	public static boolean isCondition = false;
 	
 	/* check if it is a part of a condition and an boolean expression*/
 	public static boolean isExprBool = false;
@@ -72,6 +72,7 @@ public class JavaParser implements Type
     public static boolean comeFromReturn = false;
     public static boolean throwDeclaration = false;
     public static boolean brace = true;
+    public static boolean isMethodDeclaration = false;
 
    /**
     * Class to hold modifiers.
@@ -206,11 +207,11 @@ PARSER_END(JavaParser)
 
 SKIP :
 {
-  " " {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| "\t" {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| "\n" {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| "\r" {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| "\f" {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
+  " " {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| "\t" {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| "\n" {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| "\r" {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| "\f" {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
 
 
 }
@@ -255,72 +256,72 @@ MORE :
 TOKEN :
 {
 
-  < ABSTRACT: "abstract" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < ASSERT: "assert" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < BOOLEAN: "boolean" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < BREAK: "break" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < BYTE: "byte" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < CASE: "case" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < CATCH: "catch" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < CHAR: "char" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < CLASS: "class" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < CONST: "const" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < CONTINUE: "continue" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < _DEFAULT: "default" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < DO: "do" >{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < DOUBLE: "double" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < ELSE: "else" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < ENUM: "enum" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < EXTENDS: "extends" >{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < FALSE: "false" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < FINAL: "final" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < FINALLY: "finally" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < FLOAT: "float" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < FOR: "for" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < GOTO: "goto" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < IF: "if" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < IMPLEMENTS: "implements" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < IMPORT: "import" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < INSTANCEOF: "instanceof" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < INT: "int" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < INTERFACE: "interface" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < LONG: "long" >{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < NATIVE: "native" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < NEW: "new" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < NULL: "null" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < PACKAGE: "package">{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < PRIVATE: "private" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < PROTECTED: "protected" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < PUBLIC: "public" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
+  < ABSTRACT: "abstract" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < ASSERT: "assert" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < BOOLEAN: "boolean" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < BREAK: "break" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < BYTE: "byte" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < CASE: "case" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < CATCH: "catch" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < CHAR: "char" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < CLASS: "class" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < CONST: "const" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < CONTINUE: "continue" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < _DEFAULT: "default" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < DO: "do" >{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < DOUBLE: "double" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < ELSE: "else" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < ENUM: "enum" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < EXTENDS: "extends" >{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < FALSE: "false" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < FINAL: "final" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < FINALLY: "finally" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < FLOAT: "float" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < FOR: "for" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < GOTO: "goto" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < IF: "if" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < IMPLEMENTS: "implements" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < IMPORT: "import" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < INSTANCEOF: "instanceof" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < INT: "int" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < INTERFACE: "interface" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < LONG: "long" >{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < NATIVE: "native" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < NEW: "new" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < NULL: "null" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < PACKAGE: "package">{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < PRIVATE: "private" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < PROTECTED: "protected" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < PUBLIC: "public" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
 | < RETURN: "return" >{
 		JavaParser.flagReturn = true;
 		JavaParserTokenManager.identLu = image.toString();
 		if(JavaParser.flagReturn == true && JavaParser.syncmethod == true){
   			JavaParser.declCompt.declSecondBlockSynchronized(JavaParser.testMethode, JavaParser.tabIdent);
-  			JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);	
+  			JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);	
   		}else{
-  			JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+  			JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);
   		}
   		JavaParser.flagCond = false;
   		JavaParser.flagReturn = false;
   		JavaParser.comeFromReturn = true;
   		
 	}
-| < SHORT: "short" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < STATIC: "static" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < STRICTFP: "strictfp" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < SUPER: "super" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < SWITCH: "switch" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < SYNCHRONIZED: "synchronized" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < THIS: "this" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < THROW: "throw" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < THROWS: "throws" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < TRANSIENT: "transient" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < TRUE: "true" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < TRY: "try" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < VOID: "void" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < VOLATILE: "volatile" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < WHILE: "while" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
+| < SHORT: "short" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < STATIC: "static" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < STRICTFP: "strictfp" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < SUPER: "super" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < SWITCH: "switch" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < SYNCHRONIZED: "synchronized" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < THIS: "this" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < THROW: "throw" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < THROWS: "throws" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < TRANSIENT: "transient" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < TRUE: "true" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < TRY: "try" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < VOID: "void" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < VOLATILE: "volatile" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < WHILE: "while" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
 | < CONDITION: "condition"> 
 
 
@@ -336,14 +337,20 @@ TOKEN :
       | <OCTAL_LITERAL> (["l","L"])?
   > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 |
   < #DECIMAL_LITERAL: ["1"-"9"] (["0"-"9"])* 
-  > 
+  > {
+  		identLu = image.toString();
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
+  	}
 |
   < #HEX_LITERAL: "0" ["x","X"] (["0"-"9","a"-"f","A"-"F"])+ 
-  > 
+  > {
+  		identLu = image.toString();
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
+  	}
 |
   < #OCTAL_LITERAL: "0" (["0"-"7"])* 
   >
@@ -355,11 +362,14 @@ TOKEN :
       | (["0"-"9"])+ (<EXPONENT>)? ["f","F","d","D"]
   > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 |
   < #EXPONENT: ["e","E"] (["+","-"])? (["0"-"9"])+ 
-  > 
+  > {
+  		identLu = image.toString();
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
+  	}
 |
   < CHARACTER_LITERAL:
       "'"
@@ -374,7 +384,7 @@ TOKEN :
       "'"
   >{
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	} 
 |
   < STRING_LITERAL:
@@ -390,7 +400,7 @@ TOKEN :
       "\""
   >{
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 }
 
@@ -419,11 +429,11 @@ TOKEN :
   	
   	/*Recognition of a counter*/
   	if (JavaParser.isExprBool == true){
-  			JavaParser.tabIdent.addCounter(JavaParserTokenManager.identLu);
+  			JavaParser.tabIdent.addCounter(JavaParserTokenManager.identLu, JavaParser.isAfterMinus);
   	} 
   	
   	/*Construction of the boolean expression*/
-  	JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);		
+  	JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);		
   
   }
 |
@@ -470,164 +480,174 @@ TOKEN :
 
 TOKEN :
 {
-  < LPAREN: "(" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < RPAREN: ")" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
+  < LPAREN: "(" > {JavaParser.isAfterMinus = false;JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < RPAREN: ")" > {  		JavaParser.isAfterMinus = false;JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
 | < LBRACE: "{" > {
 	JavaParserTokenManager.identLu = image.toString();
 	if(JavaParser.brace == true)
-		JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
+		JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
 | < RBRACE: "}" > {
 			JavaParserTokenManager.identLu = image.toString();
 			if(JavaParser.flagCond == false && JavaParser.flagReturn == false){
-				JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+				JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);
 			}
 	}
-| < LBRACKET: "[" >{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < RBRACKET: "]" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < SEMICOLON: ";" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < COMMA: "," > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < DOT: "." > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < AT: "@" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
+| < LBRACKET: "[" >{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < RBRACKET: "]" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < SEMICOLON: ";" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < COMMA: "," > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < DOT: "." > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < AT: "@" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
 }
 
 /* OPERATORS */
 
 TOKEN :
 {
-  < ASSIGN: "=" >{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < LT: "<" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < BANG: "!" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < TILDE: "~" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < HOOK: "?" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
-| < COLON: ":" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
+  < ASSIGN: "=" >{JavaParser.isAfterMinus = false;JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < LT: "<" > {JavaParser.isAfterMinus = false;JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < BANG: "!" > {JavaParser.isAfterMinus = false;JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < TILDE: "~" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < HOOK: "?" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < COLON: ":" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
 | < EQ: "==" > 
 	{
+		JavaParser.isAfterMinus = false;
   		identLu = image.toString();
   		if (JavaParser.isExprBool == true){
   			JavaParser.tabIdent.addType(Type.EQUAL);
   		}
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < LE: "<=" > {
+		JavaParser.isAfterMinus = false;
   		identLu = image.toString();
   		if (JavaParser.isExprBool == true){
   			JavaParser.tabIdent.addType(Type.INFEQUAL);
   		}
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < GE: ">=" >{
+		JavaParser.isAfterMinus = false;
   		identLu = image.toString();
   		if (JavaParser.isExprBool == true){
   			JavaParser.tabIdent.addType(Type.SUPEQUAL);
   		}
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < NE: "!=" > {
+		JavaParser.isAfterMinus = false;
   		identLu = image.toString();
   		if (JavaParser.isExprBool == true){
   			JavaParser.tabIdent.addType(Type.DIFF);
   		}
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < SC_OR: "||" > {
+		JavaParser.isAfterMinus = false;
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < SC_AND: "&&" > {
+		JavaParser.isAfterMinus = false;
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < INCR: "++" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < DECR: "--" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < PLUS: "+" > {
+		JavaParser.isAfterMinus = false;
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < MINUS: "-" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.isAfterMinus = true;
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < STAR: "*" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < SLASH: "/" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.isAfterMinus = false;
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < BIT_AND: "&" >{
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < BIT_OR: "|" >{
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < XOR: "^" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < REM: "%" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.isAfterMinus = false;
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < LSHIFT: "<<" >  {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < PLUSASSIGN: "+=" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < MINUSASSIGN: "-=" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < STARASSIGN: "*=" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < SLASHASSIGN: "/=" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < ANDASSIGN: "&=" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < ORASSIGN: "|=" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < XORASSIGN: "^=" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < REMASSIGN: "%=" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < LSHIFTASSIGN: "<<=" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < RSIGNEDSHIFTASSIGN: ">>=" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < RUNSIGNEDSHIFTASSIGN: ">>>=" > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 | < ELLIPSIS: "..." > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.notCondition,JavaParser.isExprBool);
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
 }
 
@@ -646,7 +666,7 @@ TOKEN :
      ((Token.GTToken)matchedToken).realKind = RSIGNEDSHIFT;
      input_stream.backup(1);
   }
-| < GT: ">" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);}
+| < GT: ">" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
 }
 
 
@@ -906,7 +926,8 @@ void MethodDeclaration(int modifiers):
   // Modifiers already matched in the caller!
   [ TypeParameters() ]
   ResultType()
-  MethodDeclarator() 
+  MethodDeclarator()
+  { JavaParser.isMethodDeclaration = true; } 
   [ 
   
   	"throws" {JavaParser.throwDeclaration = true; } NameList() 
@@ -915,14 +936,13 @@ void MethodDeclaration(int modifiers):
   	{
   		if(tabIdent.existIdent(JavaParser.testMethode, Token.beginLine)){
   			declCompt.declThrowsException(JavaParser.throwDeclaration);
-  			declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+  			declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);
   		}
   		JavaParser.throwDeclaration = false;
   		JavaParser.brace = true;	
   	}
-  ( 
-  	Block() | ";" 
-  )
+  ( Block() | ";" )
+  { JavaParser.isMethodDeclaration = false; }
 
 }
 
@@ -1109,7 +1129,7 @@ void AssignmentOperator():
 void condition():{}
 {
 	{
-		notCondition = true;
+		isCondition = true;
 	}
 	<CONDITION> <IDENTIFIER> 
 	{
@@ -1123,13 +1143,13 @@ void condition():{}
 	 ")" {isExprBool = false;} 
 	 ";" 
 	 {
-	 	notCondition = false;
+	 	isCondition = false;
 	 	tabIdent.createIdent(methode,  exprBool, Token.beginLine);	
 	 	declCompt.declInitCount(tabIdent,methode);
 	 	declCompt.declMethodBool(methode, exprBool); 
 	 	
 	 	tabIdent.display(exprBool);
-	 	tabIdent.displayCounter(methode, Token.beginLine);
+	 	tabIdent.displayCounter(methode);
 	 	
 	 	exprBool="";
 	 } 
@@ -1456,7 +1476,7 @@ void Block():
 {
   "{" 
   	{
-	  	if(tabIdent.existIdent(JavaParser.testMethode, Token.beginLine) && JavaParser.syncmethod == true){
+	  	if(tabIdent.existIdent(JavaParser.testMethode, Token.beginLine) && JavaParser.syncmethod == true && JavaParser.isMethodDeclaration == true){
 	  		JavaParser.flagCond = true;
 	  		declCompt.declFirstBlockSynchronized(JavaParser.testMethode, tabIdent);
 	  	}
@@ -1467,7 +1487,7 @@ void Block():
   		if(tabIdent.existIdent(JavaParser.testMethode, Token.beginLine) && JavaParser.flagReturn == false && JavaParser.syncmethod == true && JavaParser.comeFromReturn == false){
   			declCompt.declSecondBlockSynchronized(JavaParser.testMethode, tabIdent);
   			declCompt.writeTr();
-   		  	JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.notCondition);
+   		  	JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);
   			JavaParser.syncmethod = false;
   		}
   		JavaParser.flagReturn = false;
