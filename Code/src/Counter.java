@@ -13,6 +13,7 @@ public class Counter {
 	private String name;
 	private ArrayList<Integer> listType;
 	private int sign;
+	private ArrayList<Integer> equalityBuffer;
 	
 	/**
 	 * Constructor
@@ -20,10 +21,10 @@ public class Counter {
 	 * @param 	l : list of Type 
 	 */
 	
-	public Counter(String n, ArrayList<Integer> l, int s){
+	public Counter(String n, ArrayList<Integer> l){
 		name=n;
 		listType= new ArrayList<Integer>();
-		sign = s;
+		equalityBuffer = new ArrayList<Integer>();
 		for(int i=0; i<l.size(); i++){
 			listType.add(l.get(i));
 		}
@@ -58,5 +59,25 @@ public class Counter {
 	
 	public int getSign(){
 		return sign;
+	}
+	
+	public void setSign(int s){
+		sign = s;
+	}
+	public ArrayList<Integer> getBufferEq(){
+		return equalityBuffer;
+	}
+	
+	public void addEquBuffer(int i){
+		equalityBuffer.add(i);
+	}
+	
+	public boolean allZeroEquBuffer(){
+		for(int i=0; i<equalityBuffer.size();i++){
+			if(equalityBuffer.get(i)!=0){
+				return false;
+			}
+		}
+		return true;
 	}
 }

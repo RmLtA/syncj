@@ -19,6 +19,8 @@ public class TabIdent {
 	public ArrayList<Integer> buffersign;
 	
 	public ArrayList<Counter> bufferCounter;
+	
+	private ArrayList<Integer> bufferEqualityControl;
 
 	/**
 	 * Counstructor of the table of ident
@@ -27,7 +29,9 @@ public class TabIdent {
 		condition = new HashMap<String,Ident>();
 		buffer = new ArrayList<String>();
 		bufferType = new ArrayList<Integer>();
+		buffersign = new  ArrayList<Integer>();
 		bufferCounter = new ArrayList<Counter>();
+		bufferEqualityControl = new ArrayList<Integer>();
 	}
 	
 	/**
@@ -70,7 +74,13 @@ public class TabIdent {
 		
 		id.setExprBool(exprb);
 		for (int i = 0; i<buffer.size(); i++){
-			Counter c = new Counter(buffer.get(i), bufferType, buffersign.get(i));
+			Counter c = new Counter(buffer.get(i), bufferType);
+			if(i<buffersign.size()){
+				c.setSign(buffersign.get(i));
+			}
+			for(int j = 0; j<bufferEqualityControl.size(); j++){
+				c.addEquBuffer(bufferEqualityControl.get(j));
+			}
 			bufferCounter.add(c);
 			id.addCompteur(c);
 		}
@@ -148,20 +158,28 @@ public class TabIdent {
 	 * @param String counter
 	 * @param boolean afterminus 
 	 */
-	public void addCounter(String counter, boolean afterminus){
+	public void addCounter(String counter){
 		buffer.add(counter);
-		if(afterminus == true)
-			buffersign.add(Sign.MINUS);
-		else
-			buffersign.add(Sign.PLUS);
+
 	}
 	
+	public void addSign(boolean afterminus){
+		if(afterminus == true){
+			buffersign.add(Sign.MINUS);
+		}else{
+			buffersign.add(Sign.PLUS);
+		}
+	}
 	/**
 	 * Add a type in the bufferType
 	 * @param type
+	 * @throws ExprBoolException 
 	 */
-	public void addType(int type){	
-		bufferType.add(type);
+	public void addType(int type, int line) throws ExprBoolException{	
+		if(type != Type.DIFF)
+			bufferType.add(type);
+		else
+			throw new ExprBoolException("Boolean expression not allowed. Cannot use type DIFF. Line : "+line);
 	}
 	
 	/**
@@ -186,6 +204,21 @@ public class TabIdent {
 		return false;
 	}
 	
+	public void addRightEltControl(String ident){
+		try { 
+			bufferEqualityControl.add(Integer.parseInt(ident)); 
+		} 
+			catch (Exception e) { 
+			System.err.println("The item on the right of the operator must be an integer"); 
+			try {
+				throw new ExprBoolException("The item on the right of operator must be an integer");
+			} catch (ExprBoolException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
+	
 	/**
 	 * Clear all the buffers
 	 */
@@ -193,6 +226,7 @@ public class TabIdent {
 		buffer.clear();
 		bufferType.clear();
 		buffersign.clear();
+		bufferEqualityControl.clear();
 		
 	}
 		

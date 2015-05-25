@@ -1,23 +1,38 @@
-public class ReaderWriter{
-	private final int size = 10 ; 
-	private string tab[] = new string [size] ;
-	private int index_writer=0 ;
-	private int index_reader =0 ;
 
-	condition read = (write_act==0 && write_att==0) ;
-	condition write = (read_act==0 && write_act==0 ) ;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.OutputStream;
 
-	public void write(){
-		/*faire un truc*/
-	}
-	public int rienavoir(){
-		return 0;
-	}
-	public int read(){
-		return 1;
+
+public class Buffer {
+	/**
+	* Lecteur Redacteur prioritÃ© aux rédacteurs 
+	*/
+	private OutputStream out ;
+	String file;
+	condition write =(read_act == 0 && write_act == 0 );
+	condition read = (write_act == 0 && write_att == 0);
+	public Buffer(String file) throws FileNotFoundException{
+		this.file=file;
+		out=Ecriture.ouvrir(file);
 	}
 
-	public void autrerienafairela(){
+
+	public String read() throws InterruptedException, IOException{
+		BufferedReader in ;
+		in=new BufferedReader(new FileReader(file));
+		String ligne;
+		String contenu ="";
+		while( (ligne =in.readLine())!= null){
+			contenu+=ligne;
+		}
+		return contenu;
+	}
 		
+	public void write(String s) throws InterruptedException{
+		Ecriture.ecrireString(out,s);
 	}
 }
+

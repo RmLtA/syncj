@@ -10,16 +10,10 @@ Cas d'erreur :
 mais dans la méthode condition c'est write_act qui est rajouté !!!
 
 
-5- pour la règle bloc(), il détecte aussi pour un bloc while. methodDeclaration
-
-6- correction counters
-
 7- faire une série de tests sur le programme
 - pas 'évaluation de --i dans l'expression booléenne
 - condition comme suit : 
 	c1_act - c3_act == 0 au lieu de c1_act == c3_act
 	(c2_act - c3_act)-c1_act < 0 au lieu de (c2_act - c3_act)<c1_act ou c1_act>(c2_act - c3_act)
-	
-8- Si c'est une expression booléenne, après une comparaison l'ident suivant doit ête un nombre entier --< DIGIT || INTEGER
 
-9- cas du == 
+9- test de l'entier à droite de l'opérateur <-- Exception

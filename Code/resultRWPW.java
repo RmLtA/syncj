@@ -1,54 +1,76 @@
-public class ReaderWriter{
-	private final int size = 10 ; 
-	private string tab[] = new string [size] ;
-	private int index_writer=0 ;
-	private int index_reader =0 ;
 
-	private int write_act= 0;
-private int write_att= 0;
-	public boolean cond_read(){
-		return (write_act == 0 && write_att == 0 );
-	}
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.OutputStream;
 
+
+public class Buffer {
+	
+	private OutputStream out ;
+	String file;
 	private int read_act= 0;
-	public boolean cond_write(){
+	private int write_act= 0;
+		public boolean cond_write(){
 		return (read_act == 0 && write_act == 0 );
 	}
 
+	private int write_att= 0;
+		public boolean cond_read(){
+		return (write_act == 0 && write_att == 0 );
+	}
 
-	public String read(){
+	public Buffer(String file) throws FileNotFoundException{
+		this.file=file;
+		out=Ecriture.ouvrir(file);
+	}
+
+
+	public String read() throws InterruptedException, IOException,InterruptedException{
 		 synchronized(this){ 
 			while(!cond_read()){
 				this.wait();
 			}
-			read_act++ ;
-			
+			 read_act++;
+		
 		}
 		
-		String s = tab[index_reader] ;
-		index_reader=( index_reader+1)%size ;
+		BufferedReader in ;
+		in=new BufferedReader(new FileReader(file));
+		String ligne;
+		String contenu =;
+		while( (ligne =in.readLine())!= null){
+			contenu+=ligne;
+		
 		
 		synchronized(this){ 
-			read_act-- ;
+			 read_act--;
 			this.notifyAll();
 		
-		}return s ;
+		}return contenu;
 	}
-	public void write(String s){
+		
+	public void write(String s) throws InterruptedException,InterruptedException{
+		write_att++;
+		
 		 synchronized(this){ 
 			while(!cond_write()){
 				this.wait();
 			}
-			write_act++ ;
-			
+			 write_att--;
+			this.notifyAll();
+		 write_act++;
+		
 		}
 		
-		tab[index_writer]=s ;
-		index_writer=( index_writer+1)%size ;
+		Ecriture.ecrireString(out,s);
 	
 		synchronized(this){ 
-			write_act-- ;
+			 write_act--;
 			this.notifyAll();
 		
 		}
+	}
 }
+

@@ -1,6 +1,7 @@
 
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Stack;
 /**
 * <b> SYNCJ Project
 * The purpose of the SYNCJ project is to develop a solution to facilitate the learning of synchronization tools for 4th year programming students from INSA Rennes. 
@@ -12,12 +13,14 @@ import java.util.ArrayList;
 public class Generation implements Type{
 	
 	private OutputStream FichierGen ;
-	private ArrayList<String> buffer;
+	private ArrayList<String> bufferCounter;
+
 
 	
 	public Generation(String file){
 		FichierGen=Ecriture.ouvrir(file);
-		buffer = new ArrayList<String>(); 
+		bufferCounter = new ArrayList<String>(); 
+
 
 	}
 	
@@ -35,8 +38,8 @@ public class Generation implements Type{
 		
 		for (i=0;i<ident.getsizeTabCounter();i++){	
 			counter=ident.getCounter(i).getName();
-			if(!buffer.contains(counter)){
-				buffer.add(counter);
+			if(!bufferCounter.contains(counter)){
+				bufferCounter.add(counter);
 				writeCounter(counter);
 			}
 	
@@ -122,6 +125,7 @@ public class Generation implements Type{
 			update_att_inc(ident.getName());
 			counter=ident.getName()+"_att";
 			generateNotifyInc(counter,t);
+			generateNotifyforEqualN(counter, t);
 		}
 		
 		
@@ -131,6 +135,7 @@ public class Generation implements Type{
 			update_req_inc(ident.getName());
 			counter=ident.getName()+"_req";
 			generateNotifyInc(counter,t);
+			generateNotifyforEqualN(counter, t);
 			
 		}
 		
@@ -144,12 +149,15 @@ public class Generation implements Type{
 			update_req_inc(ident.getName());
 			counter=ident.getName()+"_aut";
 			generateNotifyInc(counter,t);
+			generateNotifyforEqualN(counter, t);
 		}
 		
 		if(t.existCounter(ident.getName()+"_att")){
 			update_att_dec(ident.getName());
 			counter=ident.getName()+"_att";
 			generateNotifyDec(counter,t);
+			generateNotifyforEqualZero(counter, t);
+			generateNotifyforEqualN(counter, t);
 		}
 		
 		
@@ -157,6 +165,7 @@ public class Generation implements Type{
 			update_act_inc(ident.getName());
 			counter=ident.getName()+"_act";
 			generateNotifyInc(counter,t);
+			generateNotifyforEqualN(counter, t);
 		}
 		
 		Ecriture.ecrireString(FichierGen,"\n\t\t}\n\t\t");
@@ -182,12 +191,15 @@ public class Generation implements Type{
 			update_act_inc(ident.getName());
 			counter=ident.getName()+"_term";
 			generateNotifyInc(counter,t);
+			generateNotifyforEqualN(counter, t);
 		}
 		
 		if(t.existCounter(ident.getName()+"_act")){
 			update_act_dec(ident.getName());
 			counter=ident.getName()+"_act";
 			generateNotifyDec(counter,t);
+			generateNotifyforEqualZero(counter, t);
+			generateNotifyforEqualN(counter, t);
 		}
 		
 		Ecriture.ecrireString(FichierGen,"\n\t\t}");
@@ -237,7 +249,18 @@ public class Generation implements Type{
 		}
 	}
 	
+	public void generateNotifyforEqualZero(String counter, TabIdent t){
+		if((t.checkCounter(counter).containType(Type.EQUAL) && t.checkCounter(counter).getSign() == Sign.MINUS &&  t.checkCounter(counter).allZeroEquBuffer() == true)
+				|| (t.checkCounter(counter).containType(Type.EQUAL) && t.checkCounter(counter).getSign() == Sign.PLUS) &&  t.checkCounter(counter).allZeroEquBuffer() == true){
+			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
+		}		
+	}
 	
+	public void generateNotifyforEqualN(String counter, TabIdent t){
+		if((t.checkCounter(counter).containType(Type.EQUAL) &&  t.checkCounter(counter).allZeroEquBuffer() == false )){
+			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
+		}		
+	}
 	
 	/**
 	 * Increment <name>_act

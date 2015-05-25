@@ -1,16 +1,3 @@
 INDEX VERSION 1.127+C:\Users\Rasata Liantsoa\Documents\4INFO\Parallelisme\GITHUB\syncj\.metadata\.plugins\org.eclipse.jdt.core
-3273474355.index
-2046995374.index
-4031812747.index
-3296905099.index
-799466226.index
-213744008.index
-1126997121.index
+2773553300.index
 3449984365.index
-2792489995.index
-356325420.index
-1091607314.index
-1490193599.index
-2389385522.index
-2068835143.index
-3288446950.index

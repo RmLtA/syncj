@@ -48,7 +48,7 @@ public class JavaParser implements Type
 {	
 	
 	public static Generation declCompt;
-	public static ErrorTreatment error = new ErrorTreatment();	
+	public static ErrorCounterTreatment error = new ErrorCounterTreatment();	
 	
 	/*Warning : precise in the argument the size of the tabIdent*/
 	public static TabIdent tabIdent = new TabIdent();
@@ -73,7 +73,7 @@ public class JavaParser implements Type
     public static boolean throwDeclaration = false;
     public static boolean brace = true;
     public static boolean isMethodDeclaration = false;
-
+	public static boolean isAfterMinus = false;
    /**
     * Class to hold modifiers.
     */
@@ -341,16 +341,10 @@ TOKEN :
   	}
 |
   < #DECIMAL_LITERAL: ["1"-"9"] (["0"-"9"])* 
-  > {
-  		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
-  	}
+  >
 |
   < #HEX_LITERAL: "0" ["x","X"] (["0"-"9","a"-"f","A"-"F"])+ 
-  > {
-  		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
-  	}
+  >
 |
   < #OCTAL_LITERAL: "0" (["0"-"7"])* 
   >
@@ -360,16 +354,10 @@ TOKEN :
       | "." (["0"-"9"])+ (<EXPONENT>)? (["f","F","d","D"])?
       | (["0"-"9"])+ <EXPONENT> (["f","F","d","D"])?
       | (["0"-"9"])+ (<EXPONENT>)? ["f","F","d","D"]
-  > {
-  		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
-  	}
+  >
 |
   < #EXPONENT: ["e","E"] (["+","-"])? (["0"-"9"])+ 
-  > {
-  		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
-  	}
+  >
 |
   < CHARACTER_LITERAL:
       "'"
@@ -382,10 +370,7 @@ TOKEN :
           )
       )
       "'"
-  >{
-  		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
-  	} 
+  > 
 |
   < STRING_LITERAL:
       "\""
@@ -398,10 +383,7 @@ TOKEN :
           )
       )*
       "\""
-  >{
-  		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
-  	}
+  >
 }
 
 
@@ -429,7 +411,8 @@ TOKEN :
   	
   	/*Recognition of a counter*/
   	if (JavaParser.isExprBool == true){
-  			JavaParser.tabIdent.addCounter(JavaParserTokenManager.identLu, JavaParser.isAfterMinus);
+  			JavaParser.tabIdent.addCounter(JavaParserTokenManager.identLu);
+  			JavaParser.tabIdent.addSign(JavaParser.isAfterMinus);
   	} 
   	
   	/*Construction of the boolean expression*/
@@ -505,7 +488,20 @@ TOKEN :
 TOKEN :
 {
   < ASSIGN: "=" >{JavaParser.isAfterMinus = false;JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
-| < LT: "<" > {JavaParser.isAfterMinus = false;JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < LT: "<" > 
+	{
+		JavaParser.isAfterMinus = false;
+  		identLu = image.toString();
+  		if (JavaParser.isExprBool == true){
+                        try {
+							JavaParser.tabIdent.addType(Type.INF, Token.beginLine);
+						} catch (ExprBoolException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+  		}
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
+	}
 | < BANG: "!" > {JavaParser.isAfterMinus = false;JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
 | < TILDE: "~" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
 | < HOOK: "?" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
@@ -515,7 +511,12 @@ TOKEN :
 		JavaParser.isAfterMinus = false;
   		identLu = image.toString();
   		if (JavaParser.isExprBool == true){
-  			JavaParser.tabIdent.addType(Type.EQUAL);
+                        try {
+							JavaParser.tabIdent.addType(Type.EQUAL, Token.beginLine);
+						} catch (ExprBoolException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
   		}
   		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
@@ -523,7 +524,12 @@ TOKEN :
 		JavaParser.isAfterMinus = false;
   		identLu = image.toString();
   		if (JavaParser.isExprBool == true){
-  			JavaParser.tabIdent.addType(Type.INFEQUAL);
+                        try {
+							JavaParser.tabIdent.addType(Type.INFEQUAL, Token.beginLine);
+						} catch (ExprBoolException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
   		}
   		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
@@ -531,7 +537,12 @@ TOKEN :
 		JavaParser.isAfterMinus = false;
   		identLu = image.toString();
   		if (JavaParser.isExprBool == true){
-  			JavaParser.tabIdent.addType(Type.SUPEQUAL);
+                        try {
+							JavaParser.tabIdent.addType(Type.SUPEQUAL, Token.beginLine);
+						} catch (ExprBoolException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
   		}
   		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
@@ -539,7 +550,12 @@ TOKEN :
 		JavaParser.isAfterMinus = false;
   		identLu = image.toString();
   		if (JavaParser.isExprBool == true){
-  			JavaParser.tabIdent.addType(Type.DIFF);
+                        try {
+							JavaParser.tabIdent.addType(Type.DIFF, Token.beginLine);
+						} catch (ExprBoolException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
   		}
   		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
   	}
@@ -666,7 +682,20 @@ TOKEN :
      ((Token.GTToken)matchedToken).realKind = RSIGNEDSHIFT;
      input_stream.backup(1);
   }
-| < GT: ">" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
+| < GT: ">" > 
+	{
+		JavaParser.isAfterMinus = false;
+  		identLu = image.toString();
+  		if (JavaParser.isExprBool == true){
+                        try {
+							JavaParser.tabIdent.addType(Type.SUP, Token.beginLine);
+						} catch (ExprBoolException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+  		}
+  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
+	}
 }
 
 
@@ -927,7 +956,7 @@ void MethodDeclaration(int modifiers):
   [ TypeParameters() ]
   ResultType()
   MethodDeclarator()
-  { JavaParser.isMethodDeclaration = true; } 
+
   [ 
   
   	"throws" {JavaParser.throwDeclaration = true; } NameList() 
@@ -941,7 +970,7 @@ void MethodDeclaration(int modifiers):
   		JavaParser.throwDeclaration = false;
   		JavaParser.brace = true;	
   	}
-  ( Block() | ";" )
+  (   { JavaParser.isMethodDeclaration = true; } Block()| ";" )
   { JavaParser.isMethodDeclaration = false; }
 
 }
@@ -992,7 +1021,7 @@ void ExplicitConstructorInvocation():
 void Initializer():
 {}
 {
-  [ "static" ] Block()
+  [ "static" ] {JavaParser.isMethodDeclaration = false;}Block()
 }
 
 
@@ -1199,7 +1228,15 @@ void AndExpression():
 void EqualityExpression():
 {}
 {
-  InstanceOfExpression() ( ( "==" | "!=" ) InstanceOfExpression() )*
+  InstanceOfExpression() 
+  ( 
+  	( "==" | "!=" ) 
+  	{
+  		//JavaParserTokenManager.identLu = image.toString();
+  		tabIdent.addRightEltControl(JavaParserTokenManager.identLu);
+  	}
+  	InstanceOfExpression() 
+  )*
 }
 
 void InstanceOfExpression():
@@ -1211,7 +1248,14 @@ void InstanceOfExpression():
 void RelationalExpression():
 {}
 {
-  ShiftExpression() ( ( "<" | ">" | "<=" | ">=" ) ShiftExpression() )*
+  ShiftExpression() 
+  ( 
+  	( "<" | ">" | "<=" | ">=" ) 
+  	{
+  		//JavaParserTokenManager.identLu = image.toString();
+  		tabIdent.addRightEltControl(JavaParserTokenManager.identLu);
+  	}
+  	ShiftExpression() )*
 }
 
 void ShiftExpression():
@@ -1430,7 +1474,7 @@ void Statement():
 |
   AssertStatement()
 |
-  Block()
+  {JavaParser.isMethodDeclaration = false;}Block()
 |
   EmptyStatement()
 |
@@ -1484,7 +1528,7 @@ void Block():
   	( BlockStatement() )* 
   	 {
   		JavaParser.flagCond = false; 		
-  		if(tabIdent.existIdent(JavaParser.testMethode, Token.beginLine) && JavaParser.flagReturn == false && JavaParser.syncmethod == true && JavaParser.comeFromReturn == false){
+  		if(tabIdent.existIdent(JavaParser.testMethode, Token.beginLine) && JavaParser.flagReturn == false && JavaParser.syncmethod == true && JavaParser.comeFromReturn == false && JavaParser.isMethodDeclaration == true){
   			declCompt.declSecondBlockSynchronized(JavaParser.testMethode, tabIdent);
   			declCompt.writeTr();
    		  	JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);
@@ -1645,7 +1689,7 @@ void ThrowStatement():
 void SynchronizedStatement():
 {}
 {
-  "synchronized" "(" Expression() ")" Block()
+  "synchronized" "(" Expression() ")" {JavaParser.isMethodDeclaration = false;}Block()
 }
 
 void TryStatement():
@@ -1655,9 +1699,9 @@ void TryStatement():
  */
 {}
 {
-  "try" Block()
-  ( "catch" "(" FormalParameter() ")" Block() )*
-  [ "finally" Block() ]
+  "try" {JavaParser.isMethodDeclaration = false;}Block()
+  ( "catch" "(" FormalParameter() ")" {JavaParser.isMethodDeclaration = false;}Block() )*
+  [ "finally" {JavaParser.isMethodDeclaration = false;}Block() ]
 }
 
 /* We use productions to match >>>, >> and > so that we can keep the
