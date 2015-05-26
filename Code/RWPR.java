@@ -19,7 +19,7 @@ public class Buffer {
 	}
 
 
-	public String read() throws InterruptedException, IOException{
+	public String read() throws IOException{
 		BufferedReader in ;
 		in=new BufferedReader(new FileReader("file"));
 		String ligne;
@@ -30,7 +30,7 @@ public class Buffer {
 		return contenu;
 	}
 	
-	public void write(String s) throws InterruptedException{
+	public void write(String s){
 		Ecriture.ecrireString(out,s);
 	}
 }

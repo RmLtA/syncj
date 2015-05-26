@@ -204,19 +204,8 @@ public class TabIdent {
 		return false;
 	}
 	
-	public void addRightEltControl(String ident){
-		try { 
-			bufferEqualityControl.add(Integer.parseInt(ident)); 
-		} 
-			catch (Exception e) { 
-			System.err.println("The item on the right of the operator must be an integer"); 
-			try {
-				throw new ExprBoolException("The item on the right of operator must be an integer");
-			} catch (ExprBoolException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
+	public void addRightEltControl(String ident) throws ExprBoolException{
+		bufferEqualityControl.add(Integer.parseInt(ident));
 	}
 	
 	/**

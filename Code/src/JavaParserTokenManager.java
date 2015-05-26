@@ -2046,7 +2046,16 @@ void TokenLexicalActions(Token matchedToken)
       case 67 :
         image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
                 identLu = image.toString();
-                JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
+                System.out.println("isInstanceOfExprInCond :"+JavaParser.isInstanceOfExprInCond);
+                if(JavaParser.isInstanceOfExprInCond == true){
+               try {
+                         JavaParser.tabIdent.addRightEltControl(identLu);
+                         JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
+                         JavaParser.isInstanceOfExprInCond = false;
+                                } catch (ExprBoolException e) {
+                                        e.printStackTrace();
+                        }
+                }
          break;
       case 75 :
         image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
@@ -2070,6 +2079,9 @@ void TokenLexicalActions(Token matchedToken)
                         JavaParser.tabIdent.addCounter(JavaParserTokenManager.identLu);
                         JavaParser.tabIdent.addSign(JavaParser.isAfterMinus);
         }
+
+
+
 
         /*Construction of the boolean expression*/
         JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
@@ -2095,7 +2107,7 @@ void TokenLexicalActions(Token matchedToken)
         image.append(jjstrLiteralImages[81]);
         lengthOfMatch = jjstrLiteralImages[81].length();
                         JavaParserTokenManager.identLu = image.toString();
-                        if(JavaParser.flagCond == false && JavaParser.flagReturn == false && JavaParser.brace == true){
+                        if(JavaParser.flagCond == false && JavaParser.flagReturn == false){
                                 JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);
                         }
          break;

@@ -16,4 +16,4 @@ mais dans la méthode condition c'est write_act qui est rajouté !!!
 	c1_act - c3_act == 0 au lieu de c1_act == c3_act
 	(c2_act - c3_act)-c1_act < 0 au lieu de (c2_act - c3_act)<c1_act ou c1_act>(c2_act - c3_act)
 
-9- test de l'entier à droite de l'opérateur <-- Exception
+9- tester avec des exemples avec erreurs

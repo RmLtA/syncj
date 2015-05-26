@@ -1,18 +1,18 @@
 public class ProducteurConsommateur{
-	private final int TAILLE = 10;
+	private final int TAILLE = ;
 	private String tab[] = new String[TAILLE];
-	private int index_prod = 0;
-	private int index_cons = 0;
+	private int index_prod = ;
+	private int index_cons = ;
 	
 	private int produire_aut= 0;
 	private int consommer_term= 0;
-		public boolean cond_produire(){
-		return (produire_aut - consommer_term < 10 );
+	public boolean cond_produire(){
+		return (produire_aut - consommer_term < 5 );
 	}
 
 	private int produire_term= 0;
 	private int consommer_aut= 0;
-		public boolean cond_consommer(){
+	public boolean cond_consommer(){
 		return (produire_term - consommer_aut > 0 );
 	}
 
@@ -22,15 +22,15 @@ public class ProducteurConsommateur{
 			while(!cond_produire()){
 				this.wait();
 			}
-			 produire_req++;
+			 produire_aut++;
 		
 		}
 		
 		tab[index_prod] = o;
-		index_prod=(index_prod+1)%TAILLE;
+		index_prod=(index_prod+)%TAILLE;
 	
 		synchronized(this){ 
-			 produire_act++;
+			 produire_term++;
 			this.notifyAll();
 		
 		}
@@ -41,15 +41,15 @@ public class ProducteurConsommateur{
 			while(!cond_consommer()){
 				this.wait();
 			}
-			 consommer_req++;
+			 consommer_aut++;
 		
 		}
 		
 		String o = tab[index_cons];
-		index_cons=(index_cons+1)%TAILLE;
+		index_cons=(index_cons+)%TAILLE;
 		
 		synchronized(this){ 
-			 consommer_act++;
+			 consommer_term++;
 			this.notifyAll();
 		
 		}return tab[index_cons];

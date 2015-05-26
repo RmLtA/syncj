@@ -103,7 +103,7 @@ public class Generation implements Type{
 	 * @param exprBool the boolean expression
 	 */
 	public void declMethodBool(String method, String exprBool){
-		Ecriture.ecrireString(FichierGen,"\tpublic ");
+		Ecriture.ecrireString(FichierGen,"public ");
 		Ecriture.ecrireString(FichierGen,"boolean ");
 		Ecriture.ecrireString(FichierGen,"cond_"+method+"(){\n\t\t");
 		Ecriture.ecrireString(FichierGen,"return "+"("+exprBool+")");
@@ -146,7 +146,7 @@ public class Generation implements Type{
 		Ecriture.ecrireString(FichierGen,"this.wait();\n\t\t\t}\n\t\t\t");
 		
 		if(t.existCounter(ident.getName()+"_aut")){
-			update_req_inc(ident.getName());
+			update_aut_inc(ident.getName());
 			counter=ident.getName()+"_aut";
 			generateNotifyInc(counter,t);
 			generateNotifyforEqualN(counter, t);
@@ -188,7 +188,7 @@ public class Generation implements Type{
 		
 		Ecriture.ecrireString(FichierGen,"\n\t\tsynchronized(this){ \n\t\t\t");
 		if(t.existCounter(ident.getName()+"_term")){
-			update_act_inc(ident.getName());
+			update_term_inc(ident.getName());
 			counter=ident.getName()+"_term";
 			generateNotifyInc(counter,t);
 			generateNotifyforEqualN(counter, t);
@@ -322,7 +322,7 @@ public class Generation implements Type{
 	 * Decrement <name>_term
 	 * @param ident : the identifier of a condition
 	 */
-	public void update_term_dec(String ident){
+	public void update_term_inc(String ident){
 		Ecriture.ecrireString(FichierGen," "+ident+"_term++;\n\t\t");
 	}
 	

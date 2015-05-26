@@ -4,7 +4,7 @@ public class ProducteurConsommateur{
 	private int index_prod = 0;
 	private int index_cons = 0;
 	
-	condition produire = (produire_aut - consommer_term < 10 );
+	condition produire = (produire_aut - consommer_term < 5 );
 	condition consommer = (produire_term - consommer_aut > 0);
 	
 	public void produire(String o){

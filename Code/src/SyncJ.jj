@@ -74,6 +74,7 @@ public class JavaParser implements Type
     public static boolean brace = true;
     public static boolean isMethodDeclaration = false;
 	public static boolean isAfterMinus = false;
+	public static boolean isInstanceOfExprInCond = false;
    /**
     * Class to hold modifiers.
     */
@@ -337,7 +338,15 @@ TOKEN :
       | <OCTAL_LITERAL> (["l","L"])?
   > {
   		identLu = image.toString();
-  		JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
+  		if(JavaParser.isInstanceOfExprInCond == true){
+	       try {
+			 JavaParser.tabIdent.addRightEltControl(identLu);
+			 JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);
+			 JavaParser.isInstanceOfExprInCond = false;
+				} catch (ExprBoolException e) {
+					e.printStackTrace();
+			}
+  		}
   	}
 |
   < #DECIMAL_LITERAL: ["1"-"9"] (["0"-"9"])* 
@@ -414,6 +423,9 @@ TOKEN :
   			JavaParser.tabIdent.addCounter(JavaParserTokenManager.identLu);
   			JavaParser.tabIdent.addSign(JavaParser.isAfterMinus);
   	} 
+  	
+
+
   	
   	/*Construction of the boolean expression*/
   	JavaParser.exprBool = JavaParser.declCompt.consExprbool(identLu,JavaParser.exprBool,JavaParser.isCondition,JavaParser.isExprBool);		
@@ -1228,13 +1240,15 @@ void AndExpression():
 void EqualityExpression():
 {}
 {
-  InstanceOfExpression() 
-  ( 
-  	( "==" | "!=" ) 
-  	{
-  		//JavaParserTokenManager.identLu = image.toString();
-  		tabIdent.addRightEltControl(JavaParserTokenManager.identLu);
+    {
+    	if(JavaParser.isExprBool == true)
+  			JavaParser.isInstanceOfExprInCond = true;
   	}
+  InstanceOfExpression() 
+  (
+
+  	( "==" | "!=" ) 
+
   	InstanceOfExpression() 
   )*
 }
@@ -1247,14 +1261,14 @@ void InstanceOfExpression():
 
 void RelationalExpression():
 {}
-{
+{{
+	if(JavaParser.isExprBool == true)
+  		JavaParser.isInstanceOfExprInCond = true;
+  	}
   ShiftExpression() 
   ( 
   	( "<" | ">" | "<=" | ">=" ) 
-  	{
-  		//JavaParserTokenManager.identLu = image.toString();
-  		tabIdent.addRightEltControl(JavaParserTokenManager.identLu);
-  	}
+
   	ShiftExpression() )*
 }
 
