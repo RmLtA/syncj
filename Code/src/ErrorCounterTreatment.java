@@ -25,26 +25,32 @@ public class ErrorCounterTreatment extends CounterException{
 	 */
 	public void checkIdent(String expr, int line) throws CounterException{
 		if(expr.endsWith("_att")){
+			System.err.println("Not allowed to use <name>_att outside a condition: rename variable. Line :"+line);
 			throw new CounterException("Not allowed to use <name>_att outside a condition: rename variable. Line :"+line);
 		}
 		
 		if(expr.endsWith("_act")){
+			System.err.println("Not allowed to use <name>_act outside a condition: rename variable. Line :"+line);
 			throw new CounterException("Not allowed to use <name>_act outside a condition: rename variable. Line :"+line);
 		}
 		
 		if(expr.endsWith("_term")){
+			System.err.println("Not allowed to use <name>_term outside a condition: rename variable. Line :"+line);
 			throw new CounterException("Not allowed to use <name>_term outside a condition: rename variable. Line :"+line);
 		}
 		
 		if(expr.endsWith("_req")){
+			System.err.println("Not allowed to use <name>_req outside a condition: rename variable. Line :"+line);
 			throw new CounterException("Not allowed to use <name>_req outside a condition: rename variable. Line :"+line);
 		}
 		
 		if(expr.endsWith("_aut")){
+			System.err.println("Not allowed to use <name>_aut outside a condition: rename variable. Line :"+line);
 			throw new CounterException("Not allowed to use <name>_aut outside a condition: rename variable. Line :"+line);
 		}
 		
 		if(expr.contains("notify") || expr.contains("wait") || expr.contains("synchronized") ){
+			System.err.println("You are managing yourself the synchronization. Line :"+line);
 			throw new CounterException("You are managing yourself the synchronization. Line :"+line);
 		}
 		

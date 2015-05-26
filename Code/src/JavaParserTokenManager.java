@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /** Token Manager. */
 public class JavaParserTokenManager implements JavaParserConstants
 {
-	public static String identLu;
+public static String identLu;
   /** Debug output. */
   public  java.io.PrintStream debugStream = System.out;
   /** Set debug output. */
@@ -2046,7 +2046,7 @@ void TokenLexicalActions(Token matchedToken)
       case 67 :
         image.append(input_stream.GetSuffix(jjimageLen + (lengthOfMatch = jjmatchedPos + 1)));
                 identLu = image.toString();
-                System.out.println("isInstanceOfExprInCond :"+JavaParser.isInstanceOfExprInCond);
+
                 if(JavaParser.isInstanceOfExprInCond == true){
                try {
                          JavaParser.tabIdent.addRightEltControl(identLu);
@@ -2076,7 +2076,12 @@ void TokenLexicalActions(Token matchedToken)
 
         /*Recognition of a counter*/
         if (JavaParser.isExprBool == true){
-                        JavaParser.tabIdent.addCounter(JavaParserTokenManager.identLu);
+                        try {
+                                                        JavaParser.tabIdent.addCounter(JavaParserTokenManager.identLu, JavaParser.isInstanceOfExprInCond);
+                                                } catch (ExprBoolException e) {
+                                                        // TODO Auto-generated catch block
+                                                        e.printStackTrace();
+                                                }
                         JavaParser.tabIdent.addSign(JavaParser.isAfterMinus);
         }
 

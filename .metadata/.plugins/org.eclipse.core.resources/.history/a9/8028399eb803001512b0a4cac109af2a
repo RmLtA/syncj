@@ -1,0 +1,22 @@
+/*False expression boolean N*/
+public class ProducteurConsommateur{
+	private final int TAILLE = 10;
+	private String tab[] = new String[TAILLE];
+	private int index_prod = 0;
+	private int index_cons = 0;
+	
+	condition produire = (produire_act == 5);
+	condition consommer = (consommer_act == 0);
+	
+	public void produire(String o){
+		tab[index_prod] = o;
+		index_prod=(index_prod+1)%TAILLE;
+	}
+	
+	public String consommer(){
+		String o = tab[index_cons];
+		index_cons=(index_cons+1)%TAILLE;
+		return tab[index_cons];
+	}
+
+}

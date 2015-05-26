@@ -1,0 +1,22 @@
+
+
+sujet de TP --> objectif faire l'objet d'un TP
+
+penser aux tests du parallélisme
+penser à la démo
+
+Cas d'erreur : 
+1- déclaration de faux compteur write_xxx --> le programme ajoute write_act dans le buffer ça c'est OK
+mais dans la méthode condition c'est write_act qui est rajouté !!!
+
+
+7- faire une série de tests sur le programme
+- pas 'évaluation de --i dans l'expression booléenne
+- condition comme suit : 
+	on n'utilise que des compteurs dans la condition à droite de l'opérateur integer
+	c1_act - c3_act == 0 au lieu de c1_act == c3_act
+	(c2_act - c3_act)-c1_act < 0 au lieu de (c2_act - c3_act)<c1_act ou c1_act>(c2_act - c3_act)
+
+9- tester avec des exemples avec erreurs:
+si on écrit taille_act on ne vérifie pas qu'il y a une méthode attribuée ni de condition --> dire qu'il manque un truc à l'utilisateur
+

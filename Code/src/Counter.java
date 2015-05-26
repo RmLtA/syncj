@@ -74,7 +74,9 @@ public class Counter {
 	
 	public boolean allZeroEquBuffer(){
 		for(int i=0; i<equalityBuffer.size();i++){
+
 			if(equalityBuffer.get(i)!=0){
+				System.out.println("number counter : "+equalityBuffer.get(i));
 				return false;
 			}
 		}

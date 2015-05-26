@@ -11,7 +11,7 @@ public class ErrorExprBoolTreatment extends ExprBoolException{
 
 	}
 
-	public void checkExprBool(int op, int line) throws ExprBoolException{
+	public void checkExprBool(int line) throws ExprBoolException{
 		throw new ExprBoolException("Boolean expression not allowed. Line :"+line);
 	}
 

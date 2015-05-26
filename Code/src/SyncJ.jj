@@ -49,7 +49,7 @@ public class JavaParser implements Type
 	
 	public static Generation declCompt;
 	public static ErrorCounterTreatment error = new ErrorCounterTreatment();	
-	
+	public static ErrorExprBoolTreatment errorBool = new ErrorExprBoolTreatment();
 	/*Warning : precise in the argument the size of the tabIdent*/
 	public static TabIdent tabIdent = new TabIdent();
 	
@@ -338,6 +338,7 @@ TOKEN :
       | <OCTAL_LITERAL> (["l","L"])?
   > {
   		identLu = image.toString();
+  		
   		if(JavaParser.isInstanceOfExprInCond == true){
 	       try {
 			 JavaParser.tabIdent.addRightEltControl(identLu);
@@ -420,7 +421,12 @@ TOKEN :
   	
   	/*Recognition of a counter*/
   	if (JavaParser.isExprBool == true){
-  			JavaParser.tabIdent.addCounter(JavaParserTokenManager.identLu);
+                        try {
+							JavaParser.tabIdent.addCounter(JavaParserTokenManager.identLu, JavaParser.isInstanceOfExprInCond);
+						} catch (ExprBoolException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
   			JavaParser.tabIdent.addSign(JavaParser.isAfterMinus);
   	} 
   	
@@ -725,6 +731,12 @@ void CompilationUnit():
   [ PackageDeclaration() ]
   ( ImportDeclaration() )*
   ( TypeDeclaration() )*
+  {   try {
+	JavaParser.tabIdent.checkTabIdent();
+} catch (ExprBoolException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}}
   <EOF>
 }
 
@@ -1240,15 +1252,15 @@ void AndExpression():
 void EqualityExpression():
 {}
 {
-    {
-    	if(JavaParser.isExprBool == true)
-  			JavaParser.isInstanceOfExprInCond = true;
-  	}
+
   InstanceOfExpression() 
   (
 
   	( "==" | "!=" ) 
-
+	{
+		if(JavaParser.isExprBool == true)
+  			JavaParser.isInstanceOfExprInCond = true;
+	}
   	InstanceOfExpression() 
   )*
 }
@@ -1261,13 +1273,14 @@ void InstanceOfExpression():
 
 void RelationalExpression():
 {}
-{{
-	if(JavaParser.isExprBool == true)
-  		JavaParser.isInstanceOfExprInCond = true;
-  	}
+{
   ShiftExpression() 
   ( 
   	( "<" | ">" | "<=" | ">=" ) 
+ 	{
+		if(JavaParser.isExprBool == true)
+  			JavaParser.isInstanceOfExprInCond = true;
+	}
 
   	ShiftExpression() )*
 }

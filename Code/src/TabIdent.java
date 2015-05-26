@@ -15,6 +15,7 @@ public class TabIdent {
 	public HashMap<String,Ident> condition;
 	
 	public ArrayList<String> buffer;
+	public ArrayList<String> bufferTocheck;
 	public ArrayList<Integer> bufferType;
 	public ArrayList<Integer> buffersign;
 	
@@ -28,6 +29,7 @@ public class TabIdent {
 	public TabIdent() {
 		condition = new HashMap<String,Ident>();
 		buffer = new ArrayList<String>();
+		bufferTocheck = new ArrayList<String>();
 		bufferType = new ArrayList<Integer>();
 		buffersign = new  ArrayList<Integer>();
 		bufferCounter = new ArrayList<Counter>();
@@ -152,15 +154,39 @@ public class TabIdent {
 		return null;
 	}
 	
+	public boolean isCounterdiffSign(String counter){
+		ArrayList<Integer> buffer = new ArrayList<Integer>();
+		for(Entry<String, Ident> e : condition.entrySet()) {
+			Ident id = e.getValue();
+			for(int i = 0; i<id.counter.size(); i++){
+				if(id.getCounter(i).getName().equals(counter))
+					buffer.add(id.getCounter(i).getSign());
+			}
+			
+		}
+		
+		int sign = buffer.get(0);
+		for(int i=1; i<buffer.size(); i++){
+			if(sign!=buffer.get(i))return true;
+		}
+		return false;
+	}
+	
 	
 	/**
 	 * Add a counter and sign in the buffer
 	 * @param String counter
 	 * @param boolean afterminus 
+	 * @throws ExprBoolException 
 	 */
-	public void addCounter(String counter){
-		buffer.add(counter);
-
+	public void addCounter(String counter, boolean afterop) throws ExprBoolException{
+		if(afterop == false){
+			buffer.add(counter);
+			bufferTocheck.add(counter);
+		}else{
+			System.err.println("Boolean expression not allowed. The item at the right of operator must be an Integer");
+			throw new ExprBoolException("Boolean expression not allowed. The item at the right of operator must be an Integer");
+		}
 	}
 	
 	public void addSign(boolean afterminus){
@@ -205,6 +231,9 @@ public class TabIdent {
 	}
 	
 	public void addRightEltControl(String ident) throws ExprBoolException{
+
+		int b = (Integer.parseInt(ident));
+		
 		bufferEqualityControl.add(Integer.parseInt(ident));
 	}
 	
@@ -219,6 +248,24 @@ public class TabIdent {
 		
 	}
 		
+	public void checkTabIdent() throws ExprBoolException{
+		ArrayList<String> idents = new ArrayList<String>();
+		for(Entry<String, Ident> e : condition.entrySet()) {
+			idents.add(e.getKey());
+		}
+		
+		ArrayList<String> tocheck = new ArrayList<String>();
+		for(int i=0; i<bufferTocheck.size();i++){
+			String[] s = bufferTocheck.get(i).split("_");
+			tocheck.add(s[0]);
+		}
+		
+		for(int i=0; i<tocheck.size(); i++){
+			if(!idents.contains(tocheck.get(i))){
+				throw new ExprBoolException("Boolean expression not allowed.");
+			}
+		}
+	}
 	
 
 }

@@ -1,0 +1,10 @@
+
+public class PInteger {
+	
+	  public static void main(String args[]) {
+		  String m = "5";
+		  String m1 = "20";
+		  Sring m2 = "taille";
+	  }
+
+}

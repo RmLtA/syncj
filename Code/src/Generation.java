@@ -125,6 +125,7 @@ public class Generation implements Type{
 			update_att_inc(ident.getName());
 			counter=ident.getName()+"_att";
 			generateNotifyInc(counter,t);
+			generateNotifyforEqualZeroInc(counter, t);
 			generateNotifyforEqualN(counter, t);
 		}
 		
@@ -135,6 +136,7 @@ public class Generation implements Type{
 			update_req_inc(ident.getName());
 			counter=ident.getName()+"_req";
 			generateNotifyInc(counter,t);
+			generateNotifyforEqualZeroInc(counter, t);
 			generateNotifyforEqualN(counter, t);
 			
 		}
@@ -149,6 +151,7 @@ public class Generation implements Type{
 			update_aut_inc(ident.getName());
 			counter=ident.getName()+"_aut";
 			generateNotifyInc(counter,t);
+			generateNotifyforEqualZeroInc(counter, t);
 			generateNotifyforEqualN(counter, t);
 		}
 		
@@ -156,7 +159,7 @@ public class Generation implements Type{
 			update_att_dec(ident.getName());
 			counter=ident.getName()+"_att";
 			generateNotifyDec(counter,t);
-			generateNotifyforEqualZero(counter, t);
+			generateNotifyforEqualZeroDec(counter, t);
 			generateNotifyforEqualN(counter, t);
 		}
 		
@@ -165,6 +168,7 @@ public class Generation implements Type{
 			update_act_inc(ident.getName());
 			counter=ident.getName()+"_act";
 			generateNotifyInc(counter,t);
+			generateNotifyforEqualZeroInc(counter, t);
 			generateNotifyforEqualN(counter, t);
 		}
 		
@@ -191,6 +195,7 @@ public class Generation implements Type{
 			update_term_inc(ident.getName());
 			counter=ident.getName()+"_term";
 			generateNotifyInc(counter,t);
+			generateNotifyforEqualZeroInc(counter, t);
 			generateNotifyforEqualN(counter, t);
 		}
 		
@@ -198,7 +203,7 @@ public class Generation implements Type{
 			update_act_dec(ident.getName());
 			counter=ident.getName()+"_act";
 			generateNotifyDec(counter,t);
-			generateNotifyforEqualZero(counter, t);
+			generateNotifyforEqualZeroDec(counter, t);
 			generateNotifyforEqualN(counter, t);
 		}
 		
@@ -245,19 +250,26 @@ public class Generation implements Type{
 				|| (t.checkCounter(counter).containType(Type.SUPEQUAL) && t.checkCounter(counter).getSign() == Sign.MINUS)
 				|| (t.checkCounter(counter).containType(Type.INFEQUAL) && t.checkCounter(counter).getSign() == Sign.PLUS)
 				|| (t.checkCounter(counter).containType(Type.INF) && t.checkCounter(counter).getSign() == Sign.PLUS)){
+			System.out.println("ICI");
 			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
 		}
 	}
 	
-	public void generateNotifyforEqualZero(String counter, TabIdent t){
-		if((t.checkCounter(counter).containType(Type.EQUAL) && t.checkCounter(counter).getSign() == Sign.MINUS &&  t.checkCounter(counter).allZeroEquBuffer() == true)
-				|| (t.checkCounter(counter).containType(Type.EQUAL) && t.checkCounter(counter).getSign() == Sign.PLUS) &&  t.checkCounter(counter).allZeroEquBuffer() == true){
+	public void generateNotifyforEqualZeroDec(String counter, TabIdent t){
+		if((t.checkCounter(counter).containType(Type.EQUAL) && t.checkCounter(counter).getSign() == Sign.PLUS) &&  t.checkCounter(counter).allZeroEquBuffer() == true && t.isCounterdiffSign(counter) == false){
+			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
+		}		
+	}
+	
+	public void generateNotifyforEqualZeroInc(String counter, TabIdent t){
+		if((t.checkCounter(counter).containType(Type.EQUAL) && t.checkCounter(counter).getSign() == Sign.MINUS &&  t.checkCounter(counter).allZeroEquBuffer() == true && t.isCounterdiffSign(counter) == false)){
 			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
 		}		
 	}
 	
 	public void generateNotifyforEqualN(String counter, TabIdent t){
-		if((t.checkCounter(counter).containType(Type.EQUAL) &&  t.checkCounter(counter).allZeroEquBuffer() == false )){
+		if((t.checkCounter(counter).containType(Type.EQUAL) &&  t.checkCounter(counter).allZeroEquBuffer() == false) 
+			|| (t.checkCounter(counter).containType(Type.EQUAL) && t.isCounterdiffSign(counter) == true)){
 			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
 		}		
 	}
