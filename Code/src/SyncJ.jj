@@ -75,6 +75,8 @@ public class JavaParser implements Type
     public static boolean isMethodDeclaration = false;
 	public static boolean isAfterMinus = false;
 	public static boolean isInstanceOfExprInCond = false;
+	public static boolean endMethod = false;
+
    /**
     * Class to hold modifiers.
     */
@@ -299,10 +301,12 @@ TOKEN :
 		JavaParserTokenManager.identLu = image.toString();
 		if(JavaParser.flagReturn == true && JavaParser.syncmethod == true){
   			JavaParser.declCompt.declSecondBlockSynchronized(JavaParser.testMethode, JavaParser.tabIdent);
-  			JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);	
+  			JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);
+
   		}else{
   			JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);
   		}
+
   		JavaParser.flagCond = false;
   		JavaParser.flagReturn = false;
   		JavaParser.comeFromReturn = true;
@@ -488,10 +492,11 @@ TOKEN :
 	if(JavaParser.brace == true)
 		JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
 | < RBRACE: "}" > {
-			JavaParserTokenManager.identLu = image.toString();
-			if(JavaParser.flagCond == false && JavaParser.flagReturn == false){
+			/*JavaParserTokenManager.identLu = image.toString();
+			if(JavaParser.flagReturn == false && JavaParser.flagCond == false){
 				JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);
-			}
+				
+			}*/
 	}
 | < LBRACKET: "[" >{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
 | < RBRACKET: "]" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
@@ -899,7 +904,9 @@ void TypeBound():
 void ClassOrInterfaceBody(boolean isInterface):
 {}
 {
-  "{" ( ClassOrInterfaceBodyDeclaration(isInterface) )* "}"
+  "{" ( ClassOrInterfaceBodyDeclaration(isInterface) )* "}"{
+   	JavaParser.declCompt.writeRbrace();
+   }
 }
 
 void ClassOrInterfaceBodyDeclaration(boolean isInterface):
@@ -1030,7 +1037,9 @@ void ConstructorDeclaration():
   "{"
     [ LOOKAHEAD(ExplicitConstructorInvocation()) ExplicitConstructorInvocation() ]
     ( BlockStatement() )*
-  "}"
+  "}"{
+  	JavaParser.declCompt.writeRbrace();
+  }
 }
 
 void ExplicitConstructorInvocation():
@@ -1560,11 +1569,15 @@ void Block():
   			declCompt.writeTr();
    		  	JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);
   			JavaParser.syncmethod = false;
+  			declCompt.writeRbrace();
+  		}else{
+  			  JavaParser.declCompt.writeRbrace();	
   		}
   		JavaParser.flagReturn = false;
   		JavaParser.comeFromReturn = false;
+  		JavaParser.endMethod = true;
   	}
-  	"}" 	
+  	"}"
 }
 
 

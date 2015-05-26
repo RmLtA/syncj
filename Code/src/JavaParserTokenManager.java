@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /** Token Manager. */
 public class JavaParserTokenManager implements JavaParserConstants
 {
-public static String identLu;
+	public static String identLu;
   /** Debug output. */
   public  java.io.PrintStream debugStream = System.out;
   /** Set debug output. */
@@ -1961,9 +1961,11 @@ void TokenLexicalActions(Token matchedToken)
                 if(JavaParser.flagReturn == true && JavaParser.syncmethod == true){
                         JavaParser.declCompt.declSecondBlockSynchronized(JavaParser.testMethode, JavaParser.tabIdent);
                         JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);
+
                 }else{
                         JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);
                 }
+
                 JavaParser.flagCond = false;
                 JavaParser.flagReturn = false;
                 JavaParser.comeFromReturn = true;
@@ -2107,14 +2109,6 @@ void TokenLexicalActions(Token matchedToken)
         JavaParserTokenManager.identLu = image.toString();
         if(JavaParser.brace == true)
                 JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);
-         break;
-      case 81 :
-        image.append(jjstrLiteralImages[81]);
-        lengthOfMatch = jjstrLiteralImages[81].length();
-                        JavaParserTokenManager.identLu = image.toString();
-                        if(JavaParser.flagCond == false && JavaParser.flagReturn == false){
-                                JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);
-                        }
          break;
       case 82 :
         image.append(jjstrLiteralImages[82]);
