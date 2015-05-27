@@ -154,6 +154,11 @@ public class TabIdent {
 		return null;
 	}
 	
+	/**
+	 * Return true if the counter have different sign
+	 * @param String counter
+	 * @return boolean
+	 */
 	public boolean isCounterdiffSign(String counter){
 		ArrayList<Integer> buffer = new ArrayList<Integer>();
 		for(Entry<String, Ident> e : condition.entrySet()) {
@@ -189,6 +194,10 @@ public class TabIdent {
 		}
 	}
 	
+	/**
+	 * Add the sign of the counter
+	 * @param boolean true is after a sign minus  
+	 */
 	public void addSign(boolean afterminus){
 		if(afterminus == true){
 			buffersign.add(Sign.MINUS);
@@ -230,6 +239,10 @@ public class TabIdent {
 		return false;
 	}
 	
+	/**
+	 * add the number to which the counter are compared to.
+	 * @param ident the identifier
+	 */
 	public void addRightEltControl(String ident) throws ExprBoolException{
 
 		int b = (Integer.parseInt(ident));
@@ -248,6 +261,9 @@ public class TabIdent {
 		
 	}
 		
+	/**
+	 * Check if the counters used in a condition is linked to a unique method
+	 */
 	public void checkTabIdent() throws ExprBoolException{
 		ArrayList<String> idents = new ArrayList<String>();
 		for(Entry<String, Ident> e : condition.entrySet()) {

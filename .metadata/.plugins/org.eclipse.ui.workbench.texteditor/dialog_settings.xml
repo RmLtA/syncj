@@ -13,16 +13,16 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="Declaration" key="selection"/>
+		<item value="Block()" key="selection"/>
 		<list key="findhistory">
+			<item value="Block()"/>
+			<item value="Block"/>
+			<item value="void condition()"/>
+			<item value="checkCounter"/>
 			<item value="Declaration"/>
 			<item value="ConstructorDecl"/>
-			<item value="Block()"/>
 			<item value="RBRACE"/>
 			<item value="MethodDeclaration"/>
-			<item value="MethodDeclarator"/>
-			<item value="MethodDecl"/>
-			<item value="ClassOrIntefaceBody"/>
 		</list>
 		<list key="replacehistory">
 		</list>

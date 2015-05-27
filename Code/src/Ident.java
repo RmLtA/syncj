@@ -86,6 +86,19 @@ public class Ident {
 		return false;
 	}
 	
+	/**
+	 * Check if the counter have different signs, if yes return true
+	 * @return boolean
+	 */
+	public boolean isCountersDiffSign(){
+		int sign = counter.get(0).getSign();
+		for (int i = 1; i<counter.size(); i++){
+			if(sign!=counter.get(i).getSign())
+				return true;
+		}
+		return false;
+	}
+	
 
 
 }

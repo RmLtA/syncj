@@ -11,11 +11,12 @@ public class Buffer {
 	private OutputStream out ;
 	String file;
 	
-	private int write_act= 0;
+	private int read_act= 0;
 	public boolean cond_write(){
-		return (write_act == read_act );
+		return (read_act == 0 );
 	}
 
+	private int write_act= 0;
 	public boolean cond_read(){
 		return (- write_act == 0 );
 	}
@@ -24,6 +25,7 @@ public class Buffer {
 	public Buffer(String file) throws FileNotFoundException{
 		this.file=file;
 		out=Ecriture.ouvrir(file);		
+	
 	}
 		
 	public String read() throws IOException,InterruptedException{
@@ -31,7 +33,8 @@ public class Buffer {
 			while(!cond_read()){
 				this.wait();
 			}
-			
+			 read_act++;
+		
 		}
 		
 		BufferedReader in ;
@@ -40,11 +43,15 @@ public class Buffer {
 		String contenu =;
 		while( (ligne =in.readLine())!= null){
 			contenu+=ligne;
-					
+		
+	}			
 		
 		synchronized(this){ 
-			
+			 read_act--;
+			this.notifyAll();
+		
 		}return contenu;
+	
 	}
 		
 	public void write(String s) throws InterruptedException{
@@ -53,6 +60,7 @@ public class Buffer {
 				this.wait();
 			}
 			 write_act++;
+			this.notifyAll();
 		
 		}
 		
@@ -63,5 +71,7 @@ public class Buffer {
 			this.notifyAll();
 		
 		}
+		
 	}
-}
+
+	}

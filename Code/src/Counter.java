@@ -57,21 +57,42 @@ public class Counter {
 		return name;
 	}
 	
+	/**
+	 * Return the sign of the counter
+	 * @return the sign of the counter
+	 */
 	public int getSign(){
 		return sign;
 	}
 	
+	/**
+	 * Set the sign of the counter
+	 * @param s sign
+	 */
 	public void setSign(int s){
 		sign = s;
 	}
+
+	/**
+	 * Return the sign of the buffer for an equality expression
+	 * @return the list of number to compared to the counter
+	 */
 	public ArrayList<Integer> getBufferEq(){
 		return equalityBuffer;
 	}
 	
+	/**
+	 * Add the number used in an equality expression  for a counter
+	 * @param i number
+	 */
 	public void addEquBuffer(int i){
 		equalityBuffer.add(i);
 	}
 	
+	/**
+	 * Check if the counter is always compared to zero in an equality expression
+	 * @return boolean
+	 */
 	public boolean allZeroEquBuffer(){
 		for(int i=0; i<equalityBuffer.size();i++){
 
@@ -82,4 +103,5 @@ public class Counter {
 		}
 		return true;
 	}
+	
 }

@@ -13,7 +13,7 @@ public class Buffer {
 	private OutputStream out ;
 	String file;
 	
-	condition write = (write_act == read_act );
+	condition write = (read_act ==0);
 	condition read = (-write_act == 0 );
 	    
 	public Buffer(String file) throws FileNotFoundException{

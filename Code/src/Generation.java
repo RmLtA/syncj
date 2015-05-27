@@ -125,7 +125,7 @@ public class Generation implements Type{
 			update_att_inc(ident.getName());
 			counter=ident.getName()+"_att";
 			generateNotifyInc(counter,t);
-			generateNotifyforEqualZeroInc(counter, t);
+			generateNotifyforEqualZeroMinus(counter, t);
 			generateNotifyforEqualN(counter, t);
 		}
 		
@@ -136,7 +136,7 @@ public class Generation implements Type{
 			update_req_inc(ident.getName());
 			counter=ident.getName()+"_req";
 			generateNotifyInc(counter,t);
-			generateNotifyforEqualZeroInc(counter, t);
+			generateNotifyforEqualZeroMinus(counter, t);
 			generateNotifyforEqualN(counter, t);
 			
 		}
@@ -151,7 +151,7 @@ public class Generation implements Type{
 			update_aut_inc(ident.getName());
 			counter=ident.getName()+"_aut";
 			generateNotifyInc(counter,t);
-			generateNotifyforEqualZeroInc(counter, t);
+			generateNotifyforEqualZeroMinus(counter, t);
 			generateNotifyforEqualN(counter, t);
 		}
 		
@@ -160,6 +160,7 @@ public class Generation implements Type{
 			counter=ident.getName()+"_att";
 			generateNotifyDec(counter,t);
 			generateNotifyforEqualZeroDec(counter, t);
+			generateNotifyforEqualZeroMinus(counter, t);
 			generateNotifyforEqualN(counter, t);
 		}
 		
@@ -168,7 +169,7 @@ public class Generation implements Type{
 			update_act_inc(ident.getName());
 			counter=ident.getName()+"_act";
 			generateNotifyInc(counter,t);
-			generateNotifyforEqualZeroInc(counter, t);
+			generateNotifyforEqualZeroMinus(counter, t);
 			generateNotifyforEqualN(counter, t);
 		}
 		
@@ -195,7 +196,7 @@ public class Generation implements Type{
 			update_term_inc(ident.getName());
 			counter=ident.getName()+"_term";
 			generateNotifyInc(counter,t);
-			generateNotifyforEqualZeroInc(counter, t);
+			generateNotifyforEqualZeroMinus(counter, t);
 			generateNotifyforEqualN(counter, t);
 		}
 		
@@ -204,6 +205,7 @@ public class Generation implements Type{
 			counter=ident.getName()+"_act";
 			generateNotifyDec(counter,t);
 			generateNotifyforEqualZeroDec(counter, t);
+			generateNotifyforEqualZeroMinus(counter, t);
 			generateNotifyforEqualN(counter, t);
 		}
 		
@@ -255,18 +257,33 @@ public class Generation implements Type{
 		}
 	}
 	
+	/**
+	 * Generate code after the decrementation for a counter used in an equality expression compared to zero
+	 * @param counter : the name of the counter 
+	 * @param t : the table of identifier
+	 */
 	public void generateNotifyforEqualZeroDec(String counter, TabIdent t){
 		if((t.checkCounter(counter).containType(Type.EQUAL) && t.checkCounter(counter).getSign() == Sign.PLUS) &&  t.checkCounter(counter).allZeroEquBuffer() == true && t.isCounterdiffSign(counter) == false){
 			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
 		}		
 	}
 	
-	public void generateNotifyforEqualZeroInc(String counter, TabIdent t){
+	/**
+	 * Generate code after the incrementation for a counter used in an equality expression compared to zero
+	 * @param counter : the name of the counter 
+	 * @param t : the table of identifier
+	 */
+	public void generateNotifyforEqualZeroMinus(String counter, TabIdent t){
 		if((t.checkCounter(counter).containType(Type.EQUAL) && t.checkCounter(counter).getSign() == Sign.MINUS &&  t.checkCounter(counter).allZeroEquBuffer() == true && t.isCounterdiffSign(counter) == false)){
 			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
 		}		
 	}
 	
+	/**
+	 * Generate code after the incrementation for a counter used in an equality expression compared to a number != 0
+	 * @param counter : the name of the counter 
+	 * @param t : the table of identifier
+	 */
 	public void generateNotifyforEqualN(String counter, TabIdent t){
 		if((t.checkCounter(counter).containType(Type.EQUAL) &&  t.checkCounter(counter).allZeroEquBuffer() == false) 
 			|| (t.checkCounter(counter).containType(Type.EQUAL) && t.isCounterdiffSign(counter) == true)){
@@ -337,10 +354,6 @@ public class Generation implements Type{
 	public void update_term_inc(String ident){
 		Ecriture.ecrireString(FichierGen," "+ident+"_term++;\n\t\t");
 	}
-	
-	/**
-	 * Generate "\n\t"
-	 */
 	
 	public void writeTr(){
 		Ecriture.ecrireString(FichierGen,"\n\t");
