@@ -50,7 +50,6 @@ public class JavaParser implements Type
 	public static Generation declCompt;
 	public static ErrorCounterTreatment error = new ErrorCounterTreatment();	
 	public static ErrorExprBoolTreatment errorBool = new ErrorExprBoolTreatment();
-	/*Warning : precise in the argument the size of the tabIdent*/
 	public static TabIdent tabIdent = new TabIdent();
 	
 	/* check if it is not a part of a condition*/
@@ -62,20 +61,27 @@ public class JavaParser implements Type
 	/* check if it is in a method bounded to a condition*/
 	public static boolean flagCond = false;
 	
-
+	/*check if it is a return method*/
 	public static boolean flagReturn = false;
+	
+	/*check if it is a method to synchronize*/
 	public static boolean syncmethod = false;
-	public static String exprBool = "";
-	public static String methode = "";
-	public static String testMethode = "";
-    public static String identLu;
+	
     public static boolean comeFromReturn = false;
     public static boolean throwDeclaration = false;
     public static boolean brace = true;
     public static boolean isMethodDeclaration = false;
 	public static boolean isAfterMinus = false;
 	public static boolean isInstanceOfExprInCond = false;
-	public static boolean endMethod = false;
+
+
+	public static String exprBool = "";
+	public static String methode = "";
+	public static String testMethode = "";
+	
+    public static String identLu;
+    
+
 
    /**
     * Class to hold modifiers.
@@ -384,7 +390,7 @@ TOKEN :
           )
       )
       "'"
-  > 
+  >{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
 |
   < STRING_LITERAL:
       "\""
@@ -397,7 +403,7 @@ TOKEN :
           )
       )*
       "\""
-  >
+  >{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
 }
 
 
@@ -491,13 +497,7 @@ TOKEN :
 	JavaParserTokenManager.identLu = image.toString();
 	if(JavaParser.brace == true)
 		JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
-| < RBRACE: "}" > {
-			/*JavaParserTokenManager.identLu = image.toString();
-			if(JavaParser.flagReturn == false && JavaParser.flagCond == false){
-				JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);
-				
-			}*/
-	}
+| < RBRACE: "}" >
 | < LBRACKET: "[" >{JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
 | < RBRACKET: "]" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
 | < SEMICOLON: ";" > {JavaParserTokenManager.identLu = image.toString();JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);}
@@ -905,7 +905,7 @@ void ClassOrInterfaceBody(boolean isInterface):
 {}
 {
   "{" ( ClassOrInterfaceBodyDeclaration(isInterface) )* "}"{
-   	JavaParser.declCompt.writeRbrace();
+   	JavaParser.declCompt.writeRbraceClassOrInterface();
    }
 }
 
@@ -1002,7 +1002,7 @@ void MethodDeclaration(int modifiers):
   		JavaParser.brace = true;	
   	}
   (   { JavaParser.isMethodDeclaration = true; } Block()| ";" )
-  { JavaParser.isMethodDeclaration = false; }
+
 
 }
 
@@ -1038,7 +1038,7 @@ void ConstructorDeclaration():
     [ LOOKAHEAD(ExplicitConstructorInvocation()) ExplicitConstructorInvocation() ]
     ( BlockStatement() )*
   "}"{
-  	JavaParser.declCompt.writeRbrace();
+  	JavaParser.declCompt.writeRbraceMethod();
   }
 }
 
@@ -1568,16 +1568,20 @@ void Block():
   			declCompt.declSecondBlockSynchronized(JavaParser.testMethode, tabIdent);
   			declCompt.writeTr();
    		  	JavaParser.declCompt.rewriteNotCondition(JavaParserTokenManager.identLu, JavaParser.isCondition);
+   		  	declCompt.writeRbraceMethod();
   			JavaParser.syncmethod = false;
-  			declCompt.writeRbrace();
   		}else{
-  			  JavaParser.declCompt.writeRbrace();	
+  			if(tabIdent.existIdent(JavaParser.testMethode, Token.beginLine) && JavaParser.flagReturn == false && JavaParser.syncmethod == true && JavaParser.comeFromReturn == true && JavaParser.isMethodDeclaration == true){
+  			  JavaParser.declCompt.writeRbraceMethod();	
+  			}else{
+  					declCompt.writeRbraceMethod();
+  				}
   		}
   		JavaParser.flagReturn = false;
   		JavaParser.comeFromReturn = false;
-  		JavaParser.endMethod = true;
+
   	}
-  	"}"
+  	"}"  
 }
 
 

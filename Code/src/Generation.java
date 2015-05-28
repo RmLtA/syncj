@@ -130,7 +130,7 @@ public class Generation implements Type{
 		}
 		
 		
-		Ecriture.ecrireString(FichierGen,"\n\t\t synchronized(this){ \n\t\t\t");
+		Ecriture.ecrireString(FichierGen,"\n\t\tsynchronized(this){ \n\t\t\t");
 
 		if(t.existCounter(ident.getName()+"_req")){
 			update_req_inc(ident.getName());
@@ -209,7 +209,7 @@ public class Generation implements Type{
 			generateNotifyforEqualN(counter, t);
 		}
 		
-		Ecriture.ecrireString(FichierGen,"\n\t\t}");
+		Ecriture.ecrireString(FichierGen,"\n\t\t}\n\t\t");
 		
 	}
 	
@@ -236,7 +236,7 @@ public class Generation implements Type{
 				|| (t.checkCounter(counter).containType(Type.SUPEQUAL) && t.checkCounter(counter).getSign() == Sign.PLUS)
 				|| (t.checkCounter(counter).containType(Type.INFEQUAL) && t.checkCounter(counter).getSign() == Sign.MINUS)
 				|| (t.checkCounter(counter).containType(Type.INF) && t.checkCounter(counter).getSign() == Sign.MINUS)){
-			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
+			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t\t");
 		}
 
 	}
@@ -253,7 +253,7 @@ public class Generation implements Type{
 				|| (t.checkCounter(counter).containType(Type.INFEQUAL) && t.checkCounter(counter).getSign() == Sign.PLUS)
 				|| (t.checkCounter(counter).containType(Type.INF) && t.checkCounter(counter).getSign() == Sign.PLUS)){
 			System.out.println("ICI");
-			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
+			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t\t");
 		}
 	}
 	
@@ -264,7 +264,7 @@ public class Generation implements Type{
 	 */
 	public void generateNotifyforEqualZeroDec(String counter, TabIdent t){
 		if((t.checkCounter(counter).containType(Type.EQUAL) && t.checkCounter(counter).getSign() == Sign.PLUS) &&  t.checkCounter(counter).allZeroEquBuffer() == true && t.isCounterdiffSign(counter) == false){
-			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
+			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t\t");
 		}		
 	}
 	
@@ -275,7 +275,7 @@ public class Generation implements Type{
 	 */
 	public void generateNotifyforEqualZeroMinus(String counter, TabIdent t){
 		if((t.checkCounter(counter).containType(Type.EQUAL) && t.checkCounter(counter).getSign() == Sign.MINUS &&  t.checkCounter(counter).allZeroEquBuffer() == true && t.isCounterdiffSign(counter) == false)){
-			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
+			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t\t");
 		}		
 	}
 	
@@ -287,7 +287,7 @@ public class Generation implements Type{
 	public void generateNotifyforEqualN(String counter, TabIdent t){
 		if((t.checkCounter(counter).containType(Type.EQUAL) &&  t.checkCounter(counter).allZeroEquBuffer() == false) 
 			|| (t.checkCounter(counter).containType(Type.EQUAL) && t.isCounterdiffSign(counter) == true)){
-			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t");
+			Ecriture.ecrireString(FichierGen,"\tthis.notifyAll();\n\t\t\t");
 		}		
 	}
 	
@@ -296,7 +296,7 @@ public class Generation implements Type{
 	 * @param ident : the identifier of a condition
 	 */	
 	public void update_act_inc(String ident){
-		Ecriture.ecrireString(FichierGen," "+ident+"_act++;\n\t\t");
+		Ecriture.ecrireString(FichierGen,ident+"_act++;\n\t\t");
 	}
 	
 	/**
@@ -304,7 +304,7 @@ public class Generation implements Type{
 	 * @param ident : the identifier of a condition
 	 */	
 	public void update_act_dec(String ident){
-		Ecriture.ecrireString(FichierGen," "+ident+"_act--;\n\t\t");
+		Ecriture.ecrireString(FichierGen,ident+"_act--;\n\t\t");
 	}
 
 	/**
@@ -320,7 +320,7 @@ public class Generation implements Type{
 	 * @param ident : the identifier of a condition
 	 */
 	public void update_att_dec(String ident){
-		Ecriture.ecrireString(FichierGen," "+ident+"_att--;\n\t\t");
+		Ecriture.ecrireString(FichierGen,ident+"_att--;\n\t\t");
 	}
 	
 	/**
@@ -328,7 +328,7 @@ public class Generation implements Type{
 	 * @param ident : the identifier of a condition
 	 */
 	public void update_aut_inc(String ident){
-		Ecriture.ecrireString(FichierGen," "+ident+"_aut++;\n\t\t");
+		Ecriture.ecrireString(FichierGen,ident+"_aut++;\n\t\t");
 	}
 	
 	/**
@@ -336,7 +336,7 @@ public class Generation implements Type{
 	 * @param ident : the identifier of a condition
 	 */
 	public void update_aut_dec(String ident){
-		Ecriture.ecrireString(FichierGen," "+ident+"_aut--;\n\t\t");
+		Ecriture.ecrireString(FichierGen,ident+"_aut--;\n\t\t");
 	}
 	
 	/**
@@ -344,7 +344,7 @@ public class Generation implements Type{
 	 * @param ident : the identifier of a condition
 	 */
 	public void update_req_inc(String ident){
-		Ecriture.ecrireString(FichierGen," "+ident+"_req++;\n\t\t");
+		Ecriture.ecrireString(FichierGen,ident+"_req++;\n\t\t");
 	}
 	
 	/**
@@ -352,15 +352,24 @@ public class Generation implements Type{
 	 * @param ident : the identifier of a condition
 	 */
 	public void update_term_inc(String ident){
-		Ecriture.ecrireString(FichierGen," "+ident+"_term++;\n\t\t");
+		Ecriture.ecrireString(FichierGen,ident+"_term++;\n\t\t");
 	}
+	
 	
 	public void writeTr(){
 		Ecriture.ecrireString(FichierGen,"\n\t");
 	}
 	
 	public void writeRbrace(){
+		Ecriture.ecrireString(FichierGen,"\n\t\t}");
+	}
+	
+	public void writeRbraceMethod(){
 		Ecriture.ecrireString(FichierGen,"\n\t}");
+	}
+	
+	public void writeRbraceClassOrInterface(){
+		Ecriture.ecrireString(FichierGen,"\n}");
 	}
 	
 	
